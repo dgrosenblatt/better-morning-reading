@@ -1,0 +1,5 @@
+<h1>Profile</h1>
+<p><%= @user.email %></p>
+<p><%= @user.name %></p>
+
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>

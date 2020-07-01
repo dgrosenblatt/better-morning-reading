@@ -7,6 +7,7 @@ if Rails.env.production?
 end
 
 require "rspec/rails"
+require "shoulda/matchers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
 
@@ -16,6 +17,7 @@ module SystemTestHelper
 end
 
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
   config.include SystemTestHelper, type: :system
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
