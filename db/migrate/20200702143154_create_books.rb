@@ -4,8 +4,8 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.timestamps
       t.string :name, null: false
       t.string :author, null: false
-      t.string :coverImageThumbS3Key, null: false
-      t.string :coverImageFullS3Key, null: false
+      t.string :cover_image_thumb_s3_key, null: false
+      t.string :cover_image_full_s3_key, null: false
     end
   end
 end

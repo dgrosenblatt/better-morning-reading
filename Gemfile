@@ -9,7 +9,7 @@ ruby "2.6.6"
 
 
 gem "autoprefixer-rails"
-
+gem "aws-sdk", "~> 3"
 gem "bootsnap", require: false
 gem "devise"
 gem "honeybadger"
@@ -34,6 +34,7 @@ group :development, :test do
   gem "awesome_print"
   gem "pry-byebug"
   gem "pry-rails"
+  gem "dotenv-rails"
 end
 
 group :test do
