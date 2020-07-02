@@ -13,9 +13,17 @@ $action-color--contrast: $white;
 // Background Colors
 $viewport-background-color: $white;
 
+// Theme
+$purple: #8A20C1;
+$teal: #66FFCC;
+$pink: #E8128C;
+$yellow: #F8D545;
+
+
 :root {
   // Typography
-  --font-family: system-ui, sans-serif;
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
+  --font-family: 'Rubik', system-ui, sans-serif;
   --font-family--heading: var(--font-family);
 
   --font-weight--thin: 100;

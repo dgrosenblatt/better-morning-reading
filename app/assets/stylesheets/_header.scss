@@ -1,0 +1,62 @@
+header {
+  background-color: $purple;
+  height: 142px;
+  padding-top: 76px;
+
+  h1 {
+    color: $yellow;
+    font-size: 30px;
+  }
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-sign-in-link {
+  border: 3px solid $yellow;
+  border-radius: 100%;
+  bottom: 19px;
+  color: $yellow;
+  display: block;
+  font-weight: var(--font-weight--medium);
+  height: 76px;
+  padding-left: 10px;
+  padding-top: 22px;
+  position: relative;
+  text-decoration: none;
+  width: 76px;
+
+  &:hover {
+    background-color: $yellow;
+    color: $purple;
+  }
+}
+
+.header-link {
+  border: 3px solid $yellow;
+  border-radius: 100%;
+  bottom: 19px;
+  color: $yellow;
+  display: block;
+  font-weight: var(--font-weight--medium);
+  height: 76px;
+  position: relative;
+  padding-top: 22px;
+  text-decoration: none;
+  width: 76px;
+
+  &:hover {
+    background-color: $yellow;
+    color: $purple;
+  }
+}
+
+.header-link.sign-in {
+  padding-left: 10px;
+}
+
+.header-link.me {
+  padding-left: 24px;
+}
