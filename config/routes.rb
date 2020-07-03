@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: "home#show"
 
   get '/me', to: 'current_user#show'
+  resources :books, only: :index
 end
