@@ -21,6 +21,7 @@ gem "recipient_interceptor"
 gem "sassc-rails"
 gem "skylight"
 gem "sprockets", "< 4"
+gem "stripe"
 gem "title"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "webpacker"
