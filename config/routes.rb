@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   get '/me', to: 'current_user#show'
   resources :books, only: :index
+  resources :stripe_customer_subscriptions, only: :create
 end

@@ -6,7 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
+
+
   </head>
 
   <body>
@@ -14,5 +15,12 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      var stripe = Stripe('<%= STRIPE_PUBLISHABLE_KEY %>');
+      var elements = stripe.elements();
+      window.elements = elements
+    </script>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>

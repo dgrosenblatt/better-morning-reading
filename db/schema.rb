@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_022851) do
+ActiveRecord::Schema.define(version: 2020_07_04_152744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(version: 2020_07_03_022851) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "stripe_customer_subscriptions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.string "subscription_id", null: false
+    t.string "customer_id", null: false
+    t.string "payment_method_id"
+    t.string "price_id", null: false
+    t.string "status", null: false
+    t.bigint "current_period_end", null: false
+    t.index ["user_id"], name: "index_stripe_customer_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -51,9 +64,11 @@ ActiveRecord::Schema.define(version: 2020_07_03_022851) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "stripe_customer_id"
+    t.boolean "has_full_access", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "stripe_customer_subscriptions", "users"
 end

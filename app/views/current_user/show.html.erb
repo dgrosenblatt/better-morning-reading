@@ -1,5 +1,47 @@
 <h1>Profile</h1>
 <p><%= @user.email %></p>
 <p><%= @user.name %></p>
+<p>Membership Type: <%= @user.membership_type %></p>
 
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<div>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+</div>
+
+<input
+  class="stripe-metadata"
+  id="stripe-customer-id"
+  value=<%= @user.stripe_customer_id %>
+/>
+
+<input
+  class="stripe-metadata"
+  id="stripe-price-id"
+  value=<%= @stripe_price_id %>
+/>
+
+<% if !@user.has_full_access %>
+  <h2 id="stripe-checkout">Upgrade to Full Access for Uninterrupted Reading</h2>
+
+  <form id="subscription-form">
+    <div id="card-element" class="MyCardElement">
+      <!-- Elements will create input elements here -->
+    </div>
+
+    <!-- We'll put the error messages in this element -->
+    <div id="card-errors" role="alert"></div>
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <%= simple_form_for(@stripe_customer_subscription, url: stripe_customer_subscriptions_path) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :customer_id,
+                  input_html: { autocomplete: "name" }%>
+      <%= f.input :payment_method_id,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :price_id,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+  <% end %>
+<% end %>
