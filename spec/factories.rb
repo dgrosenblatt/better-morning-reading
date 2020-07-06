@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :chapter do
+    
+  end
+
   factory :stripe_customer_subscription do
     
   end

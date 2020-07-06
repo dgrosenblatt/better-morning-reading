@@ -4,6 +4,8 @@ class Book < ApplicationRecord
   validates :cover_image_full_s3_key, presence: true
   validates :name, presence: true
 
+  has_many :chapters
+
   def cover_image_thumb_url
     Aws::S3::Object
       .new(bucket_name: AWS_S3_BUCKET_NAME, key: cover_image_thumb_s3_key)
