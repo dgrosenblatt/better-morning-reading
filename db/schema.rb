@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_013254) do
+ActiveRecord::Schema.define(version: 2020_07_06_204904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 2020_07_05_013254) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "scheduled_chapter_emails", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subscription_id", null: false
+    t.bigint "chapter_id", null: false
+    t.datetime "sent_at"
+    t.index ["chapter_id"], name: "index_scheduled_chapter_emails_on_chapter_id"
+    t.index ["subscription_id"], name: "index_scheduled_chapter_emails_on_subscription_id"
+  end
+
   create_table "stripe_customer_subscriptions", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -60,6 +70,23 @@ ActiveRecord::Schema.define(version: 2020_07_05_013254) do
     t.string "status", null: false
     t.bigint "current_period_end", null: false
     t.index ["user_id"], name: "index_stripe_customer_subscriptions_on_user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "book_id", null: false
+    t.bigint "user_id", null: false
+    t.string "status", null: false
+    t.boolean "sunday", default: false, null: false
+    t.boolean "monday", default: false, null: false
+    t.boolean "tuesday", default: false, null: false
+    t.boolean "wednesday", default: false, null: false
+    t.boolean "thursday", default: false, null: false
+    t.boolean "friday", default: false, null: false
+    t.boolean "saturday", default: false, null: false
+    t.index ["book_id"], name: "index_subscriptions_on_book_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,5 +108,9 @@ ActiveRecord::Schema.define(version: 2020_07_05_013254) do
   end
 
   add_foreign_key "chapters", "books"
+  add_foreign_key "scheduled_chapter_emails", "chapters"
+  add_foreign_key "scheduled_chapter_emails", "subscriptions"
   add_foreign_key "stripe_customer_subscriptions", "users"
+  add_foreign_key "subscriptions", "books"
+  add_foreign_key "subscriptions", "users"
 end

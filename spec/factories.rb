@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :scheduled_chapter_email do
+    
+  end
+
+  factory :subscription do
+    
+  end
+
   factory :chapter do
     
   end

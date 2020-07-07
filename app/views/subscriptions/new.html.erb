@@ -1,0 +1,15 @@
+  <%= simple_form_for(@subscription, url: book_subscriptions_path) do |f| %>
+    <div>Select email schedule:</div>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :sunday %>
+      <%= f.input :monday %>
+      <%= f.input :tuesday %>
+      <%= f.input :wednesday %>
+      <%= f.input :thursday %>
+      <%= f.input :friday %>
+      <%= f.input :saturday %>
+      <%= f.button :submit, "Start Subscription" %>
+    </div>
+  <% end %>
