@@ -1,62 +1,57 @@
 header {
-  background-color: $purple;
-  height: 142px;
-  padding-top: 76px;
+  background-color: #fff;
+  height: 70px;
+  padding-top: 21px;
 
   h1 {
-    color: $yellow;
+    color: $dark-gray;
+    font-family: var(--font-family--serif);
     font-size: 30px;
+    font-weight: normal;
+    position: relative;
+    top: 8px;
   }
 }
 
 .header-content {
   display: flex;
   justify-content: space-around;
-}
 
-.header-sign-in-link {
-  border: 3px solid $yellow;
-  border-radius: 100%;
-  bottom: 19px;
-  color: $yellow;
-  display: block;
-  font-weight: var(--font-weight--medium);
-  height: 76px;
-  padding-left: 10px;
-  padding-top: 22px;
-  position: relative;
-  text-decoration: none;
-  width: 76px;
-
-  &:hover {
-    background-color: $yellow;
-    color: $purple;
+  nav {
+    display: flex;
   }
 }
 
 .header-link {
-  border: 3px solid $yellow;
+  border: 3px solid $dark-gray;
   border-radius: 100%;
   bottom: 19px;
-  color: $yellow;
+  color: $dark-gray;
   display: block;
   font-weight: var(--font-weight--medium);
   height: 76px;
   position: relative;
-  padding-top: 22px;
+  padding-top: 23px;
   text-decoration: none;
   width: 76px;
 
   &:hover {
-    background-color: $yellow;
-    color: $purple;
+    background: linear-gradient(0deg, $red -160%, $yellow 100%);
+    color: $dark-gray;
   }
 }
 
 .header-link.sign-in {
+  margin-left: 20px;
   padding-left: 10px;
 }
 
 .header-link.me {
+  margin-left: 20px;
   padding-left: 24px;
+}
+
+
+.header-link.books {
+  padding-left: 13px;
 }

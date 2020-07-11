@@ -1,1 +1,6 @@
-<div><%= link_to 'Sign Up', new_user_registration_path %></div>
+<div class="home-content">
+  <h1 class="home-title">Start each day with a new chapter in your email.</h1>
+  <div id="react-app-home-email-window"></div>
+  <div><%= link_to 'Sign Up', new_user_registration_path, class: "sign-up-button" %></div>
+</div>
+<%= javascript_pack_tag 'email_window' %>

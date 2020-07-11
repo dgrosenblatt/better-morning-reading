@@ -1,10 +1,14 @@
 <header>
   <div class="header-content">
     <h1>Better Morning Reading</h1>
-    <% if user_signed_in? %>
-      <%= link_to 'Me', me_path, class: 'header-link me' %>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path, class: 'header-link sign-in' %>
-    <% end %>
+    <nav>
+      <%= link_to 'Books', books_path, class: 'header-link books' %>
+
+      <% if user_signed_in? %>
+        <%= link_to 'Me', me_path, class: 'header-link me' %>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path, class: 'header-link sign-in' %>
+      <% end %>
+    </nav>
   </div>
 </header>

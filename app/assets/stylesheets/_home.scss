@@ -1,0 +1,41 @@
+.home-title {
+  color: $yellow;
+  font-family: var(--font-family--heading);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 59px;
+  text-align: center;
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-content {
+  background-image: image-url('book-stacks.jpg');
+  height: 640px;
+  padding-top: 22px;
+  width: 100%;
+}
+
+.sign-up-button {
+  background: $red;
+  background: linear-gradient(0deg, $red -80%, $yellow 100%);
+  border-radius: 100%;
+  box-shadow: 50px 50px 15px rgba(0, 0, 0, 0.25);
+  color: $dark-gray;
+  display: block;
+  font-family: 'Rubik';
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 48px;
+  height: 124px;
+  width: 124px;
+  margin: 8px auto 0;
+
+  &:hover {
+    background: linear-gradient(0deg, $red -90%, $yellow 100%);
+    color: black;
+  }
+}

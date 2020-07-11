@@ -19,13 +19,21 @@ $teal: #66FFCC;
 $pink: #E8128C;
 $yellow: #F8D545;
 
+// New Theme
+$blue: #BCD3F2;
+$blue-40: rgba(188,211,242,0.4);
+$yellow: #F8D545;
+$red: #F8333C;
+$green: #66FFCC;
+$dark-gray: #333745;
 
 :root {
   // Typography
+  @import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@300;400;500;700&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
   --font-family: 'Rubik', system-ui, sans-serif;
   --font-family--heading: var(--font-family);
-
+  --font-family--serif: 'Vollkorn', serif;
   --font-weight--thin: 100;
   --font-weight--extra-light: 200;
   --font-weight--light: 300;
