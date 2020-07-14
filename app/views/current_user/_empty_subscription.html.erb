@@ -1,0 +1,8 @@
+<h2>You are not currently reading a book</h2>
+<% if @user.exhausted_free_account? %>
+  <p>Please become a member to continue reading<p>
+<% else %>
+  <div>
+    <%= link_to 'Browse collection to start a new book ➡️', books_path %>
+  </div>
+<% end %>

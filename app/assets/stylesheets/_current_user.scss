@@ -1,0 +1,21 @@
+.current-user-show {
+  display: flex;
+  min-height: 600px;
+
+  .profile-pane {
+    background-color: $blue;
+    width: 240px;
+  }
+
+  .subscription-pane {
+    height: 100%;
+  }
+
+  .book-details {
+    text-align: center;
+  }
+
+  .schedule {
+    text-align: center;
+  }
+}

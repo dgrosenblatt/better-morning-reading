@@ -1,0 +1,40 @@
+<div class="book-details">
+  <h1>Currently reading</h1>
+  <div><%= image_tag  @subscription.book.cover_image_full_url %></div>
+  <h2><%= @subscription.book.name %> by <%= @subscription.book.author %><h2>
+</div>
+
+<h2>Progress<h2>
+<% @scheduled_chapter_emails.each do |email| %>
+  <p><% if email.sent? %>✅ <% end %><%= email.chapter.name %></p>
+<% end %>
+
+<h2>Weekly schedule:</h2>
+<table class="schedule">
+  <tr>
+    <td>Sun</td>
+    <td>Mon</td>
+    <td>Tue</td>
+    <td>Wed</td>
+    <td>Thu</td>
+    <td>Fri</td>
+    <td>Sat</td>
+  </tr>
+  <tr>
+    <td><% if @subscription.sunday %>☀️<% end %></td>
+    <td><% if @subscription.monday %>☀️<% end %></td>
+    <td><% if @subscription.tuesday %>☀️<% end %></td>
+    <td><% if @subscription.wednesday %>☀️<% end %></td>
+    <td><% if @subscription.thursday %>☀️<% end %></td>
+    <td><% if @subscription.friday %>☀️<% end %></td>
+    <td><% if @subscription.saturday %>☀️<% end %></td>
+  </tr>
+<table>
+
+<h2>Reading history<h2>
+<% if @past_subscriptions.empty? %>
+  <p>You haven't finished any books yet.</p>
+<% end %>
+<% @past_subscriptions.each do |subscription| %>
+  <p><%= @subscription.book.name %></p>
+<% end %>
