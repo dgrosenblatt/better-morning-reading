@@ -7,6 +7,7 @@ class Book < ApplicationRecord
   has_many :chapters
 
   def cover_image_thumb_url
+    # 100 x 140
     Aws::S3::Object
       .new(bucket_name: AWS_S3_BUCKET_NAME, key: cover_image_thumb_s3_key)
       .presigned_url(:get, expires_in: 3600)

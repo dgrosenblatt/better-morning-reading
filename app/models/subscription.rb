@@ -3,9 +3,9 @@ class Subscription < ApplicationRecord
   after_commit :populate_scheduled_chapter_emails, on: :create
 
   validates :user_id, uniqueness: { scope: :book_id }
-  validate :only_one_active_for_user
-  validate :only_one_for_free_account_user
   validate :one_or_more_days
+  validate :only_one_active_for_user, on: :create
+  validate :only_one_for_free_account_user, on: :create
 
   belongs_to :book
   belongs_to :user
@@ -16,7 +16,11 @@ class Subscription < ApplicationRecord
     Subscription.transaction do
       # TODO: batch insert?
       book.chapters.each do |chapter|
-        ScheduledChapterEmail.create!(subscription: self, chapter: chapter)
+        ScheduledChapterEmail.create!(
+          subscription: self,
+          chapter: chapter,
+          position: chapter.position
+        )
       end
     end
   end
@@ -28,19 +32,19 @@ class Subscription < ApplicationRecord
     end
 
     unless any_days
-      errors.add(:user, 'must select at least one day')
+      errors.add(:base, 'At least one day must be selected')
     end
   end
 
   def only_one_active_for_user
     if user.active_subscription.present?
-      errors.add(:user, 'already reading a book')
+      errors.add(:base, 'You are already reading a book')
     end
   end
 
   def only_one_for_free_account_user
     if !user.has_full_access && user.subscriptions.any?
-      errors.add(:user, 'needs to become a member to read another book')
+      errors.add(:base, 'You must become a member to read another book')
     end
   end
 end

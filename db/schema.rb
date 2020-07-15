@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_204904) do
+ActiveRecord::Schema.define(version: 2020_07_14_211804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_204904) do
     t.bigint "subscription_id", null: false
     t.bigint "chapter_id", null: false
     t.datetime "sent_at"
+    t.integer "position", null: false
     t.index ["chapter_id"], name: "index_scheduled_chapter_emails_on_chapter_id"
     t.index ["subscription_id"], name: "index_scheduled_chapter_emails_on_subscription_id"
   end

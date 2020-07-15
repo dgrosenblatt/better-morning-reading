@@ -1,0 +1,7 @@
+<h2>Reading history<h2>
+<% if @past_subscriptions.empty? %>
+  <p>You haven't finished any books yet.</p>
+<% end %>
+<% @past_subscriptions.each do |subscription| %>
+  <p><%= subscription.book.name %></p>
+<% end %>

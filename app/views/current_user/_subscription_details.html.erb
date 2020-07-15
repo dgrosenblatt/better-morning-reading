@@ -1,6 +1,6 @@
 <div class="book-details">
   <h1>Currently reading</h1>
-  <div><%= image_tag  @subscription.book.cover_image_full_url %></div>
+  <div><%= image_tag  @subscription.book.cover_image_full_url, class: 'cover-image' %></div>
   <h2><%= @subscription.book.name %> by <%= @subscription.book.author %><h2>
 </div>
 
@@ -31,10 +31,3 @@
   </tr>
 <table>
 
-<h2>Reading history<h2>
-<% if @past_subscriptions.empty? %>
-  <p>You haven't finished any books yet.</p>
-<% end %>
-<% @past_subscriptions.each do |subscription| %>
-  <p><%= @subscription.book.name %></p>
-<% end %>
