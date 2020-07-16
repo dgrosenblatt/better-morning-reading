@@ -1,10 +1,37 @@
 .books-index {
   background-image: image-url('library.jpg');
   margin-top: -12px;
+  min-height: 400px;
   padding: 24px;
 
   .title {
     text-align: center;
+  }
+
+  .results-notice {
+    text-align: center;
+  }
+
+  .book-query-form {
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    width: 466px;
+  }
+
+  .book-query-input {
+    padding-right: 105px;
+  }
+
+  .book-query-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: linear-gradient(0deg, $red -160%, $yellow 100%);
+    color: $dark-gray;
+    height: 34px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
   }
 
   .books-container {

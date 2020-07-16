@@ -1,5 +1,12 @@
 <div class="books-index">
   <h1 class="title">Browse All Books</h1>
+  <div class="search-bar-container">
+    <%= form_with url: books_path, method: :get, local: true, class: "book-query-form" do |f| %>
+      <%= f.text_field :query, placeholder: 'Search by Title or Author', class: "book-query-input", value: @query %>
+      <%= f.submit 'Search', class: "book-query-button" %>
+    <% end %>
+  </div>
+  <div class="results-notice">Showing <%= pluralize(@books.length, 'result') %></div>
   <div class="books-container">
     <% @books.each do |book| %>
       <div class="book-card">
