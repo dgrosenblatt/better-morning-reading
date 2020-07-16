@@ -1,0 +1,73 @@
+.books-index {
+  background-image: image-url('library.jpg');
+  margin-top: -12px;
+  padding: 24px;
+
+  .title {
+    text-align: center;
+  }
+
+  .books-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .book-card {
+    border: 3px solid $dark-gray;
+    border-radius: 3px;
+    min-height: 410px;
+    margin: 10px;
+    padding: 12px 8px;
+    position: relative;
+    text-align: center;
+    width: 300px;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+
+    .book-name {
+      margin-bottom: 0;
+    }
+
+    .author {
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      font-size: 12px;
+    }
+
+    .amazon-link {
+      position: absolute;
+      bottom: 1px;
+      font-size: 12px;
+      right: 1px;
+    }
+
+    .amazon-link[target="_blank"]::after {
+      content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+      margin: 0 3px 0 5px;
+    }
+
+    .subscribe-button {
+      border: 3px solid $dark-gray;
+      border-radius: 100%;
+      bottom: 30px;
+      color: $dark-gray;
+      display: block;
+      font-weight: var(--font-weight--medium);
+      height: 90px;
+      left: 105px;
+      margin: 0 auto;
+      padding-top: 30px;
+      text-decoration: none;
+      width: 90px;
+      position: absolute;
+
+      &:hover {
+        background: linear-gradient(0deg, $red -160%, $yellow 100%);
+        color: $dark-gray;
+      }
+    }
+  }
+}

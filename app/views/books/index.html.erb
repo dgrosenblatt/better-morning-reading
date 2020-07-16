@@ -1,11 +1,15 @@
-<h1>Books</h1>
-
-<% @books.each do |book| %>
-  <div>
-    <h2><%= book.name %></h2>
-    <h3><%= book.author %></h3>
-    <h3>Sent over <%= book.chapters.count %> daily emails </h3>
-    <div><%= image_tag book.cover_image_thumb_url %></div>
-    <%= link_to "Subscribe", new_book_subscription_path(book.id) %>
+<div class="books-index">
+  <h1 class="title">Browse All Books</h1>
+  <div class="books-container">
+    <% @books.each do |book| %>
+      <div class="book-card">
+        <div><%= image_tag book.cover_image_thumb_url %></div>
+        <h2 class="book-name"><%= book.name %></h2>
+        <div class="author"><%= book.author %></div>
+        <div class="card-detail">Sent in <%= book.chapters.count %> installments</div>
+        <%= link_to "Start", new_book_subscription_path(book.id), class: "subscribe-button" %>
+        <%= link_to "Check out on Amazon", 'http://www.amazon.com', target: "_blank", class: "amazon-link" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
