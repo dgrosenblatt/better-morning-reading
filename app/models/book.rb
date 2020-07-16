@@ -18,4 +18,8 @@ class Book < ApplicationRecord
       .new(bucket_name: AWS_S3_BUCKET_NAME, key: cover_image_full_s3_key)
       .presigned_url(:get, expires_in: 3600)
   end
+
+  def amazon_url
+    URI.encode("https://www.amazon.com/s?k=#{name}")
+  end
 end

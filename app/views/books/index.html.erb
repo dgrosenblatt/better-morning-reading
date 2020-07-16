@@ -15,7 +15,7 @@
         <div class="author"><%= book.author %></div>
         <div class="card-detail">Sent in <%= book.chapters.count %> installments</div>
         <%= link_to "Start", new_book_subscription_path(book.id), class: "subscribe-button" %>
-        <%= link_to "Check out on Amazon", 'http://www.amazon.com', target: "_blank", class: "amazon-link" %>
+        <%= link_to "Check out on Amazon", book.amazon_url, target: "_blank", class: "amazon-link" %>
       </div>
     <% end %>
   </div>
