@@ -25,6 +25,10 @@
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
 
+    &:hover {
+      background-color: $blue-40;
+    }
+
     .book-name {
       margin-bottom: 0;
     }
