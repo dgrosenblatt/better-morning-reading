@@ -9,7 +9,7 @@
   <p><% if email.sent? %>✅ <% end %><%= email.chapter.name %></p>
 <% end %>
 
-<h2>Weekly schedule:</h2>
+<h2>Weekly schedule (<%= link_to "Edit", edit_book_subscription_path(@subscription.book, @subscription) %>)</h2>
 <table class="schedule">
   <tr>
     <td>Sun</td>

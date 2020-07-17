@@ -1,5 +1,5 @@
-<div class="subscription-new">
-  <%= simple_form_for(@subscription, url: book_subscriptions_path) do |f| %>
+<div class="subscription-edit">
+  <%= simple_form_for(@subscription, url: book_subscription_path(@subscription.book, @subscription)) do |f| %>
     <div class="book-details">
       <h1><%= @book.name %>
       <p class="detail"><%= @book.author %></p>
@@ -14,7 +14,7 @@
         <% end %>
       </div>
     <% end %>
-    <p class="detail">Select your weekly schedule:</p>
+    <p class="detail">Update your weekly schedule:</p>
     <div class="new-subscription-inputs-container">
       <div class="book-image"><%= image_tag @book.cover_image_full_url %></div>
       <div class="form-inputs">
@@ -28,16 +28,8 @@
       </div>
     </div>
 
-    <p>You'll receive a chapter in your email on each day selected until the book is finished. (You can always update your schedule later.)</p>
-    <%= f.input :now, label: false do %>
-      <%= check_box_tag 'now' %>
-      <%= label_tag 'now', 'Send me the first chapter now!', class: "now-label" %>
-    <% end %>
-    <div><%= f.button :submit, "Start", id: "new-subscription-submit" %></div>
-    <% if !current_user.has_full_access %>
-      <small class="full-access-notice">
-        (Until you become a member, this will be your only book. Enjoy!)
-      </small>
-    <% end %>
+    <p>You'll receive a chapter in your email on each day selected until the book is finished.</p>
+
+    <div><%= f.button :submit, "Save", id: "new-subscription-submit" %></div>
   <% end %>
 </div>

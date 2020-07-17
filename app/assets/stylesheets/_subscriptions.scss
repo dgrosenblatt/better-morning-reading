@@ -1,4 +1,4 @@
-.subscription-new {
+.subscription-new, .subscription-edit {
   background-image: url('glasses.jpg');
   background-size: cover;
   margin-top: -12px;
@@ -11,7 +11,7 @@
     padding: 8px;
   }
 
-  #new_subscription {
+  #new_subscription, .edit_subscription {
     background-color: $yellow-90;
     border-radius: 3px;
     margin: 0 auto;
