@@ -20,7 +20,7 @@
       <% @able_to_start = false %>
     <% elsif current_user.has_full_access && current_user.active_subscription.present? %>
       <div class="account-notice">
-        You'll be able to start another book when your current book is has finished.
+        You'll be able to start another book when your current book has finished.
       </div>
       <% @able_to_start = false %>
     <% else %>
