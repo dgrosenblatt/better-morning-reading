@@ -2,7 +2,7 @@ class Subscription < ApplicationRecord
   STATUSES = { active: 'active', done: 'done' }
   after_commit :populate_scheduled_chapter_emails, on: :create
 
-  validates :user_id, uniqueness: { scope: :book_id }
+  validates :book_id, uniqueness: { scope: :user_id, message: 'is already being read' }
   validate :one_or_more_days
   validate :only_one_active_for_user, on: :create
   validate :only_one_for_free_account_user, on: :create
@@ -23,6 +23,23 @@ class Subscription < ApplicationRecord
         )
       end
     end
+  end
+
+  def quick_start!
+    scheduled_chapter_email = scheduled_chapter_emails.find_by(position: 1)
+    chapter = scheduled_chapter_email.chapter
+    message = {
+      recipient: user.email,
+      book_name: book.name,
+      chapter_name: chapter.name,
+      chapter_s3_key: chapter.text_s3_key
+    }
+    puts message
+    sqs = Aws::SQS::Queue.new(url: AWS_SQS_QUEUE_URL)
+    sqs.send_message(message_body: message.to_json)
+
+    scheduled_chapter_email.update(sent_at: Time.current)
+    # assume for now that no books have only one chapter
   end
 
   # custom validations

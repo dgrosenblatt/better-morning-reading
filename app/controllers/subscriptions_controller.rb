@@ -8,9 +8,13 @@ class SubscriptionsController < AuthenticatedController
     @subscription = Subscription.new(subscription_params)
 
     if @subscription.save
+      if params[:now] == '1'
+        @subscription.quick_start!
+      end
+
       redirect_to me_path, notice: 'Subscription created'
     else
-      puts @subscription.errors.full_messages
+      @book = Book.find(params[:book_id])
       render :new
     end
   end

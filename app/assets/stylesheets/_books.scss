@@ -12,6 +12,14 @@
     text-align: center;
   }
 
+  .account-notice {
+    background-color: $yellow-90;
+    border-radius: 3px;
+    margin: 0 auto;
+    max-width: 940px;
+    padding: 4px 0;
+  }
+
   .book-query-form {
     display: flex;
     margin: 0 auto;

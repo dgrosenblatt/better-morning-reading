@@ -6,7 +6,27 @@
       <%= f.submit 'Search', class: "book-query-button" %>
     <% end %>
   </div>
-  <div class="results-notice">Showing <%= pluralize(@books.length, 'result') %></div>
+  <div class="results-notice">
+    <div>Showing <%= pluralize(@books.length, 'result') %></div>
+    <% if current_user.exhausted_free_account? %>
+      <div class="account-notice">
+        Please become a member to read another book.
+      </div>
+      <% @able_to_start = false %>
+    <% elsif !current_user.has_full_access && current_user.active_subscription.present? %>
+      <div class="account-notice">
+        Please become a member to continue reading when your current book has finished.
+      </div>
+      <% @able_to_start = false %>
+    <% elsif current_user.has_full_access && current_user.active_subscription.present? %>
+      <div class="account-notice">
+        You'll be able to start another book when your current book is has finished.
+      </div>
+      <% @able_to_start = false %>
+    <% else %>
+      <% @able_to_start = true %>
+    <% end %>
+  </div>
   <div class="books-container">
     <% @books.each do |book| %>
       <div class="book-card">
@@ -14,7 +34,9 @@
         <h2 class="book-name"><%= book.name %></h2>
         <div class="author"><%= book.author %></div>
         <div class="card-detail">Sent in <%= book.chapters.count %> installments</div>
-        <%= link_to "Start", new_book_subscription_path(book.id), class: "subscribe-button" %>
+        <% if @able_to_start %>
+          <%= link_to "Start", new_book_subscription_path(book.id), class: "subscribe-button" %>
+        <% end %>
         <%= link_to "Check out on Amazon", book.amazon_url, target: "_blank", class: "amazon-link" %>
       </div>
     <% end %>

@@ -4,8 +4,6 @@ RSpec.describe Subscription, type: :model do
   describe 'validations' do
     let!(:subscription) { create(:subscription) }
 
-    it { should validate_uniqueness_of(:user_id).scoped_to(:book_id) }
-
     describe 'custom validations' do
       describe 'one or more days' do
         it 'is valid when at least one day is selected' do

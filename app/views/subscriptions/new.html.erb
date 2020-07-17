@@ -1,15 +1,43 @@
+<div class="subscription-new">
   <%= simple_form_for(@subscription, url: book_subscriptions_path) do |f| %>
-    <div>Select email schedule:</div>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :sunday %>
-      <%= f.input :monday %>
-      <%= f.input :tuesday %>
-      <%= f.input :wednesday %>
-      <%= f.input :thursday %>
-      <%= f.input :friday %>
-      <%= f.input :saturday %>
-      <%= f.button :submit, "Start Subscription" %>
+    <div class="book-details">
+      <h1><%= @book.name %>
+      <p class="detail"><%= @book.author %></p>
+  </div>
+    <% if @subscription.errors.any? %>
+      <div class="errors-container">
+        <%= f.error_notification %>
+        <% @subscription.errors.full_messages.each do |message| %>
+          <ul>
+            <li class="subscription-error">➡️ <%= message %></li>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+    <p class="detail">Select your weekly schedule:</p>
+    <div class="new-subscription-inputs-container">
+      <div class="book-image"><%= image_tag @book.cover_image_full_url %></div>
+      <div class="form-inputs">
+        <%= f.input :sunday %>
+        <%= f.input :monday %>
+        <%= f.input :tuesday %>
+        <%= f.input :wednesday %>
+        <%= f.input :thursday %>
+        <%= f.input :friday %>
+        <%= f.input :saturday %>
+      </div>
     </div>
+
+    <p>You'll receive a chapter in your email on each day selected until the book is finished.</p>
+    <%= f.input :now, label: false do %>
+      <%= check_box_tag 'now' %>
+      <%= label_tag 'now', 'Send me the first chapter now!', class: "now-label" %>
+    <% end %>
+    <div><%= f.button :submit, "Start", id: "new-subscription-submit" %></div>
+    <% if !current_user.has_full_access %>
+      <small class="full-access-notice">
+        (Until you become a member, this will be your only book. Enjoy!)
+      </small>
+    <% end %>
   <% end %>
+</div>
