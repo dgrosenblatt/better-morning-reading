@@ -1,0 +1,50 @@
+.sessions-new {
+  display: flex;
+  height: 500px;
+  margin-top: -12px;
+
+  .form-actions {
+    text-align: center;
+  }
+
+  .new-session-submit {
+    background-color: transparent;
+    border: 3px solid $dark-gray;
+    border-radius: 100%;
+    color: $dark-gray;
+    display: block;
+    font-weight: var(--font-weight--medium);
+    height: 76px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 9px;
+    padding-top: 12px;
+    text-decoration: none;
+    width: 76px;
+
+    &:hover {
+      background: linear-gradient(0deg, $red -160%, $yellow 100%);
+      color: $dark-gray;
+    }
+  }
+
+  .sign-in-title {
+    text-align: center;
+  }
+
+  .left-panel, .right-panel {
+    width: 50%;
+  }
+
+  .left-panel {
+    background-image: url('book-stacks.jpg');
+    background-size: cover;
+    height: 500px;
+  }
+
+  .right-panel {
+    background-color: $yellow-80;
+    padding: 110px 16px 0;
+  }
+}
+
