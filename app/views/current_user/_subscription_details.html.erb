@@ -1,33 +1,41 @@
 <div class="book-details">
   <h1>Currently reading</h1>
   <div><%= image_tag  @subscription.book.cover_image_full_url, class: 'cover-image' %></div>
-  <h2><%= @subscription.book.name %> by <%= @subscription.book.author %><h2>
+  <h2><%= @subscription.book.name %> by <%= @subscription.book.author %></h2>
 </div>
 
-<h2>Progress<h2>
-<% @scheduled_chapter_emails.each do |email| %>
-  <p><% if email.sent? %>✅ <% end %><%= email.chapter.name %></p>
-<% end %>
+<details class="schedule-container" open>
+  <summary>
+    Weekly schedule (<%= link_to "Edit", edit_book_subscription_path(@subscription.book, @subscription) %>)
+  </summary>
+  <table class="schedule">
+    <tr>
+      <td>Sun</td>
+      <td>Mon</td>
+      <td>Tue</td>
+      <td>Wed</td>
+      <td>Thu</td>
+      <td>Fri</td>
+      <td>Sat</td>
+    </tr>
+    <tr>
+      <td><% if @subscription.sunday %>☀️<% end %></td>
+      <td><% if @subscription.monday %>☀️<% end %></td>
+      <td><% if @subscription.tuesday %>☀️<% end %></td>
+      <td><% if @subscription.wednesday %>☀️<% end %></td>
+      <td><% if @subscription.thursday %>☀️<% end %></td>
+      <td><% if @subscription.friday %>☀️<% end %></td>
+      <td><% if @subscription.saturday %>☀️<% end %></td>
+    </tr>
+  </table>
+</details>
 
-<h2>Weekly schedule (<%= link_to "Edit", edit_book_subscription_path(@subscription.book, @subscription) %>)</h2>
-<table class="schedule">
-  <tr>
-    <td>Sun</td>
-    <td>Mon</td>
-    <td>Tue</td>
-    <td>Wed</td>
-    <td>Thu</td>
-    <td>Fri</td>
-    <td>Sat</td>
-  </tr>
-  <tr>
-    <td><% if @subscription.sunday %>☀️<% end %></td>
-    <td><% if @subscription.monday %>☀️<% end %></td>
-    <td><% if @subscription.tuesday %>☀️<% end %></td>
-    <td><% if @subscription.wednesday %>☀️<% end %></td>
-    <td><% if @subscription.thursday %>☀️<% end %></td>
-    <td><% if @subscription.friday %>☀️<% end %></td>
-    <td><% if @subscription.saturday %>☀️<% end %></td>
-  </tr>
-<table>
 
+<details class="progress-container" open>
+  <summary>Progress</summary>
+  <div class="progress-box">
+    <% @scheduled_chapter_emails.each do |email| %>
+      <p class="chapter-box"><% if email.sent? %> ✅ <% end %><%= email.chapter.name %></p>
+    <% end %>
+  <div>
+</details>

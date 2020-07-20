@@ -9,10 +9,15 @@
 
   <body>
     <%= render 'shared/header' %>
+    <%
+=begin%>
+ <%= render 'shared/footer' %>
+<%
+=end%>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= render 'shared/footer' %>
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
