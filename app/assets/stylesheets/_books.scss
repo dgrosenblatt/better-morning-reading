@@ -30,6 +30,7 @@
   }
 
   .book-query-input {
+    background-color: #ffffff;
     padding-right: 105px;
   }
 
@@ -51,6 +52,7 @@
   }
 
   .book-card {
+    background-color: $blue-80;
     border: 3px solid $dark-gray;
     border-radius: 3px;
     min-height: 410px;
