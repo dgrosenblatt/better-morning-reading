@@ -1,7 +1,10 @@
-.sessions-new {
+.registrations-new {
   display: flex;
-  height: 500px;
   margin-top: -12px;
+
+  .details-list {
+    margin-bottom: 16px;
+  }
 
   .form-actions {
     text-align: center;
@@ -17,7 +20,7 @@
     height: 76px;
     margin: 0 auto;
     position: relative;
-    padding-left: 9px;
+    padding-left: 7px;
     padding-top: 12px;
     text-decoration: none;
     width: 76px;
@@ -34,17 +37,24 @@
 
   .left-panel, .right-panel {
     width: 50%;
+    min-height: 700px;
   }
 
   .left-panel {
     background-image: url('book-stacks.jpg');
     background-size: cover;
-    height: 500px;
   }
 
   .right-panel {
+    background-color: $green-40;
+    padding: 16px;
+  }
+
+  .errors-container {
     background-color: $yellow-65;
-    padding: 110px 16px 0;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 8px;
   }
 }
 

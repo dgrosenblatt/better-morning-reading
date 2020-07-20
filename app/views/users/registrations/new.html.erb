@@ -1,29 +1,54 @@
-<h2>Sign up</h2>
+<div class="registrations-new">
+  <div class="left-panel"></div>
+  <div class="right-panel">
+    <h2 class="sign-in-title">Welcome!</h2>
+    <p>Joining Better Morning Reading is free. With a free account:</p>
+    <ul class="details-list">
+      <li> 📚 Read from our collection of public domain books</li>
+      <li> 🕵️‍♀️ Select a book and choose your weekly schedule</li>
+      <li> 📬 Receive a chapter in your email in the morning of each day you choose</li>
+      <li> ❤️ After, you can support the site and continue reading for $12/year</li>
+    </ul>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <% if resource.errors.any? %>
+        <div class="errors-container">
+          <%= f.error_notification %>
+          <% resource.errors.full_messages.each do |message| %>
+            <ul>
+              <li class="subscription-error">➡️ <%= message %></li>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    error: false,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :name,
+                    required: true,
+                    autofocus: true,
+                    error: false,
+                    input_html: { autocomplete: "name" }%>
+        <%= f.input :password,
+                    required: true,
+                    error: false,
+                    hint: ("(Must be at least #{@minimum_password_length} characters)" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password", minlength: 8 } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    error: false,
+                    input_html: { autocomplete: "new-password", minlength: 8 } %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign Up", class: "new-session-submit" %>
+      </div>
+    <% end %>
+
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
