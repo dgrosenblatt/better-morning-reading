@@ -36,7 +36,8 @@ FactoryBot.define do
   factory :user do
     name { 'Danny' }
     sequence(:email) { |n| "#{n}em@i.l" }
-    encrypted_password { 'password' }
+    password { 'password' }
+    encrypted_password { '23r9fn3o2rno' }
     stripe_customer_id { 'cus_abc_123'}
     has_full_access { true }
   end
