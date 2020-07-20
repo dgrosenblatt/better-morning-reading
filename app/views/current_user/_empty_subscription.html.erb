@@ -1,8 +1,11 @@
-<h2>You are not currently reading a book</h2>
-<% if @user.exhausted_free_account? %>
-  <p>Please become a member to continue reading<p>
-<% else %>
-  <div>
-    <%= link_to 'Browse collection to start a new book ➡️', books_path %>
-  </div>
-<% end %>
+<div class="empty-subscription">
+  <h2>You are not currently reading a book</h2>
+  <% if @user.exhausted_free_account? %>
+    <p>Please become a member to continue reading</p>
+  <% else %>
+    <div>
+      <div class="empty-book-icon">📖</div>
+      <div><%= link_to 'Browse collection to start a new book ➡️', books_path %></div>
+    </div>
+  <% end %>
+</div>
