@@ -75,3 +75,8 @@
 #new_stripe_customer_subscription {
   display: none;
 }
+
+button.disabled, button.disabled:hover {
+  background-color: darkgray;
+  cursor: not-allowed;
+}

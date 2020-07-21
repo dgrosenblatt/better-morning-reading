@@ -68,6 +68,7 @@ var form = document.getElementById('subscription-form')
 form.addEventListener('submit', event => {
   event.preventDefault()
   console.log('Card submitted')
+  document.getElementById('stripe-form-submit-button').classList.add('disabled')
 
   return createPaymentMethod(cardElement, stripeCustomerId, stripePriceId)
 })

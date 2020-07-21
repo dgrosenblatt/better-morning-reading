@@ -6,8 +6,7 @@ class StripeCustomerSubscriptionsController < AuthenticatedController
         { customer: stripe_params[:customer_id] }
       )
     rescue Stripe::CardError => e
-      # redirect and flash
-      halt 200, { 'Content-Type' => 'application/json' }, { 'error': { message: e.error.message } }.to_json
+      redirect_to me_path, alert: "Error: #{e.error.message} Please try again." and return
     end
 
     # Set the default payment method on the customer
@@ -35,7 +34,7 @@ class StripeCustomerSubscriptionsController < AuthenticatedController
       current_period_end: subscription.current_period_end
     )
 
-    redirect_to me_path, notice: 'Account successfully upgraded to full access.'
+    redirect_to me_path, notice: 'Account successfully upgraded to full membership.'
   end
 
   private
