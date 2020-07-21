@@ -1,7 +1,19 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_stripe_params
 
   protected
+
+  def set_stripe_params
+    if user_signed_in? && !current_user.has_full_access
+      @stripe_price_id = STRIPE_PRICE_ID
+
+      @stripe_customer_subscription = StripeCustomerSubscription.new(
+        price_id: STRIPE_PRICE_ID,
+        customer_id: current_user.stripe_customer_id
+      )
+    end
+  end
 
   # Devise
   def configure_permitted_parameters

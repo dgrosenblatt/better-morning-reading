@@ -1,0 +1,41 @@
+<div id="stripe-modal" class="stripe-modal-hidden">
+  <div class="stripe-form-container">
+    <span id="close-stripe-modal">ⓧ</span>
+    <input
+      class="stripe-metadata"
+      id="stripe-customer-id"
+      value=<%= current_user.stripe_customer_id %>
+    />
+
+    <input
+      class="stripe-metadata"
+      id="stripe-price-id"
+      value=<%= @stripe_price_id %>
+    />
+
+    <h1 id="stripe-checkout">Become a Member for Uninterrupted Reading</h1>
+    <p>Continue to receive emails from Better Morning Reading past your first book for $12 per year. Renews yearly.</p>
+    <div class="stripe-radio">
+      <%= radio_button_tag 'annual', 'annual', true %>$12.00 | Annual membership
+    </div>
+    <form id="subscription-form">
+      <div id="card-element" class="MyCardElement">
+      </div>
+      <div id="card-errors" role="alert"></div>
+      <button type="submit" class="stripe-submit-button">Join</button>
+    </form>
+
+    <%= simple_form_for(@stripe_customer_subscription, url: stripe_customer_subscriptions_path) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :customer_id,
+                    input_html: { autocomplete: "name" }%>
+        <%= f.input :payment_method_id,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :price_id,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+    <% end %>
+  </div>
+</div>

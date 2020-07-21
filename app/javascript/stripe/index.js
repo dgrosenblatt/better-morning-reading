@@ -1,5 +1,29 @@
-// need to hide this module when on pages that don't display the payment form
-console.log('hello from the stripe script')
+const openButton = document.getElementById('stripe-open')
+if (openButton) {
+  openButton.onclick = () => {
+    document.getElementById('stripe-modal').classList.remove('stripe-modal-hidden')
+  }
+}
+
+const headerLink = document.getElementById('stripe-open-header')
+if (headerLink) {
+  headerLink.onclick = () => {
+    document.getElementById('stripe-modal').classList.remove('stripe-modal-hidden')
+  }
+}
+
+// this doesn't work : (
+const bookLink = document.getElementById('stripe-books-index')
+if (bookLink) {
+  bookLink.onclick = () => {
+    document.getElementById('stripe-modal').classList.remove('stripe-modal-hidden')
+  }
+}
+
+document.getElementById('close-stripe-modal').onclick = () => {
+  document.getElementById('stripe-modal').classList.add('stripe-modal-hidden')
+}
+
 
 const stripeCustomerId = document.getElementById('stripe-customer-id').value
 const stripePriceId = document.getElementById('stripe-price-id').value

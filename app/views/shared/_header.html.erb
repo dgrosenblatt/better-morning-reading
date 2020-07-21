@@ -2,6 +2,9 @@
   <div class="header-content">
     <h1>Better Morning Reading</h1>
     <nav>
+      <% if user_signed_in? && !current_user.has_full_access %>
+        <%= link_to 'Upgrade', '#', class: 'header-link upgrade', id: 'stripe-open-header' %>
+      <% end %>
       <%= link_to 'Books', books_path, class: 'header-link books' %>
 
       <% if user_signed_in? %>

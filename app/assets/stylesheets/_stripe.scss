@@ -1,3 +1,47 @@
+#stripe-modal {
+  background-color: $blue-80;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#close-stripe-modal {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 3px;
+  top: 2px;
+}
+
+.stripe-modal-hidden {
+  display: none;
+}
+
+.stripe-form-container {
+  background-color: #ffffff;
+  border-radius: 3px;
+  margin: 100px auto 0 auto;
+  max-width: 550px;
+  padding: 24px;
+  position: relative;
+}
+
+.stripe-submit-button {
+  display: block;
+  margin: 12px auto 0;
+}
+
+.stripe-radio {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+#stripe-checkout {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
 .MyCardElement {
   height: 40px;
   padding: 10px 12px;

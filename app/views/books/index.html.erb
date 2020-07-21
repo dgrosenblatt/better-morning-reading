@@ -8,9 +8,14 @@
   </div>
   <div class="results-notice">
     <div>Showing <%= pluralize(@books.length, 'result') %></div>
-    <% if current_user.exhausted_free_account? %>
+    <% if !user_signed_in? %>
       <div class="account-notice">
-        Please become a member to read another book.
+        <%= link_to 'Please sign up for a free account to get started. ➡️', new_user_registration_path %>
+      </div>
+      <% @able_to_start = false %>
+    <% elsif current_user.exhausted_free_account? %>
+      <div class="account-notice">
+        <%= link_to 'Please upgrade your membership to read another book.', '#', class: 'stripe-books-index', id: 'stripe-books-index' %>
       </div>
       <% @able_to_start = false %>
     <% elsif !current_user.has_full_access && current_user.active_subscription.present? %>

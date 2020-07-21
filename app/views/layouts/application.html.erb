@@ -19,12 +19,16 @@
     <p class="alert"><%= alert %></p>
     <%= yield %>
 
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-      var stripe = Stripe('<%= STRIPE_PUBLISHABLE_KEY %>');
-      var elements = stripe.elements();
-      window.elements = elements
-    </script>
+    <% if user_signed_in? && !current_user.has_full_access %>
+      <%= render 'shared/stripe' %>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        var stripe = Stripe('<%= STRIPE_PUBLISHABLE_KEY %>');
+        var elements = stripe.elements();
+        window.elements = elements
+      </script>
+    <% end %>
+
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
