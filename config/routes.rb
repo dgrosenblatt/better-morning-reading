@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "home#show"
 
   get '/me', to: 'current_user#show'
+  get '/manage', to: 'current_user#manage', as: 'manage'
   resources :books, only: :index do
     resources :subscriptions, only: [:new, :create, :edit, :update]
   end

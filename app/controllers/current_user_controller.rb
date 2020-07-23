@@ -11,4 +11,13 @@ class CurrentUserController < AuthenticatedController
     @past_subscriptions =
       current_user.subscriptions.where(status: 'done').includes(:book)
   end
+
+  def manage
+    session = Stripe::BillingPortal::Session.create({
+      customer: current_user.stripe_customer_id,
+      return_url: me_url,
+    })
+
+    redirect_to session.url
+  end
 end

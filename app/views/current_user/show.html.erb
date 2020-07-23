@@ -10,6 +10,8 @@
     </div>
     <% if !@user.has_full_access %>
       <button id="stripe-open">Become a Member</button>
+    <% else %>
+      <%= link_to "Manage account", manage_path %>
     <% end %>
   </div>
   <div class="subscription-pane">
