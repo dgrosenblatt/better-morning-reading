@@ -1,6 +1,8 @@
 <header>
   <div class="header-content">
-    <h1>Better Morning Reading</h1>
+    <%= link_to root_path, class: "bmr-icon-link" do %>
+      <%= render 'shared/icon' %>
+    <% end %>
     <nav>
       <% if user_signed_in? && !current_user.has_full_access %>
         <%= link_to 'Upgrade', '#', class: 'header-link upgrade', id: 'stripe-open-header' %>

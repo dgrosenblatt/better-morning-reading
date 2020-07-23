@@ -6,16 +6,18 @@ header {
   h1 {
     color: $dark-gray;
     font-family: var(--font-family--serif);
-    font-size: 30px;
+    font-size: 20px;
     font-weight: normal;
     position: relative;
-    top: 8px;
+    top: 32px;
   }
 }
 
 .header-content {
   display: flex;
-  justify-content: space-around;
+  position: relative;
+  justify-content: space-between;
+  padding: 0 100px;
 
   nav {
     display: flex;
@@ -58,4 +60,15 @@ header {
 
 .header-link.upgrade {
   padding-left: 2.5px;
+}
+
+
+.bmr-icon-link {
+  bottom: 10px;
+  position: relative;
+}
+
+.bmr-icon-link:focus {
+  outline: inherit;
+  outline-offset: inherit;
 }
