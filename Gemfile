@@ -17,7 +17,6 @@ gem "pg"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 6.0.0"
-gem "rails_12factor"
 gem "react-rails"
 gem "recipient_interceptor"
 gem "sassc-rails"
@@ -27,6 +26,10 @@ gem "stripe"
 gem "title"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "webpacker"
+
+group :production do
+  gem "rails_12factor"
+end
 
 group :development do
   gem "listen"
