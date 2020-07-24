@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_211804) do
+ActiveRecord::Schema.define(version: 2020_07_24_022839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,10 +102,11 @@ ActiveRecord::Schema.define(version: 2020_07_14_211804) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "stripe_customer_id"
-    t.boolean "has_full_access", default: false
+    t.jsonb "stripe_subscription_data"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id"
   end
 
   add_foreign_key "chapters", "books"

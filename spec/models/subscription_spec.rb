@@ -27,7 +27,7 @@ RSpec.describe Subscription, type: :model do
 
       describe 'only one for free account user' do
         it 'is valid when user has full access' do
-          user = create(:user, has_full_access: true)
+          user = create(:user, :with_full_access)
           create(:subscription, user: user, status: 'done')
           subscription = build(:subscription, user: user, status: 'active')
 
@@ -35,14 +35,14 @@ RSpec.describe Subscription, type: :model do
         end
 
         it 'is valid when free user has no subscription' do
-          user = create(:user, has_full_access: false)
+          user = create(:user)
           subscription = build(:subscription, user: user, status: 'active')
 
           expect(subscription.valid?).to eq true
         end
 
         it 'is invalid when free user already has a subscription' do
-          user = create(:user, has_full_access: false)
+          user = create(:user)
           create(:subscription, user: user, status: 'done')
           subscription = build(:subscription, user: user, status: 'active')
 

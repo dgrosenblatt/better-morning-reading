@@ -11,11 +11,10 @@ RSpec.describe User, type: :model do
 
   describe 'associations' do
     it { should have_many(:subscriptions) }
-    it { should have_one(:stripe_customer_subscription) }
 
     describe 'active_subscription' do
       it 'returns a users subscription with active status when present' do
-        user = create(:user)
+        user = create(:user, :with_full_access)
         create(:subscription, user: user, status: 'done')
         subscription = create(:subscription, user: user, status: 'active')
 
@@ -23,7 +22,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'returns nil when no subscription with active status' do
-        user = create(:user)
+        user = create(:user, :with_full_access)
         create(:subscription, user: user, status: 'done')
         create(:subscription, user: user, status: 'done')
 
@@ -35,19 +34,19 @@ RSpec.describe User, type: :model do
   describe 'instance methods' do
     describe '#membership_type' do
       it 'returns "Full Access" when has_full_access is true' do
-        user = create(:user, has_full_access: true)
+        user = create(:user, :with_full_access)
         expect(user.membership_type).to eq 'Full Access'
       end
 
       it 'returns "Free Account" when has_full_access is false' do
-        user = create(:user, has_full_access: false)
+        user = create(:user)
         expect(user.membership_type).to eq 'Free Account'
       end
     end
 
     describe '#exhausted_free_account?' do
       it 'returns true when user has free account with one subscription done' do
-        user = create(:user, has_full_access: false)
+        user = create(:user)
         create(:subscription, user: user, status: 'done')
 
         expect(user.exhausted_free_account?).to eq true
@@ -55,28 +54,28 @@ RSpec.describe User, type: :model do
 
       it 'returns true when user has free account with multiple subscriptions done' do
         # i.e. paid account expired
-        user = create(:user, has_full_access: true)
+        user = create(:user, :with_full_access)
         create(:subscription, user: user, status: 'done')
         create(:subscription, user: user, status: 'done')
-        user.update(has_full_access: false)
+        user.update(stripe_subscription_data: nil)
 
         expect(user.exhausted_free_account?).to eq true
       end
 
       it 'returns false when user has free account and no subscriptions' do
-        user = create(:user, has_full_access: false)
+        user = create(:user)
         expect(user.exhausted_free_account?).to eq false
       end
 
       it 'returns false when user has free account and one active subscription' do
-        user = create(:user, has_full_access: false)
+        user = create(:user)
         create(:subscription, user: user, status: 'active')
 
         expect(user.exhausted_free_account?).to eq false
       end
 
       it 'returns false when user has paid account and all subscriptions done' do
-        user = create(:user, has_full_access: true)
+        user = create(:user, :with_full_access)
         create(:subscription, user: user, status: 'done')
         create(:subscription, user: user, status: 'done')
         create(:subscription, user: user, status: 'done')

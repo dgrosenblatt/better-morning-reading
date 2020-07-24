@@ -24,15 +24,7 @@ class StripeCustomerSubscriptionsController < AuthenticatedController
       expand: ['latest_invoice.payment_intent', 'items.data.price']
     )
 
-    StripeCustomerSubscription.create(
-      user: current_user,
-      subscription_id: subscription.id,
-      customer_id: subscription.customer,
-      payment_method_id: stripe_params[:payment_method_id],
-      price_id: subscription.items.data[0].price.id,
-      status: subscription.status,
-      current_period_end: subscription.current_period_end
-    )
+    current_user.update(stripe_subscription_data: subscription)
 
     redirect_to me_path, notice: 'Account successfully upgraded to full membership.'
   end

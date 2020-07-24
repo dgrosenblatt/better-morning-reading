@@ -22,10 +22,6 @@ FactoryBot.define do
     book
   end
 
-  factory :stripe_customer_subscription do
-
-  end
-
   factory :book do
     name { 'Pride and Prejudice' }
     author { 'Jane Austen' }
@@ -39,6 +35,9 @@ FactoryBot.define do
     password { 'password' }
     encrypted_password { '23r9fn3o2rno' }
     stripe_customer_id { 'cus_abc_123'}
-    has_full_access { true }
+
+    trait :with_full_access do
+      stripe_subscription_data { { 'status' => 'active', 'current_period_end' => 2.days.from_now.to_i } }
+    end
   end
 end

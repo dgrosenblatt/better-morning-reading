@@ -23,6 +23,14 @@ class User < ApplicationRecord
     end
   end
 
+  def has_full_access
+    if stripe_subscription_data
+      stripe_subscription_data['status'] == 'active' && stripe_subscription_data['current_period_end'] > Time.now.to_i
+    else
+      false
+    end
+  end
+
   def exhausted_free_account?
     # Free account and all subscriptions are done
     !has_full_access &&
