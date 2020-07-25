@@ -24,4 +24,14 @@ Rails.application.configure do
   }
   config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
   config.action_mailer.asset_host = ENV.fetch("ASSET_HOST", ENV.fetch("APPLICATION_HOST"))
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: ENV.fetch('SMTP_USERNAME'),
+    address: ENV.fetch('SMTP_ADDRESS'),
+    domain: "bettermorningreading.com",
+    port: 587,
+    password: ENV.fetch('SMTP_PASSWORD'),
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
