@@ -148,3 +148,63 @@ end
 if walden.persisted?
   puts 'Seeded Walden'
 end
+
+magnificent_ambersons = Book.find_or_create_by(name: 'The Magnificent Ambersons') do |book|
+  book.author = 'Booth Tarkington'
+  book.cover_image_full_s3_key = 'magnificent-ambersons/magnificent-ambersons-full.jpg'
+  book.cover_image_thumb_s3_key = 'magnificent-ambersons/magnificent-ambersons-thumb.jpg'
+end
+35.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: magnificent_ambersons.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "magnificent-ambersons/chapters/chapter#{n+1}.html"
+  end
+end
+if magnificent_ambersons.persisted?
+  puts 'Seeded The Magnificent Ambersons'
+end
+
+peter_and_wendy = Book.find_or_create_by(name: 'Peter and Wendy') do |book|
+  book.author = 'J. M. Barrie'
+  book.cover_image_full_s3_key = 'peter-and-wendy/peter-and-wendy-full.jpg'
+  book.cover_image_thumb_s3_key = 'peter-and-wendy/peter-and-wendy-thumb.jpg'
+end
+17.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: peter_and_wendy.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "peter-and-wendy/chapters/chapter#{n+1}.html"
+  end
+end
+if peter_and_wendy.persisted?
+  puts 'Seeded Peter and Wendy'
+end
+
+wuthering_heights = Book.find_or_create_by(name: 'Wuthering Heights') do |book|
+  book.author = 'Emily Bronte'
+  book.cover_image_full_s3_key = 'wuthering-heights/wuthering-heights-full.jpg'
+  book.cover_image_thumb_s3_key = 'wuthering-heights/wuthering-heights-thumb.jpg'
+end
+34.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: wuthering_heights.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "wuthering-heights/chapters/chapter#{n+1}.html"
+  end
+end
+if wuthering_heights.persisted?
+  puts 'Seeded Wuthering Heights'
+end
+
+charlotte_temple = Book.find_or_create_by(name: 'Charlotte Temple') do |book|
+  book.author = 'Susanna Rowson'
+  book.cover_image_full_s3_key = 'charlotte-temple/charlotte-temple-full.jpg'
+  book.cover_image_thumb_s3_key = 'charlotte-temple/charlotte-temple-thumb.jpg'
+end
+35.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: charlotte_temple.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "charlotte-temple/chapters/chapter#{n+1}.html"
+  end
+end
+if charlotte_temple.persisted?
+  puts 'Seeded Charlotte Temple'
+end
