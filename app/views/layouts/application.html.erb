@@ -10,15 +10,10 @@
 
   <body>
     <%= render 'shared/header' %>
-    <%
-=begin%>
- <%= render 'shared/footer' %>
-<%
-=end%>
-
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <main><%= yield %></main>
+    <%= render 'shared/footer' %>
 
     <% if user_signed_in? && !current_user.has_full_access %>
       <%= render 'shared/stripe' %>

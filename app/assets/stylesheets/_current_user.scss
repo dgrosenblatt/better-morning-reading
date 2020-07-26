@@ -4,7 +4,7 @@
   margin-top: -12px;
 
   .profile-pane {
-    background-color: $green-25;
+    background-color: $blue-20;
     padding: 12px;
     width: 240px;
     margin: 0 8px 8px 0;
@@ -64,4 +64,20 @@
   .schedule {
     text-align: center;
   }
+}
+
+.notice, .alert {
+  text-align: center;
+
+  &.dismissed {
+    display: none;
+  }
+}
+
+.notice {
+  background-color: $green-80;
+}
+
+.alert {
+  background-color: $red-80;
 }

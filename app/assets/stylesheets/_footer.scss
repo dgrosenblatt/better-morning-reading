@@ -1,17 +1,13 @@
-footer {
+.bmr-footer {
   background-color: $dark-gray;
+  border-top: 1px dashed $yellow;
   color: #fff;
   font-family: system-ui;
-  height: 160px;
-  padding-top: 60px;
+  padding: 60px 0 4px;
   text-align: center;
+
+  .bottom-title {
+    margin-top: 36px;
+  }
 }
 
-.footer {
-  border-top: 1px dashed $yellow;
-}
-
-.bottom-title {
-  top: 84px;
-  position: relative;
-}
