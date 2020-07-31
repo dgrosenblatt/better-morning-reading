@@ -11,6 +11,10 @@
     border-radius: 3px;
   }
 
+  .profile-wrap {
+    overflow-wrap: break-word;
+  }
+
   .subscription-pane {
     background-color: $blue-20;
     padding: 12px;
