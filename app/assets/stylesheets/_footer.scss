@@ -9,5 +9,14 @@
   .bottom-title {
     margin-top: 36px;
   }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+      color: $yellow;
+    }
+  }
 }
 

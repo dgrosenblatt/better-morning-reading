@@ -1,0 +1,50 @@
+<div class="home-about">
+  <section class="content">
+    <h1>About Better Morning Reading</h1>
+
+    <h4>
+      Better Morning Reading came from a simple question: what if people used the time
+      spent scrolling through social feeds to just read a book instead?
+    </h4>
+
+    <p>
+      Here, you can "subscribe" to a book and receive a chapter via email as your
+      daily reading each day. This website will help you track progress and manage
+      your email schedule.
+    </p>
+
+    <h4>
+      The books available here are all free public domain books.
+    </h4>
+
+    <p>
+      We don't have any licensing for copyrighted books. The
+      good news is, anything you find here you could get for free elsewhere.
+      If you would like us to add a public domain book to the service, or if you would
+      like to distribute your book through our service, please contact us.
+    </p>
+
+    <p>
+      We currently have <%= Book.all.count %> books available. Reading a chapter a day (including
+      weekends), you could read them all in about <%= (Chapter.all.count / 365).round %>
+      years.
+    </p>
+
+    <h4>
+      Free Accounts and Memberships
+    </h4>
+
+    <p>
+      We allow all users to read one book through the service for free. Chapter emails
+      for free accounts may occasionally include unobtrusive advertisements. Although
+      the books are free, it does cost money to run and maintain the service, so we
+      ask our users to pay a small annual membership fee to help pay these costs. We also
+      encourage our users to help support the site by following our Amazon links should they
+      choose to purchase physical copies of the books.
+    </p>
+
+    <h4 class="salutation">
+      Happy Reading!
+    </h4>
+  </section>
+</div>

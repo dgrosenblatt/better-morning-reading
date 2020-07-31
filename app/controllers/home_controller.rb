@@ -4,4 +4,7 @@ class HomeController < ApplicationController
       redirect_to me_path
     end
   end
+
+  def about
+  end
 end

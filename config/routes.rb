@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     controllers: { registrations: 'users/registrations', confirmations: 'users/confirmations' }
 
   root to: "home#show"
+  get '/about', to: 'home#about', as: 'about'
 
   get '/me', to: 'current_user#show'
   get '/manage', to: 'current_user#manage', as: 'manage'

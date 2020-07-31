@@ -44,3 +44,26 @@
     color: black;
   }
 }
+
+.home-about {
+  background-color: $yellow-65;
+  padding: 1rem;
+
+  h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  .salutation {
+    text-align: center;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
