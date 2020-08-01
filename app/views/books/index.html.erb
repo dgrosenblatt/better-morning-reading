@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <div class="results-notice">
-    <div>Showing <%= pluralize(@books.length, 'result') %></div>
+    <p>Showing <%= pluralize(@books.length, 'result') %></p>
     <% if !user_signed_in? %>
       <div class="account-notice">
         <%= link_to 'Please sign up for a free account to get started. ➡️', new_user_registration_path %>

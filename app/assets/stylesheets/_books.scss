@@ -111,4 +111,52 @@
       }
     }
   }
+
+  @media (max-device-width: 812px) {
+    h1 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 2rem;
+    }
+
+    .book-query-form {
+      margin: inherit;
+      width: inherit;
+    }
+
+    .book-query-button {
+      height: 73px;
+      font-size: 1.5rem;
+    }
+
+    .book-card {
+      width: 100%;
+
+      img {
+        height: 300px
+      }
+
+      .author, .card-detail, .results-notice, .account-notice {
+        font-size: 2rem;
+      }
+
+      .card-detail {
+        margin-bottom: 2rem;
+      }
+
+      .subscribe-button {
+        height: 200px;
+        margin: 24px auto;
+        padding-top: 57px;
+        position: static;
+        width: 200px;
+      }
+
+      .amazon-link {
+        font-size: 30px;
+      }
+    }
+  }
+
 }

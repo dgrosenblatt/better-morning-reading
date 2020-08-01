@@ -5,3 +5,10 @@
   height: 60px;
   width: 60px;
 }
+
+@media (max-device-width: 812px) {
+  .bmr-icon {
+    height: 120px;
+    width: 120px;
+  }
+}

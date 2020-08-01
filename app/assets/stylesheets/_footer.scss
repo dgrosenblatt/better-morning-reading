@@ -20,3 +20,19 @@
   }
 }
 
+@media (max-device-width: 812px) {
+  .bmr-footer {
+    padding: 160px 0 4px;
+    a, p {
+      font-size: 3rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .bottom-title {
+    font-size: 2rem;
+    padding-top: 120px;
+  }
+
+
+}

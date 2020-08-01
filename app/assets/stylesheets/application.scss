@@ -19,3 +19,15 @@
 @import "passwords";
 @import "confirmations";
 @import "contact_messages";
+
+
+@media (max-device-width: 812px) {
+  h2 {
+    font-size: 4rem;
+    margin-bottom: 4rem;
+  }
+  label, input, a, .alert, .notice {
+    font-size: 3rem;
+  }
+
+}

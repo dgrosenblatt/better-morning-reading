@@ -15,9 +15,10 @@
 
 .home-content {
   background-image: image-url('book-stacks.jpg');
-  height: 640px;
+  background-size: cover;
   margin-top: -12px;
   padding-top: 22px;
+  padding-bottom: 72px;
   width: 100%;
 }
 
@@ -37,12 +38,16 @@
   padding-top: 48px;
   height: 124px;
   width: 124px;
-  margin: 8px auto 0;
+  margin: 0 auto;
 
   &:hover {
     background: linear-gradient(0deg, $red -90%, $yellow 100%);
     color: black;
   }
+}
+
+.sign-up-button-container {
+  margin-top: 8px;
 }
 
 .home-about {
@@ -65,5 +70,36 @@
   .content {
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  @media (max-device-width: 812px) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    p, h4 {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media (max-device-width: 812px) {
+  .home-title {
+    font-weight: 500;
+    font-size: 106px;
+    line-height: 120px;
+    margin-bottom: 48px;
+    margin-top: 48px;
+  }
+
+  .sign-up-button-container {
+    margin-top: 150px;
+  }
+
+  .sign-up-button {
+    font-size: 48px;
+    height: 224px;
+    padding-top: 96px;
+    width: 224px;
   }
 }

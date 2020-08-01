@@ -93,3 +93,12 @@
   margin: 0 auto 8px;
   width: 216px;
 }
+
+@media (max-device-width: 812px) {
+  .email-window {
+    position: relative;
+    top: 42px;
+    transform: scale(1.2);
+    max-width: 100%;
+  }
+}

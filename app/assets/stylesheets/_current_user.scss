@@ -68,6 +68,23 @@
   .schedule {
     text-align: center;
   }
+
+  @media (max-device-width: 812px) {
+    flex-direction: column-reverse;
+    font-size: 2rem;
+    .profile-pane {
+      width: 100%;
+    }
+    a {
+      font-size: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    .chapter-box {
+      width: 30%;
+    }
+  }
 }
 
 .notice, .alert {

@@ -46,5 +46,20 @@
     background-color: $yellow-65;
     padding: 110px 16px 0;
   }
-}
 
+  @media (max-device-width: 812px) {
+    .left-panel {
+      display: none;
+    }
+    .right-panel {
+      width: 100%;
+    }
+    .new-session-submit {
+      border: 5px solid #333745;
+      font-size: 3rem;
+      height: 200px;
+      padding-left: 17px;
+      width: 200px;
+    }
+  }
+}

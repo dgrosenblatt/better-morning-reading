@@ -72,3 +72,36 @@ header {
   outline: inherit;
   outline-offset: inherit;
 }
+
+
+@media (max-device-width: 812px) {
+  header {
+    height: 142px;
+  }
+
+  .header-link {
+    height: 135px;
+    font-size: 32px;
+    padding-top: 38px;
+    width: 135px;
+  }
+
+  .header-link.sign-in {
+    margin-left: 24px;
+    padding-left: 12px;
+  }
+
+  .header-link.books {
+    padding-left: 19px;
+  }
+
+  .header-link.me {
+    padding-left: 42px;
+  }
+
+  .header-link.upgrade {
+    font-size: 29px;
+    padding-left: 4.5px;
+    padding-top: 42px;
+  }
+}
