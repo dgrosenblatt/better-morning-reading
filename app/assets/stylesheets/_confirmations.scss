@@ -24,4 +24,22 @@
     background-color: $yellow-65;
     padding: 110px 16px 0;
   }
+
+  @media (max-device-width: 812px) {
+    .left-panel {
+      display: none;
+    }
+    .right-panel {
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .btn {
+      font-size: 2rem;
+      width: 100%;
+    }
+  }
 }
