@@ -32,13 +32,19 @@ const subscriptionForm =
 const paymentMethodIdInput =
   document.getElementById('stripe_customer_subscription_payment_method_id')
 
+// const fontSize = window.innerWidth > 500 ? "16px" : "16px"
+const os = getOS()
+let fontSize = '16px';
+if (os === 'iOS' || os === 'Android') {
+  fontSize = '36px';
+}
 // Set up Stripe.js and Elements to use in checkout form
 var style = {
   base: {
     color: "#32325d",
     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
     fontSmoothing: "antialiased",
-    fontSize: "16px",
+    fontSize,
     "::placeholder": {
       color: "#aab7c4"
     }
@@ -81,13 +87,33 @@ function createPaymentMethod(cardElement) {
     })
     .then((result) => {
       if (result.error) {
-        // todo: implement
         displayError(error);
       } else {
-        // fill payment method id into form and submit it?
         paymentMethodIdInput.value = result.paymentMethod.id
         subscriptionForm.submit()
-        // https://stripe.com/docs/billing/subscriptions/fixed-price?lang=javascript#create-subscription
       }
     });
+}
+
+function getOS() {
+  var userAgent = window.navigator.userAgent,
+      platform = window.navigator.platform,
+      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+      iosPlatforms = ['iPhone', 'iPod'],
+      os = null;
+
+  if (macosPlatforms.indexOf(platform) !== -1) {
+    os = 'Mac OS';
+  } else if (iosPlatforms.indexOf(platform) !== -1) {
+    os = 'iOS';
+  } else if (windowsPlatforms.indexOf(platform) !== -1) {
+    os = 'Windows';
+  } else if (/Android/.test(userAgent)) {
+    os = 'Android';
+  } else if (!os && /Linux/.test(platform)) {
+    os = 'Linux';
+  }
+
+  return os;
 }

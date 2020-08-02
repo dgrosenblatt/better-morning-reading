@@ -14,15 +14,16 @@
     />
 
     <h1 id="stripe-checkout">Become a Member for Uninterrupted Reading</h1>
-    <p>Continue to receive emails from Better Morning Reading past your first book for $12 per year. Renews yearly.</p>
+    <p>Continue to receive emails from Better Morning Reading past your first book for $12 per year.</p>
     <div class="stripe-radio">
       <%= radio_button_tag 'annual', 'annual', true %>$12.00 | Annual membership
     </div>
     <form id="subscription-form">
+      <input type="text" placeholder="Name on Card" class="stripe-name" required>
       <div id="card-element" class="MyCardElement">
       </div>
       <div id="card-errors" role="alert"></div>
-      <button type="submit" class="stripe-submit-button" id='stripe-form-submit-button'>Pay $12</button>
+      <button type="submit" class="stripe-submit-button" id='stripe-form-submit-button'>Pay $12.00</button>
     </form>
 
     <%= simple_form_for(@stripe_customer_subscription, url: stripe_customer_subscriptions_path) do |f| %>

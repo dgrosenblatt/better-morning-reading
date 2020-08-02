@@ -84,4 +84,47 @@
     text-align: center;
     top: 20px;
   }
+
+  @media (max-device-width: 812px) {
+    padding: 0;
+
+    h1 {
+      font-size: 4rem;
+    }
+
+    .detail, p {
+      font-size: 2rem;
+    }
+
+
+
+    input.boolean, input#now {
+      min-height: 2rem;
+      min-width: 2rem;
+    }
+
+    .new-subscription-inputs-container {
+      flex-direction: column;
+
+      .book-image > img {
+        max-height: 450px;
+      }
+    }
+
+    #new_subscription, .edit_subscription {
+      width: 100%;
+    }
+
+    #new-subscription-submit {
+      border: 5px solid $dark-gray;
+      font-size: 3rem;
+      height: 200px;
+      padding-left: 25px;
+      width: 200px;
+    }
+
+    .full-access-notice {
+      font-size: 2rem;
+    }
+  }
 }

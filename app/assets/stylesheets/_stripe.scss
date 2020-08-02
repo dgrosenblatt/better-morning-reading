@@ -43,7 +43,7 @@
   text-align: center;
 }
 
-.MyCardElement {
+.MyCardElement, .stripe-name {
   height: 40px;
   padding: 10px 12px;
   width: 100%;
@@ -51,10 +51,17 @@
   background-color: white;
   border: 1px solid transparent;
   border-radius: 4px;
-
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
+}
+
+.stripe-name {
+  color: #32325d;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  &::placeholder {
+    color: #32325d;
+  }
 }
 
 .MyCardElement--focus {
@@ -80,4 +87,60 @@
 button.disabled, button.disabled:hover {
   background-color: darkgray;
   cursor: not-allowed;
+}
+
+@media (max-device-width: 812px) {
+  #stripe-open {
+    display: block;
+    font-size: 2rem;
+    margin: 1rem auto 0;
+  }
+
+  .stripe-form-container {
+    max-width: 90%;
+
+    #stripe-checkout {
+      font-size: 4rem;
+    }
+
+    #close-stripe-modal {
+      font-size: 3rem;
+      right: 7px;
+      top: 1px;
+    }
+
+    .stripe-radio {
+      font-size: 2rem;
+      margin-top: 5rem;
+
+      input {
+        min-width: 2rem;
+        min-height: 2rem;
+        position: relative;
+        top: 4px;
+      }
+    }
+
+    #card-element {
+      height: 66px;
+      margin-bottom: 1rem;
+    }
+
+    .stripe-name {
+      font-size: 36px;
+      height: 66px;
+      margin-bottom: 1.5rem;
+      &::placeholder {
+        font-size: 36px;
+      }
+    }
+
+    .stripe-submit-button {
+      font-size: 3rem;
+      border-radius: 3px;
+      padding-bottom: 18px;
+      padding-top: 18px;
+      width: 100%;
+    }
+  }
 }
