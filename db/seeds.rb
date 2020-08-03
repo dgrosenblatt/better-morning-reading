@@ -208,3 +208,64 @@ end
 if charlotte_temple.persisted?
   puts 'Seeded Charlotte Temple'
 end
+
+heart_of_darkness = Book.find_or_create_by(name: 'Heart of Darkness') do |book|
+  book.author = 'Joseph Conrad'
+  book.cover_image_full_s3_key = 'heart-of-darkness/heart-of-darkness-full.jpg'
+  book.cover_image_thumb_s3_key = 'heart-of-darkness/heart-of-darkness-thumb.jpg'
+end
+3.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: heart_of_darkness.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "heart-of-darkness/chapters/chapter#{n+1}.html"
+  end
+end
+if heart_of_darkness.persisted?
+  puts 'Seeded Heart of Darkness'
+end
+
+jane_eyre = Book.find_or_create_by(name: 'Jane Eyre') do |book|
+  book.author = 'Charlotte Bronte'
+  book.cover_image_full_s3_key = 'jane-eyre/jane-eyre-full.jpg'
+  book.cover_image_thumb_s3_key = 'jane-eyre/jane-eyre-thumb.jpg'
+end
+38.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: jane_eyre.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "jane-eyre/chapters/chapter#{n+1}.html"
+  end
+end
+if jane_eyre.persisted?
+  puts 'Seeded Jane Eyre'
+end
+
+lady_roses_daughter = Book.find_or_create_by(name: "Lady Rose's Daughter") do |book|
+  book.author = 'Mrs. Humphry Ward'
+  book.cover_image_full_s3_key = 'lady-roses-daughter/lady-roses-daughter-full.jpg'
+  book.cover_image_thumb_s3_key = 'lady-roses-daughter/lady-roses-daughter-thumb.jpg'
+end
+24.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: lady_roses_daughter.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "lady-roses-daughter/chapters/chapter#{n+1}.html"
+  end
+end
+if lady_roses_daughter.persisted?
+  puts "Seeded Lady Rose's Daughter"
+end
+
+mysterious_affair = Book.find_or_create_by(name: "The Mysterious Affair at Styles") do |book|
+  book.author = 'Agatha Christie'
+  book.cover_image_full_s3_key = 'mysterious-affair-at-styles/mysterious-affair-at-styles-full.jpg'
+  book.cover_image_thumb_s3_key = 'mysterious-affair-at-styles/mysterious-affair-at-styles-thumb.jpg'
+end
+13.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: mysterious_affair.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "mysterious-affair-at-styles/chapters/chapter#{n+1}.html"
+  end
+end
+if mysterious_affair.persisted?
+  puts "Seeded The Mysterious Affair at Styles"
+end
+
