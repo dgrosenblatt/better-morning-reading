@@ -269,3 +269,213 @@ if mysterious_affair.persisted?
   puts "Seeded The Mysterious Affair at Styles"
 end
 
+metamorph = Book.find_or_create_by(name: "Metamorphosis") do |book|
+  book.author = 'Franz Kafka'
+  book.cover_image_full_s3_key = 'metamorphosis/metamorphosis-full.jpg'
+  book.cover_image_thumb_s3_key = 'metamorphosis/metamorphosis-thumb.jpg'
+end
+3.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: metamorph.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "metamorphosis/chapters/chapter#{n+1}.html"
+  end
+end
+if metamorph.persisted?
+  puts "Seeded Metamorphosis"
+end
+
+ulysses = Book.find_or_create_by(name: "Ulysses") do |book|
+  book.author = 'James Joyce'
+  book.cover_image_full_s3_key = 'ulysses/ulysses-full.jpg'
+  book.cover_image_thumb_s3_key = 'ulysses/ulysses-thumb.jpg'
+end
+18.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: ulysses.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "ulysses/chapters/chapter#{n+1}.html"
+  end
+end
+if ulysses.persisted?
+  puts "Seeded Ulysses"
+end
+
+cane = Book.find_or_create_by(name: "Cane") do |book|
+  book.author = 'Jean Toomer'
+  book.cover_image_full_s3_key = 'cane/cane-full.jpg'
+  book.cover_image_thumb_s3_key = 'cane/cane-thumb.jpg'
+end
+11.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: cane.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "cane/chapters/chapter#{n+1}.html"
+  end
+end
+if cane.persisted?
+  puts "Seeded Cane"
+end
+
+riders_of_the_purple_sage = Book.find_or_create_by(name: "Riders of the Purple Sage") do |book|
+  book.author = 'Zane Grey'
+  book.cover_image_full_s3_key = 'riders-of-the-purple-sage/rides-of-the-purple-sage-full.jpg'
+  book.cover_image_thumb_s3_key = 'riders-of-the-purple-sage/rides-of-the-purple-sage-thumb.jpg'
+end
+23.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: riders_of_the_purple_sage.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "riders-of-the-purple-sage/chapters/chapter#{n+1}.html"
+  end
+end
+if riders_of_the_purple_sage.persisted?
+  puts "Seeded Riders of the Purple Sage"
+end
+
+the_jungle = Book.find_or_create_by(name: "The Jungle") do |book|
+  book.author = 'Upton Sinclair'
+  book.cover_image_full_s3_key = 'the-jungle/the-jungle-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-jungle/the-jungle-thumb.jpg'
+end
+31.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_jungle.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-jungle/chapters/chapter#{n+1}.html"
+  end
+end
+if the_jungle.persisted?
+  puts "Seeded The Jungle"
+end
+
+winesburg_ohio = Book.find_or_create_by(name: "Winesburg, Ohio") do |book|
+  book.author = 'Sherwood Anderson'
+  book.cover_image_full_s3_key = 'winesburg-ohio/winesburg-ohio-full.jpg.jpg'
+  book.cover_image_thumb_s3_key = 'winesburg-ohio/winesburg-ohio-thumb.jpg'
+end
+21.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: winesburg_ohio.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "winesburg-ohio/chapters/chapter#{n+1}.html"
+  end
+end
+if winesburg_ohio.persisted?
+  puts "Seeded Winesburg, Ohio"
+end
+
+tom_sawyer = Book.find_or_create_by(name: "The Adventures of Tom Sawyer") do |book|
+  book.author = 'Mark Twain'
+  book.cover_image_full_s3_key = 'tom-sawyer/tom-sawyer-full.jpg'
+  book.cover_image_thumb_s3_key = 'tom-sawyer/tom-sawyer-thumb.jpg'
+end
+35.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: tom_sawyer.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "tom-sawyer/chapters/chapter#{n+1}.html"
+  end
+end
+if tom_sawyer.persisted?
+  puts "Seeded The Adventures of Tom Sawyer"
+end
+
+dracula_bram_stoker = Book.find_or_create_by(name: "Dracula") do |book|
+  book.author = 'Bram Stoker'
+  book.cover_image_full_s3_key = 'dracula/dracula-full.jpg'
+  book.cover_image_thumb_s3_key = 'dracula/dracula-thumb.jpg'
+end
+27.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: dracula_bram_stoker.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "dracula/chapters/chapter#{n+1}.html"
+  end
+end
+if dracula_bram_stoker.persisted?
+  puts "Seeded Dracula"
+end
+
+huck_finn = Book.find_or_create_by(name: "Adventures of Huckleberry Finn") do |book|
+  book.author = 'Mark Twain'
+  book.cover_image_full_s3_key = 'huckleberry-finn/adventures-of-huckleberry-finn-full.jpg'
+  book.cover_image_thumb_s3_key = 'huckleberry-finn/adventures-of-huckleberry-finn-thumb.jpg'
+end
+43.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: huck_finn.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "huckleberry-finn/chapters/chapter#{n+1}.html"
+  end
+end
+if huck_finn.persisted?
+  puts "Seeded Adventures of Huckleberry Finn"
+end
+
+little_women = Book.find_or_create_by(name: "Little Women") do |book|
+  book.author = 'Louisa May Alcott'
+  book.cover_image_full_s3_key = 'little-women/little-women-full.jpg'
+  book.cover_image_thumb_s3_key = 'little-women/little-women-thumb.jpg'
+end
+47.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: little_women.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "little-women/chapters/chapter#{n+1}.html"
+  end
+end
+if little_women.persisted?
+  puts "Seeded Little Women"
+end
+
+emma_jane_austen = Book.find_or_create_by(name: "Emma") do |book|
+  book.author = 'Jane Austen'
+  book.cover_image_full_s3_key = 'emma/emma-full.jpg'
+  book.cover_image_thumb_s3_key = 'emma/emma-thumb.jpg'
+end
+55.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: emma_jane_austen.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "emma/chapters/chapter#{n+1}.html"
+  end
+end
+if emma_jane_austen.persisted?
+  puts "Seeded Emma"
+end
+
+sense_and_sensibility = Book.find_or_create_by(name: "Sense and Sensibility") do |book|
+  book.author = 'Jane Austen'
+  book.cover_image_full_s3_key = 'sense-and-sensibility/sense-and-sensibility-full.jpg'
+  book.cover_image_thumb_s3_key = 'sense-and-sensibility/sense-and-sensibility-thumb.jpg'
+end
+50.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: sense_and_sensibility.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "sense-and-sensibility/chapters/chapter#{n+1}.html"
+  end
+end
+if sense_and_sensibility.persisted?
+  puts "Seeded Sense and Sensibility"
+end
+
+house_of_mirth = Book.find_or_create_by(name: "The House of Mirth") do |book|
+  book.author = 'Edith Wharton'
+  book.cover_image_full_s3_key = 'the-house-of-mirth/house-of-mirth-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-house-of-mirth/house-of-mirth-thumb.jpg'
+end
+29.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: house_of_mirth.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-house-of-mirth/chapters/chapter#{n+1}.html"
+  end
+end
+if house_of_mirth.persisted?
+  puts "Seeded The House of Mirth"
+end
+
+room_with_a_view = Book.find_or_create_by(name: "A Room with a View") do |book|
+  book.author = 'E.M. Forster'
+  book.cover_image_full_s3_key = 'a-room-with-a-view/a-room-with-a-view-full.jpg'
+  book.cover_image_thumb_s3_key = 'a-room-with-a-view/a-room-with-a-view-thumb.jpg'
+end
+20.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: room_with_a_view.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "a-room-with-a-view/chapters/chapter#{n+1}.html"
+  end
+end
+if room_with_a_view.persisted?
+  puts "Seeded A Room with a View"
+end
+

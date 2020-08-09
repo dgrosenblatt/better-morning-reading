@@ -8,9 +8,9 @@ class BooksController < ApplicationController
       @books = Book.where('LOWER(name) ilike ?', "%#{search_term}%")
         .or(Book.where('LOWER(author) ilike ?', "%#{search_term}%"))
         .order(order)
-        .limit(20)
+        .limit(200)
     else
-      @books = Book.all.order(order).limit(20)
+      @books = Book.all.order(order).limit(200)
     end
   end
 
