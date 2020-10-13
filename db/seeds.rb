@@ -479,3 +479,18 @@ if room_with_a_view.persisted?
   puts "Seeded A Room with a View"
 end
 
+passage_to_india = Book.find_or_create_by(name: "A Passage To India") do |book|
+  book.author = 'E.M. Forster'
+  book.cover_image_full_s3_key = 'a-passage-to-india/a-passage-to-india-full.jpg'
+  book.cover_image_thumb_s3_key = 'a-passage-to-india/a-passage-to-india-thumb.jpg'
+end
+37.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: passage_to_india.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "a-passage-to-india/chapters/chapter#{n+1}.html"
+  end
+end
+if passage_to_india.persisted?
+  puts "Seeded A Passage To India"
+end
+
