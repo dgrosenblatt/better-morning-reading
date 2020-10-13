@@ -494,3 +494,64 @@ if passage_to_india.persisted?
   puts "Seeded A Passage To India"
 end
 
+garden_party = Book.find_or_create_by(name: "The Garden Party and Other Stories") do |book|
+  book.author = 'Katherine Mansfield'
+  book.cover_image_full_s3_key = 'the-garden-party/garden-party-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-garden-party/garden-party-thumb.jpg'
+end
+15.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: garden_party.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-garden-party/chapters/chapter#{n+1}.html"
+  end
+end
+if garden_party.persisted?
+  puts "Seeded The Garden Party and Other Stories"
+end
+
+main_street = Book.find_or_create_by(name: "Main Street") do |book|
+  book.author = 'Sinclair Lewis'
+  book.cover_image_full_s3_key = 'main-street/main-street-full.jpg'
+  book.cover_image_thumb_s3_key = 'main-street/main-street-thumb.jpg'
+end
+39.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: main_street.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "main-street/chapters/chapter#{n+1}.html"
+  end
+end
+if main_street.persisted?
+  puts "Seeded Main Street"
+end
+
+this_side_of_paradise = Book.find_or_create_by(name: "This Side of Paradise") do |book|
+  book.author = 'F. Scott Fitzgerald'
+  book.cover_image_full_s3_key = 'this-side-of-paradise/this-side-of-paradise-full.jpg'
+  book.cover_image_thumb_s3_key = 'this-side-of-paradise/this-side-of-paradise-thumb.jpg'
+  # book.amazon_link = 'https://www.amazon.com/gp/product/1500982318/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1500982318&linkCode=as2&tag=bettermorning-20&linkId=8175e513367eb292263e1ed46203e373'
+end
+10.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: this_side_of_paradise.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "this-side-of-paradise/chapters/chapter#{n+1}.html"
+  end
+end
+if this_side_of_paradise.persisted?
+  puts "Seeded This Side of Paradise"
+end
+
+the_age_of_innocence = Book.find_or_create_by(name: "The Age of Innocence") do |book|
+  book.author = 'Edith Wharton'
+  book.cover_image_full_s3_key = 'the-age-of-innocence/the-age-of-innocence-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-age-of-innocence/the-age-of-innocence-thumb.jpg'
+  # book.amazon_link = 'https://www.amazon.com/gp/product/1514639211/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1514639211&linkCode=as2&tag=bettermorning-20&linkId=353a680c983a26cb147ff0587f84def9'
+end
+34.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_age_of_innocence.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-age-of-innocence/chapters/chapter#{n+1}.html"
+  end
+end
+if the_age_of_innocence.persisted?
+  puts "Seeded The Age of Innocence"
+end
