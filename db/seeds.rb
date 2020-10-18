@@ -528,7 +528,7 @@ this_side_of_paradise = Book.find_or_create_by(name: "This Side of Paradise") do
   book.author = 'F. Scott Fitzgerald'
   book.cover_image_full_s3_key = 'this-side-of-paradise/this-side-of-paradise-full.jpg'
   book.cover_image_thumb_s3_key = 'this-side-of-paradise/this-side-of-paradise-thumb.jpg'
-  # book.amazon_link = 'https://www.amazon.com/gp/product/1500982318/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1500982318&linkCode=as2&tag=bettermorning-20&linkId=8175e513367eb292263e1ed46203e373'
+  book.amazon_link = 'https://www.amazon.com/gp/product/1500982318/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1500982318&linkCode=as2&tag=bettermorning-20&linkId=8175e513367eb292263e1ed46203e373'
 end
 10.times do |n|
   Chapter.find_or_create_by(position: n+1, book_id: this_side_of_paradise.id) do |chapter|
@@ -544,7 +544,7 @@ the_age_of_innocence = Book.find_or_create_by(name: "The Age of Innocence") do |
   book.author = 'Edith Wharton'
   book.cover_image_full_s3_key = 'the-age-of-innocence/the-age-of-innocence-full.jpg'
   book.cover_image_thumb_s3_key = 'the-age-of-innocence/the-age-of-innocence-thumb.jpg'
-  # book.amazon_link = 'https://www.amazon.com/gp/product/1514639211/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1514639211&linkCode=as2&tag=bettermorning-20&linkId=353a680c983a26cb147ff0587f84def9'
+  book.amazon_link = 'https://www.amazon.com/gp/product/1514639211/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1514639211&linkCode=as2&tag=bettermorning-20&linkId=353a680c983a26cb147ff0587f84def9'
 end
 34.times do |n|
   Chapter.find_or_create_by(position: n+1, book_id: the_age_of_innocence.id) do |chapter|
@@ -560,7 +560,7 @@ twelve_years_a_slave = Book.find_or_create_by(name: "12 Years a Slave") do |book
   book.author = 'Solomon Northup'
   book.cover_image_full_s3_key = '12-years-a-slave/12-years-a-slave-full.jpg'
   book.cover_image_thumb_s3_key = '12-years-a-slave/12-years-a-slave-thumb.jpg'
-  # book.amazon_link = 'https://www.amazon.com/gp/product/1631680021/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1631680021&linkCode=as2&tag=bettermorning-20&linkId=741e570b7a90cc6953ee940b80c6c1cb'
+  book.amazon_link = 'https://www.amazon.com/gp/product/1631680021/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1631680021&linkCode=as2&tag=bettermorning-20&linkId=741e570b7a90cc6953ee940b80c6c1cb'
 end
 22.times do |n|
   Chapter.find_or_create_by(position: n+1, book_id: twelve_years_a_slave.id) do |chapter|
@@ -576,7 +576,7 @@ war_of_the_worlds = Book.find_or_create_by(name: "The War of the Worlds") do |bo
   book.author = 'H. G. Wells'
   book.cover_image_full_s3_key = 'the-war-of-the-worlds/the-war-of-the-worlds-full.jpg'
   book.cover_image_thumb_s3_key = 'the-war-of-the-worlds/the-war-of-the-worlds-thumb.jpg'
-  # book.amazon_link = 'https://www.amazon.com/gp/product/B085RSFL4C/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B085RSFL4C&linkCode=as2&tag=bettermorning-20&linkId=fd3530a7ef9fa6f08533bc97af081e69'
+  book.amazon_link = 'https://www.amazon.com/gp/product/B085RSFL4C/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B085RSFL4C&linkCode=as2&tag=bettermorning-20&linkId=fd3530a7ef9fa6f08533bc97af081e69'
 end
 27.times do |n|
   Chapter.find_or_create_by(position: n+1, book_id: war_of_the_worlds.id) do |chapter|
@@ -592,7 +592,7 @@ anne_of_green_gables = Book.find_or_create_by(name: "Anne of Green Gables") do |
   book.author = 'Lucy Maud Montgomery'
   book.cover_image_full_s3_key = 'anne-of-green-gables/anne-of-green-gables-full.jpg'
   book.cover_image_thumb_s3_key = 'anne-of-green-gables/anne-of-green-gables-thumb.jpg'
-  # book.amazon_link = 'https://www.amazon.com/gp/product/055321313X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=055321313X&linkCode=as2&tag=bettermorning-20&linkId=83fb0d3dc533a3bcaf2aba9d007d5e83'
+  book.amazon_link = 'https://www.amazon.com/gp/product/055321313X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=055321313X&linkCode=as2&tag=bettermorning-20&linkId=83fb0d3dc533a3bcaf2aba9d007d5e83'
 end
 38.times do |n|
   Chapter.find_or_create_by(position: n+1, book_id: anne_of_green_gables.id) do |chapter|

@@ -20,6 +20,6 @@ class Book < ApplicationRecord
   end
 
   def amazon_url
-    URI.encode("https://www.amazon.com/s?k=#{name}")
+    amazon_link || URI.encode("https://www.amazon.com/s?k=#{name}")
   end
 end

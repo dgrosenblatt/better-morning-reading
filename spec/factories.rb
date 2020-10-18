@@ -27,6 +27,7 @@ FactoryBot.define do
     author { 'Jane Austen' }
     cover_image_thumb_s3_key { 'images/pandpsmall.jpeg' }
     cover_image_full_s3_key { 'images/pandpfull.jpeg' }
+    amazon_link { 'http://example.com/pride-and-prejudice' }
   end
 
   factory :user do
