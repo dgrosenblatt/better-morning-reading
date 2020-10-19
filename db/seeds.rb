@@ -603,3 +603,19 @@ end
 if anne_of_green_gables.persisted?
   puts "Seeded Anne of Green Gables"
 end
+
+flat_land = Book.find_or_create_by(name: "Flatland: A Romance of Many Dimensions") do |book|
+  book.author = 'Edwin A. Abbott'
+  book.cover_image_full_s3_key = 'flatland/flatland-full.jpg'
+  book.cover_image_thumb_s3_key = 'flatland/flatland-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/gp/product/1733561625/ref=as_li_tl?ie=UTF8&tag=bettermorning-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=1733561625&linkId=507d6798bfd578126446fe5dbfe140ed'
+end
+22.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: flat_land.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "flatland/chapters/chapter#{n+1}.html"
+  end
+end
+if flat_land.persisted?
+  puts "Seeded Flatland"
+end
