@@ -619,3 +619,19 @@ end
 if flat_land.persisted?
   puts "Seeded Flatland"
 end
+
+the_invisible_man = Book.find_or_create_by(name: "The Invisible Man") do |book|
+  book.author = 'H.G. Wells'
+  book.cover_image_full_s3_key = 'the-invisible-man/the-invisible-man-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-invisible-man/the-invisible-man-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/gp/product/0451531671/ref=as_li_tl?ie=UTF8&tag=bettermorning-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0451531671&linkId=b42411a48a9db22cb52468b2d67d6a38'
+end
+29.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_invisible_man.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-invisible-man/chapters/chapter#{n+1}.html"
+  end
+end
+if the_invisible_man.persisted?
+  puts "Seeded The Invisible Man"
+end
