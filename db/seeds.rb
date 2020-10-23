@@ -635,3 +635,52 @@ end
 if the_invisible_man.persisted?
   puts "Seeded The Invisible Man"
 end
+
+the_souls_of_black_folk = Book.find_or_create_by(name: "The Souls of Black Folk") do |book|
+  book.author = 'W.E.B. Du Bois'
+  book.cover_image_full_s3_key = 'the-souls-of-black-folk/the-souls-of-black-folk-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-souls-of-black-folk/the-souls-of-black-folk-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/gp/product/1505223377/ref=as_li_tl?ie=UTF8&tag=bettermorning-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=1505223377&linkId=1231f56636cb67c96b4347b07b041897'
+end
+15.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_souls_of_black_folk.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-souls-of-black-folk/chapters/chapter#{n+1}.html"
+  end
+end
+if the_souls_of_black_folk.persisted?
+  puts "Seeded The Souls of Black Folk"
+end
+
+up_from_slavery = Book.find_or_create_by(name: "Up From Slavery") do |book|
+  book.author = 'Booker T. Washington'
+  book.cover_image_full_s3_key = 'up-from-slavery/up-from-slavery-full.jpg'
+  book.cover_image_thumb_s3_key = 'up-from-slavery/up-from-slavery-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/gp/product/B08J21KPHC/ref=as_li_tl?ie=UTF8&tag=bettermorning-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B08J21KPHC&linkId=f85581b15bbce007ec79568d80093486'
+end
+17.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: up_from_slavery.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "up-from-slavery/chapters/chapter#{n+1}.html"
+  end
+end
+if up_from_slavery.persisted?
+  puts "Seeded Up From Slavery"
+end
+
+last_of_the_mohicans = Book.find_or_create_by(name: "The Last of the Mohicans") do |book|
+  book.author = 'James Fenimore Cooper'
+  book.cover_image_full_s3_key = 'the-last-of-the-mohicans/the-last-of-the-mohicans-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-last-of-the-mohicans/the-last-of-the-mohicans-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/gp/product/0553213296/ref=as_li_tl?ie=UTF8&tag=bettermorning-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0553213296&linkId=7447c6c2dad5efb53dcdc55c7c2890e1'
+end
+33.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: last_of_the_mohicans.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-last-of-the-mohicans/chapters/chapter#{n+1}.html"
+  end
+end
+if last_of_the_mohicans.persisted?
+  puts "Seeded The Last of the Mohicans"
+end
+
