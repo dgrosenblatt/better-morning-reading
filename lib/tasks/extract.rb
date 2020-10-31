@@ -1,9 +1,8 @@
 puts "Starting process"
 
-
 book = File.new("book.html")
 separator = '<h2>'
-ch_number = 0
+ch_number = 1
 chapter_file = File.new("chapter#{ch_number}.html", "w+")
 
 loop do
@@ -20,6 +19,4 @@ loop do
   else
     chapter_file.write line
   end
-
 end
-

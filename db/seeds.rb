@@ -683,4 +683,3 @@ end
 if last_of_the_mohicans.persisted?
   puts "Seeded The Last of the Mohicans"
 end
-
