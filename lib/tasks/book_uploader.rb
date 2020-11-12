@@ -32,6 +32,7 @@ class BookUploader
         line = book.readline
       rescue EOFError
         puts "Extracted #{ch_number} chapters. Proceed? (y/n)"
+        # and open tmp/upload/chapters dir
         response = STDIN.gets.chomp
         if response.downcase == 'y'
           @total_chapter_count = ch_number
@@ -89,14 +90,19 @@ class BookUploader
   def process_cover_images
     puts 'Processing cover images'
 
-    product = Rainforest.product(@selected_book['asin'])
-    image_full_url = product['main_image']['link']
+    begin
+      product = Rainforest.product(@selected_book['asin'])
+      @image_full_url = product['main_image']['link']
+    rescue
+      puts 'Rainforest api call failed, please enter cover image url: '
+      @image_full_url = STDIN.gets.chomp
+    end
 
     image_path = "#{@base_path}/#{title.parameterize}"
 
     puts 'Saving full size image'
     @full_image_path = "#{image_path}-full.jpg"
-    IO.copy_stream(open(image_full_url), @full_image_path)
+    IO.copy_stream(open(@image_full_url), @full_image_path)
 
     puts 'Saving thumbnail'
     @thumb_image_path = "#{image_path}-thumb.jpg"
@@ -136,6 +142,7 @@ class BookUploader
   end
 
   def append_seed_code
+    puts 'Adding to seeds.rb'
     book_var = "#{title} book".parameterize(separator: '_')
     seed_ruby = <<~HEREDOC
 
@@ -147,8 +154,8 @@ class BookUploader
       end
       #{@total_chapter_count}.times do |n|
         Chapter.find_or_create_by(position: n+1, book_id: #{book_var}.id) do |chapter|
-          chapter.name = 'Chapter \#{n+1}'
-          chapter.text_s3_key = '#{@chapter_s3_base_key}\#{n+1}.html'
+          chapter.name = "Chapter \#{n+1}"
+          chapter.text_s3_key = "#{@chapter_s3_base_key}\#{n+1}.html"
         end
       end
       if #{book_var}.persisted?

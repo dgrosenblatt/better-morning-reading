@@ -683,3 +683,163 @@ end
 if last_of_the_mohicans.persisted?
   puts "Seeded The Last of the Mohicans"
 end
+
+lord_jim_book = Book.find_or_create_by(name: 'Lord Jim') do |book|
+  book.author = 'Joseph Conrad'
+  book.cover_image_full_s3_key = 'lord-jim/lord-jim-full.jpg'
+  book.cover_image_thumb_s3_key = 'lord-jim/lord-jim-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B00JVWSATQ?tag=bettermorning-20'
+end
+45.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: lord_jim_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "lord-jim/chapters/chapter#{n+1}.html"
+  end
+end
+if lord_jim_book.persisted?
+  puts 'Seeded Lord Jim'
+end
+
+sister_carrie_book = Book.find_or_create_by(name: 'Sister Carrie') do |book|
+  book.author = 'Theodore Dreiser'
+  book.cover_image_full_s3_key = 'sister-carrie/sister-carrie-full.jpg'
+  book.cover_image_thumb_s3_key = 'sister-carrie/sister-carrie-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1798514818?tag=bettermorning-20'
+end
+47.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: sister_carrie_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "sister-carrie/chapters/chapter#{n+1}.html"
+  end
+end
+if sister_carrie_book.persisted?
+  puts 'Seeded Sister Carrie'
+end
+
+kim_book = Book.find_or_create_by(name: 'Kim') do |book|
+  book.author = 'Rudyard Kipling'
+  book.cover_image_full_s3_key = 'kim/kim-full.jpg'
+  book.cover_image_thumb_s3_key = 'kim/kim-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0141332506?tag=bettermorning-20'
+end
+15.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: kim_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "kim/chapters/chapter#{n+1}.html"
+  end
+end
+if kim_book.persisted?
+  puts 'Seeded Kim'
+end
+
+the_scarlet_pimpernel_book = Book.find_or_create_by(name: 'The Scarlet Pimpernel') do |book|
+  book.author = 'Baroness Orczy'
+  book.cover_image_full_s3_key = 'the-scarlet-pimpernel/the-scarlet-pimpernel-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-scarlet-pimpernel/the-scarlet-pimpernel-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0451527623?tag=bettermorning-20'
+end
+31.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_scarlet_pimpernel_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-scarlet-pimpernel/chapters/chapter#{n+1}.html"
+  end
+end
+if the_scarlet_pimpernel_book.persisted?
+  puts 'Seeded The Scarlet Pimpernel'
+end
+
+the_secret_garden_book = Book.find_or_create_by(name: 'The Secret Garden') do |book|
+  book.author = 'Frances Hodgson Burnett'
+  book.cover_image_full_s3_key = 'the-secret-garden/the-secret-garden-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-secret-garden/the-secret-garden-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1691514063?tag=bettermorning-20'
+end
+27.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_secret_garden_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-secret-garden/chapters/chapter#{n+1}.html"
+  end
+end
+if the_secret_garden_book.persisted?
+  puts 'Seeded The Secret Garden'
+end
+
+howards_end_book = Book.find_or_create_by(name: 'Howards End') do |book|
+  book.author = 'E. M. Forster'
+  book.cover_image_full_s3_key = 'howards-end/howards-end-full.jpg'
+  book.cover_image_thumb_s3_key = 'howards-end/howards-end-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B00I6LM1E8?tag=bettermorning-20'
+end
+44.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: howards_end_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "howards-end/chapters/chapter#{n+1}.html"
+  end
+end
+if howards_end_book.persisted?
+  puts 'Seeded Howards End'
+end
+
+the_time_machine_book = Book.find_or_create_by(name: 'The Time Machine') do |book|
+  book.author = 'H. G. Wells'
+  book.cover_image_full_s3_key = 'the-time-machine/the-time-machine-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-time-machine/the-time-machine-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0553213512?tag=bettermorning-20'
+end
+17.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_time_machine_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-time-machine/chapters/chapter#{n+1}.html"
+  end
+end
+if the_time_machine_book.persisted?
+  puts 'Seeded The Time Machine'
+end
+
+northanger_abbey_book = Book.find_or_create_by(name: 'Northanger Abbey') do |book|
+  book.author = 'Jane Austen'
+  book.cover_image_full_s3_key = 'northanger-abbey/northanger-abbey-full.jpg'
+  book.cover_image_thumb_s3_key = 'northanger-abbey/northanger-abbey-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1853260436?tag=bettermorning-20'
+end
+31.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: northanger_abbey_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "northanger-abbey/chapters/chapter#{n+1}.html"
+  end
+end
+if northanger_abbey_book.persisted?
+  puts 'Seeded Northanger Abbey'
+end
+
+persuasion_book = Book.find_or_create_by(name: 'Persuasion') do |book|
+  book.author = 'Jane Austen'
+  book.cover_image_full_s3_key = 'persuasion/persuasion-full.jpg'
+  book.cover_image_thumb_s3_key = 'persuasion/persuasion-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/150329031X?tag=bettermorning-20'
+end
+24.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: persuasion_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "persuasion/chapters/chapter#{n+1}.html"
+  end
+end
+if persuasion_book.persisted?
+  puts 'Seeded Persuasion'
+end
+
+the_life_and_adventures_of_robinson_crusoe_book = Book.find_or_create_by(name: 'The Life and Adventures of Robinson Crusoe') do |book|
+  book.author = 'Daniel Defoe'
+  book.cover_image_full_s3_key = 'the-life-and-adventures-of-robinson-crusoe/the-life-and-adventures-of-robinson-crusoe-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-life-and-adventures-of-robinson-crusoe/the-life-and-adventures-of-robinson-crusoe-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08CG15X4P?tag=bettermorning-20'
+end
+20.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_life_and_adventures_of_robinson_crusoe_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-life-and-adventures-of-robinson-crusoe/chapters/chapter#{n+1}.html"
+  end
+end
+if the_life_and_adventures_of_robinson_crusoe_book.persisted?
+  puts 'Seeded The Life and Adventures of Robinson Crusoe'
+end
