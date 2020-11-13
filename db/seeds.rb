@@ -843,3 +843,67 @@ end
 if the_life_and_adventures_of_robinson_crusoe_book.persisted?
   puts 'Seeded The Life and Adventures of Robinson Crusoe'
 end
+
+madame_bovary_book = Book.find_or_create_by(name: 'Madame Bovary') do |book|
+  book.author = 'Gustave Flaubert'
+  book.cover_image_full_s3_key = 'madame-bovary/madame-bovary-full.jpg'
+  book.cover_image_thumb_s3_key = 'madame-bovary/madame-bovary-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1853260789?tag=bettermorning-20'
+end
+35.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: madame_bovary_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "madame-bovary/chapters/chapter#{n+1}.html"
+  end
+end
+if madame_bovary_book.persisted?
+  puts 'Seeded Madame Bovary'
+end
+
+the_wonderful_wizard_of_oz_book = Book.find_or_create_by(name: 'The Wonderful Wizard of Oz') do |book|
+  book.author = 'L. Frank Baum'
+  book.cover_image_full_s3_key = 'the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1604335424?tag=bettermorning-20'
+end
+24.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_wonderful_wizard_of_oz_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-wonderful-wizard-of-oz/chapters/chapter#{n+1}.html"
+  end
+end
+if the_wonderful_wizard_of_oz_book.persisted?
+  puts 'Seeded The Wonderful Wizard of Oz'
+end
+
+vanity_fair_book = Book.find_or_create_by(name: 'Vanity Fair') do |book|
+  book.author = 'William Makepeace Thackeray'
+  book.cover_image_full_s3_key = 'vanity-fair/vanity-fair-full.jpg'
+  book.cover_image_thumb_s3_key = 'vanity-fair/vanity-fair-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1853260193?tag=bettermorning-20'
+end
+67.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: vanity_fair_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "vanity-fair/chapters/chapter#{n+1}.html"
+  end
+end
+if vanity_fair_book.persisted?
+  puts 'Seeded Vanity Fair'
+end
+
+black_beauty_book = Book.find_or_create_by(name: 'Black Beauty') do |book|
+  book.author = 'Anna Sewell'
+  book.cover_image_full_s3_key = 'black-beauty/black-beauty-full.jpg'
+  book.cover_image_thumb_s3_key = 'black-beauty/black-beauty-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1503251284?tag=bettermorning-20'
+end
+49.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: black_beauty_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "black-beauty/chapters/chapter#{n+1}.html"
+  end
+end
+if black_beauty_book.persisted?
+  puts 'Seeded Black Beauty'
+end
