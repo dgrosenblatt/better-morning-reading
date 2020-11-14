@@ -907,3 +907,227 @@ end
 if black_beauty_book.persisted?
   puts 'Seeded Black Beauty'
 end
+
+romeo_and_juliet_book = Book.find_or_create_by(name: 'Romeo and Juliet') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'romeo-and-juliet/romeo-and-juliet-full.jpg'
+  book.cover_image_thumb_s3_key = 'romeo-and-juliet/romeo-and-juliet-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1505259568?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: romeo_and_juliet_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "romeo-and-juliet/chapters/chapter#{n+1}.html"
+  end
+end
+if romeo_and_juliet_book.persisted?
+  puts 'Seeded Romeo and Juliet'
+end
+
+macbeth_book = Book.find_or_create_by(name: 'Macbeth') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'macbeth/macbeth-full.jpg'
+  book.cover_image_thumb_s3_key = 'macbeth/macbeth-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1514630583?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: macbeth_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "macbeth/chapters/chapter#{n+1}.html"
+  end
+end
+if macbeth_book.persisted?
+  puts 'Seeded Macbeth'
+end
+
+hamlet_book = Book.find_or_create_by(name: 'Hamlet') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'hamlet/hamlet-full.jpg'
+  book.cover_image_thumb_s3_key = 'hamlet/hamlet-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B008TVM1JU?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: hamlet_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "hamlet/chapters/chapter#{n+1}.html"
+  end
+end
+if hamlet_book.persisted?
+  puts 'Seeded Hamlet'
+end
+
+othello_book = Book.find_or_create_by(name: 'Othello') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'othello/othello-full.jpg'
+  book.cover_image_thumb_s3_key = 'othello/othello-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1512317764?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: othello_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "othello/chapters/chapter#{n+1}.html"
+  end
+end
+if othello_book.persisted?
+  puts 'Seeded Othello'
+end
+
+a_midsummer_night_s_dream_book = Book.find_or_create_by(name: 'A Midsummer Night’s Dream') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'a-midsummer-night-s-dream/a-midsummer-night-s-dream-full.jpg'
+  book.cover_image_thumb_s3_key = 'a-midsummer-night-s-dream/a-midsummer-night-s-dream-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1503250784?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: a_midsummer_night_s_dream_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "a-midsummer-night-s-dream/chapters/chapter#{n+1}.html"
+  end
+end
+if a_midsummer_night_s_dream_book.persisted?
+  puts 'Seeded A Midsummer Night’s Dream'
+end
+
+the_merchant_of_venice_book = Book.find_or_create_by(name: 'The Merchant of Venice') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'the-merchant-of-venice/the-merchant-of-venice-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-merchant-of-venice/the-merchant-of-venice-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B01GBWSZES?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_merchant_of_venice_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-merchant-of-venice/chapters/chapter#{n+1}.html"
+  end
+end
+if the_merchant_of_venice_book.persisted?
+  puts 'Seeded The Merchant of Venice'
+end
+
+much_ado_about_nothing_book = Book.find_or_create_by(name: 'Much Ado about Nothing') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'much-ado-about-nothing/much-ado-about-nothing-full.jpg'
+  book.cover_image_thumb_s3_key = 'much-ado-about-nothing/much-ado-about-nothing-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B01C4MLTF6?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: much_ado_about_nothing_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "much-ado-about-nothing/chapters/chapter#{n+1}.html"
+  end
+end
+if much_ado_about_nothing_book.persisted?
+  puts 'Seeded Much Ado about Nothing'
+end
+
+twelfth_night_book = Book.find_or_create_by(name: 'Twelfth Night') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'twelfth-night/twelfth-night-full.jpg'
+  book.cover_image_thumb_s3_key = 'twelfth-night/twelfth-night-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B01GBWSZHK?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: twelfth_night_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "twelfth-night/chapters/chapter#{n+1}.html"
+  end
+end
+if twelfth_night_book.persisted?
+  puts 'Seeded Twelfth Night'
+end
+
+king_lear_book = Book.find_or_create_by(name: 'King Lear') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'king-lear/king-lear-full.jpg'
+  book.cover_image_thumb_s3_key = 'king-lear/king-lear-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1952433819?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: king_lear_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "king-lear/chapters/chapter#{n+1}.html"
+  end
+end
+if king_lear_book.persisted?
+  puts 'Seeded King Lear'
+end
+
+the_taming_of_the_shrew_book = Book.find_or_create_by(name: 'The Taming of the Shrew') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'the-taming-of-the-shrew/the-taming-of-the-shrew-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-taming-of-the-shrew/the-taming-of-the-shrew-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08L66TBQ6?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_taming_of_the_shrew_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-taming-of-the-shrew/chapters/chapter#{n+1}.html"
+  end
+end
+if the_taming_of_the_shrew_book.persisted?
+  puts 'Seeded The Taming of the Shrew'
+end
+
+julius_caesar_book = Book.find_or_create_by(name: 'Julius Caesar') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'julius-caesar/julius-caesar-full.jpg'
+  book.cover_image_thumb_s3_key = 'julius-caesar/julius-caesar-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1420952749?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: julius_caesar_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "julius-caesar/chapters/chapter#{n+1}.html"
+  end
+end
+if julius_caesar_book.persisted?
+  puts 'Seeded Julius Caesar'
+end
+
+the_winter_s_tale_book = Book.find_or_create_by(name: "The Winter's Tale") do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'the-winter-s-tale/the-winter-s-tale-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-winter-s-tale/the-winter-s-tale-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B00HTJVQGM?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_winter_s_tale_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-winter-s-tale/chapters/chapter#{n+1}.html"
+  end
+end
+if the_winter_s_tale_book.persisted?
+  puts "Seeded The Winter's Tale"
+end
+
+the_tempest_book = Book.find_or_create_by(name: 'The Tempest') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'the-tempest/the-tempest-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-tempest/the-tempest-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0198325002?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_tempest_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-tempest/chapters/chapter#{n+1}.html"
+  end
+end
+if the_tempest_book.persisted?
+  puts 'Seeded The Tempest'
+end
+
+antony_and_cleopatra_book = Book.find_or_create_by(name: 'Antony and Cleopatra') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'antony-and-cleopatra/antony-and-cleopatra-full.jpg'
+  book.cover_image_thumb_s3_key = 'antony-and-cleopatra/antony-and-cleopatra-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B075Y18898?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: antony_and_cleopatra_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "antony-and-cleopatra/chapters/chapter#{n+1}.html"
+  end
+end
+if antony_and_cleopatra_book.persisted?
+  puts 'Seeded Antony and Cleopatra'
+end
