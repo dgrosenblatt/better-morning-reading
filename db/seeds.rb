@@ -1131,3 +1131,51 @@ end
 if antony_and_cleopatra_book.persisted?
   puts 'Seeded Antony and Cleopatra'
 end
+
+as_you_like_it_book = Book.find_or_create_by(name: 'As You Like It') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'as-you-like-it/as-you-like-it-full.jpg'
+  book.cover_image_thumb_s3_key = 'as-you-like-it/as-you-like-it-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08NG7WYT2?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: as_you_like_it_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "as-you-like-it/chapters/chapter#{n+1}.html"
+  end
+end
+if as_you_like_it_book.persisted?
+  puts 'Seeded As You Like It'
+end
+
+richard_iii_book = Book.find_or_create_by(name: 'Richard III') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'richard-iii/richard-iii-full.jpg'
+  book.cover_image_thumb_s3_key = 'richard-iii/richard-iii-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1420954628?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: richard_iii_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "richard-iii/chapters/chapter#{n+1}.html"
+  end
+end
+if richard_iii_book.persisted?
+  puts 'Seeded Richard III'
+end
+
+the_merry_wives_of_windsor_book = Book.find_or_create_by(name: 'The Merry Wives of Windsor') do |book|
+  book.author = 'William Shakespeare'
+  book.cover_image_full_s3_key = 'the-merry-wives-of-windsor/the-merry-wives-of-windsor-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-merry-wives-of-windsor/the-merry-wives-of-windsor-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1699666709?tag=bettermorning-20'
+end
+5.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_merry_wives_of_windsor_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-merry-wives-of-windsor/chapters/chapter#{n+1}.html"
+  end
+end
+if the_merry_wives_of_windsor_book.persisted?
+  puts 'Seeded The Merry Wives of Windsor'
+end
