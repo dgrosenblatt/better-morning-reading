@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root to: "home#show"
   get '/about', to: 'home#about', as: 'about'
+  get '/terms', to: 'home#terms', as: 'terms'
+  get '/privacy', to: 'home#privacy', as: 'privacy'
   get '/contact', to: 'contact_messages#new', as: 'contact'
 
   get '/me', to: 'current_user#show'
