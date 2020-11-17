@@ -31,6 +31,7 @@ class Subscription < ApplicationRecord
     message = {
       recipient: user.email,
       book_name: book.name,
+      is_free_account: !user.has_full_access,
       chapter_name: chapter.name,
       chapter_s3_key: chapter.text_s3_key
     }

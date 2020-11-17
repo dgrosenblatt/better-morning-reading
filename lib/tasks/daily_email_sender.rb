@@ -18,9 +18,10 @@ class DailyEmailSender
 
       message = {
         recipient: subscription.user.email,
+        is_free_account: !subscription.user.has_full_access,
         book_name: subscription.book.name,
         chapter_name: chapter.name,
-        chapter_s3_key: chapter.text_s3_key
+        chapter_s3_key: chapter.text_s3_key,
       }
       puts message
       sqs = Aws::SQS::Queue.new(url: AWS_SQS_QUEUE_URL)
