@@ -1179,3 +1179,131 @@ end
 if the_merry_wives_of_windsor_book.persisted?
   puts 'Seeded The Merry Wives of Windsor'
 end
+
+the_red_badge_of_courage_book = Book.find_or_create_by(name: 'The Red Badge of Courage') do |book|
+  book.author = 'Stephen Crane'
+  book.cover_image_full_s3_key = 'the-red-badge-of-courage/the-red-badge-of-courage-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-red-badge-of-courage/the-red-badge-of-courage-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08L57P7S9?tag=bettermorning-20'
+end
+24.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_red_badge_of_courage_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-red-badge-of-courage/chapters/chapter#{n+1}.html"
+  end
+end
+if the_red_badge_of_courage_book.persisted?
+  puts 'Seeded The Red Badge of Courage'
+end
+
+the_murder_on_the_links_book = Book.find_or_create_by(name: 'The Murder on the Links') do |book|
+  book.author = 'Agatha Christie'
+  book.cover_image_full_s3_key = 'the-murder-on-the-links/the-murder-on-the-links-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-murder-on-the-links/the-murder-on-the-links-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B083QY2GSM?tag=bettermorning-20'
+end
+28.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_murder_on_the_links_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-murder-on-the-links/chapters/chapter#{n+1}.html"
+  end
+end
+if the_murder_on_the_links_book.persisted?
+  puts 'Seeded The Murder on the Links'
+end
+
+the_secret_adversary_book = Book.find_or_create_by(name: 'The Secret Adversary') do |book|
+  book.author = 'Agatha Christie'
+  book.cover_image_full_s3_key = 'the-secret-adversary/the-secret-adversary-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-secret-adversary/the-secret-adversary-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1735778931?tag=bettermorning-20'
+end
+28.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_secret_adversary_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-secret-adversary/chapters/chapter#{n+1}.html"
+  end
+end
+if the_secret_adversary_book.persisted?
+  puts 'Seeded The Secret Adversary'
+end
+
+the_man_in_the_brown_suit_book = Book.find_or_create_by(name: 'The Man in the Brown Suit') do |book|
+  book.author = 'Agatha Christie'
+  book.cover_image_full_s3_key = 'the-man-in-the-brown-suit/the-man-in-the-brown-suit-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-man-in-the-brown-suit/the-man-in-the-brown-suit-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08MCWGZJ7?tag=bettermorning-20'
+end
+36.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_man_in_the_brown_suit_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-man-in-the-brown-suit/chapters/chapter#{n+1}.html"
+  end
+end
+if the_man_in_the_brown_suit_book.persisted?
+  puts 'Seeded The Man in the Brown Suit'
+end
+
+poirot_investigates_book = Book.find_or_create_by(name: 'Poirot Investigates') do |book|
+  book.author = 'Agatha Christie'
+  book.cover_image_full_s3_key = 'poirot-investigates/poirot-investigates-full.jpg'
+  book.cover_image_thumb_s3_key = 'poirot-investigates/poirot-investigates-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08N6J1S8Q?tag=bettermorning-20'
+end
+11.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: poirot_investigates_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "poirot-investigates/chapters/chapter#{n+1}.html"
+  end
+end
+if poirot_investigates_book.persisted?
+  puts 'Seeded Poirot Investigates'
+end
+
+twice_told_tales_book = Book.find_or_create_by(name: 'Twice-Told Tales') do |book|
+  book.author = 'Nathaniel Hawthorne'
+  book.cover_image_full_s3_key = 'twice-told-tales/twice-told-tales-full.jpg'
+  book.cover_image_thumb_s3_key = 'twice-told-tales/twice-told-tales-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08KJ2SGSP?tag=bettermorning-20'
+end
+39.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: twice_told_tales_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "twice-told-tales/chapters/chapter#{n+1}.html"
+  end
+end
+if twice_told_tales_book.persisted?
+  puts 'Seeded Twice-Told Tales'
+end
+
+the_call_of_the_canyon_book = Book.find_or_create_by(name: 'The Call of the Canyon') do |book|
+  book.author = 'Zane Grey'
+  book.cover_image_full_s3_key = 'the-call-of-the-canyon/the-call-of-the-canyon-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-call-of-the-canyon/the-call-of-the-canyon-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B019P1W4NA?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_call_of_the_canyon_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-call-of-the-canyon/chapters/chapter#{n+1}.html"
+  end
+end
+if the_call_of_the_canyon_book.persisted?
+  puts 'Seeded The Call of the Canyon'
+end
+
+myths_and_legends_of_ancient_greece_and_rome_book = Book.find_or_create_by(name: 'Myths and Legends of Ancient Greece and Rome') do |book|
+  book.author = 'E. M. Berens'
+  book.cover_image_full_s3_key = 'myths-and-legends-of-ancient-greece-and-rome/myths-and-legends-of-ancient-greece-and-rome-full.jpg'
+  book.cover_image_thumb_s3_key = 'myths-and-legends-of-ancient-greece-and-rome/myths-and-legends-of-ancient-greece-and-rome-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08GJDRND9?tag=bettermorning-20'
+end
+119.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: myths_and_legends_of_ancient_greece_and_rome_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "myths-and-legends-of-ancient-greece-and-rome/chapters/chapter#{n+1}.html"
+  end
+end
+if myths_and_legends_of_ancient_greece_and_rome_book.persisted?
+  puts 'Seeded Myths and Legends of Ancient Greece and Rome'
+end
