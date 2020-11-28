@@ -1307,3 +1307,259 @@ end
 if myths_and_legends_of_ancient_greece_and_rome_book.persisted?
   puts 'Seeded Myths and Legends of Ancient Greece and Rome'
 end
+
+middlemarch_book = Book.find_or_create_by(name: 'Middlemarch') do |book|
+  book.author = 'George Eliot'
+  book.cover_image_full_s3_key = 'middlemarch/middlemarch-full.jpg'
+  book.cover_image_thumb_s3_key = 'middlemarch/middlemarch-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B01BG9XSKM?tag=bettermorning-20'
+end
+86.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: middlemarch_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "middlemarch/chapters/chapter#{n+1}.html"
+  end
+end
+if middlemarch_book.persisted?
+  puts 'Seeded Middlemarch'
+end
+
+a_gentleman_of_courage_book = Book.find_or_create_by(name: 'A Gentleman of Courage') do |book|
+  book.author = 'James Oliver Curwood'
+  book.cover_image_full_s3_key = 'a-gentleman-of-courage/a-gentleman-of-courage-full.jpg'
+  book.cover_image_thumb_s3_key = 'a-gentleman-of-courage/a-gentleman-of-courage-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B071GLFMG3?tag=bettermorning-20'
+end
+24.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: a_gentleman_of_courage_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "a-gentleman-of-courage/chapters/chapter#{n+1}.html"
+  end
+end
+if a_gentleman_of_courage_book.persisted?
+  puts 'Seeded A Gentleman of Courage'
+end
+
+the_oregon_trail_book = Book.find_or_create_by(name: 'The Oregon Trail') do |book|
+  book.author = 'Francis Parkman, Jr.'
+  book.cover_image_full_s3_key = 'the-oregon-trail/the-oregon-trail-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-oregon-trail/the-oregon-trail-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0199553920?tag=bettermorning-20'
+end
+27.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_oregon_trail_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-oregon-trail/chapters/chapter#{n+1}.html"
+  end
+end
+if the_oregon_trail_book.persisted?
+  puts 'Seeded The Oregon Trail'
+end
+
+the_island_of_doctor_moreau_book = Book.find_or_create_by(name: 'The Island of Doctor Moreau') do |book|
+  book.author = 'H. G. Wells'
+  book.cover_image_full_s3_key = 'the-island-of-doctor-moreau/the-island-of-doctor-moreau-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-island-of-doctor-moreau/the-island-of-doctor-moreau-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B085RTJ3SX?tag=bettermorning-20'
+end
+22.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_island_of_doctor_moreau_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-island-of-doctor-moreau/chapters/chapter#{n+1}.html"
+  end
+end
+if the_island_of_doctor_moreau_book.persisted?
+  puts 'Seeded The Island of Doctor Moreau'
+end
+
+anthem_book = Book.find_or_create_by(name: 'Anthem') do |book|
+  book.author = 'Ayn Rand'
+  book.cover_image_full_s3_key = 'anthem/anthem-full.jpg'
+  book.cover_image_thumb_s3_key = 'anthem/anthem-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1512092460?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: anthem_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "anthem/chapters/chapter#{n+1}.html"
+  end
+end
+if anthem_book.persisted?
+  puts 'Seeded Anthem'
+end
+
+anarchism_and_other_essays_book = Book.find_or_create_by(name: 'Anarchism and Other Essays') do |book|
+  book.author = 'Emma Goldman'
+  book.cover_image_full_s3_key = 'anarchism-and-other-essays/anarchism-and-other-essays-full.jpg'
+  book.cover_image_thumb_s3_key = 'anarchism-and-other-essays/anarchism-and-other-essays-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1512179299?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: anarchism_and_other_essays_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "anarchism-and-other-essays/chapters/chapter#{n+1}.html"
+  end
+end
+if anarchism_and_other_essays_book.persisted?
+  puts 'Seeded Anarchism and Other Essays'
+end
+
+my_own_story_book = Book.find_or_create_by(name: 'My Own Story') do |book|
+  book.author = 'Emmeline Pankhurst'
+  book.cover_image_full_s3_key = 'my-own-story/my-own-story-full.jpg'
+  book.cover_image_thumb_s3_key = 'my-own-story/my-own-story-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B0855YVDV3?tag=bettermorning-20'
+end
+21.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: my_own_story_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "my-own-story/chapters/chapter#{n+1}.html"
+  end
+end
+if my_own_story_book.persisted?
+  puts 'Seeded My Own Story'
+end
+
+the_hound_of_the_baskervilles_book = Book.find_or_create_by(name: 'The Hound of the Baskervilles') do |book|
+  book.author = 'Arthur Conan Doyle'
+  book.cover_image_full_s3_key = 'the-hound-of-the-baskervilles/the-hound-of-the-baskervilles-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-hound-of-the-baskervilles/the-hound-of-the-baskervilles-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B00JDY7ROQ?tag=bettermorning-20'
+end
+15.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_hound_of_the_baskervilles_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-hound-of-the-baskervilles/chapters/chapter#{n+1}.html"
+  end
+end
+if the_hound_of_the_baskervilles_book.persisted?
+  puts 'Seeded The Hound of the Baskervilles'
+end
+
+the_return_of_sherlock_holmes_book = Book.find_or_create_by(name: 'The Return of Sherlock Holmes') do |book|
+  book.author = 'Arthur Conan Doyle'
+  book.cover_image_full_s3_key = 'the-return-of-sherlock-holmes/the-return-of-sherlock-holmes-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-return-of-sherlock-holmes/the-return-of-sherlock-holmes-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08P525PVY?tag=bettermorning-20'
+end
+13.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_return_of_sherlock_holmes_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-return-of-sherlock-holmes/chapters/chapter#{n+1}.html"
+  end
+end
+if the_return_of_sherlock_holmes_book.persisted?
+  puts 'Seeded The Return of Sherlock Holmes'
+end
+
+his_last_bow_book = Book.find_or_create_by(name: 'His Last Bow') do |book|
+  book.author = 'Arthur Conan Doyle'
+  book.cover_image_full_s3_key = 'his-last-bow/his-last-bow-full.jpg'
+  book.cover_image_thumb_s3_key = 'his-last-bow/his-last-bow-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08N4GPJYH?tag=bettermorning-20'
+end
+7.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: his_last_bow_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "his-last-bow/chapters/chapter#{n+1}.html"
+  end
+end
+if his_last_bow_book.persisted?
+  puts 'Seeded His Last Bow'
+end
+
+the_valley_of_fear_book = Book.find_or_create_by(name: 'The Valley of Fear') do |book|
+  book.author = 'Arthur Conan Doyle'
+  book.cover_image_full_s3_key = 'the-valley-of-fear/the-valley-of-fear-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-valley-of-fear/the-valley-of-fear-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08DM5XCHT?tag=bettermorning-20'
+end
+15.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_valley_of_fear_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-valley-of-fear/chapters/chapter#{n+1}.html"
+  end
+end
+if the_valley_of_fear_book.persisted?
+  puts 'Seeded The Valley of Fear'
+end
+
+the_sign_of_the_four_book = Book.find_or_create_by(name: 'The Sign of the Four') do |book|
+  book.author = 'Arthur Conan Doyle'
+  book.cover_image_full_s3_key = 'the-sign-of-the-four/the-sign-of-the-four-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-sign-of-the-four/the-sign-of-the-four-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08NVQZ5WX?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_sign_of_the_four_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-sign-of-the-four/chapters/chapter#{n+1}.html"
+  end
+end
+if the_sign_of_the_four_book.persisted?
+  puts 'Seeded The Sign of the Four'
+end
+
+a_study_in_scarlet_book = Book.find_or_create_by(name: 'A Study in Scarlet') do |book|
+  book.author = 'Arthur Conan Doyle'
+  book.cover_image_full_s3_key = 'a-study-in-scarlet/a-study-in-scarlet-full.jpg'
+  book.cover_image_thumb_s3_key = 'a-study-in-scarlet/a-study-in-scarlet-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1774260271?tag=bettermorning-20'
+end
+14.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: a_study_in_scarlet_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "a-study-in-scarlet/chapters/chapter#{n+1}.html"
+  end
+end
+if a_study_in_scarlet_book.persisted?
+  puts 'Seeded A Study in Scarlet'
+end
+
+shirley_book = Book.find_or_create_by(name: 'Shirley') do |book|
+  book.author = 'Charlotte Bronte'
+  book.cover_image_full_s3_key = 'shirley/shirley-full.jpg'
+  book.cover_image_thumb_s3_key = 'shirley/shirley-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B01GF0L8HC?tag=bettermorning-20'
+end
+37.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: shirley_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "shirley/chapters/chapter#{n+1}.html"
+  end
+end
+if shirley_book.persisted?
+  puts 'Seeded Shirley'
+end
+
+the_wind_in_the_willows_book = Book.find_or_create_by(name: 'The Wind in the Willows') do |book|
+  book.author = 'Kenneth Grahame'
+  book.cover_image_full_s3_key = 'the-wind-in-the-willows/the-wind-in-the-willows-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-wind-in-the-willows/the-wind-in-the-willows-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1402782837?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_wind_in_the_willows_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-wind-in-the-willows/chapters/chapter#{n+1}.html"
+  end
+end
+if the_wind_in_the_willows_book.persisted?
+  puts 'Seeded The Wind in the Willows'
+end
+
+the_trial_book = Book.find_or_create_by(name: 'The Trial') do |book|
+  book.author = 'Franz Kafka'
+  book.cover_image_full_s3_key = 'the-trial/the-trial-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-trial/the-trial-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1451578644?tag=bettermorning-20'
+end
+10.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_trial_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-trial/chapters/chapter#{n+1}.html"
+  end
+end
+if the_trial_book.persisted?
+  puts 'Seeded The Trial'
+end
