@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def show
+    @books = Book.sample
+
     if user_signed_in?
       redirect_to me_path
     end

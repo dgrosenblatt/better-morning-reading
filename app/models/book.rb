@@ -6,6 +6,12 @@ class Book < ApplicationRecord
 
   has_many :chapters
 
+  def self.sample
+    ids = all.pluck(:id)
+    sample_ids = ids.sample(10)
+    where(id: sample_ids)
+  end
+
   def cover_image_thumb_url
     # 100 x 140
     Aws::S3::Object

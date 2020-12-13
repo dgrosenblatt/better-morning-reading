@@ -1,8 +1,16 @@
 <div class="home-content">
   <%= link_to new_user_registration_path, class: 'home-title-link' do %>
-    <h1 class="home-title">Start each day with a new chapter in your email.</h1>
+    <h1 class="home-title">Start your day with a new chapter in your email.</h1>
   <% end %>
   <div id="react-app-home-email-window"></div>
   <div class="sign-up-button-container"><%= link_to 'Sign Up', new_user_registration_path, class: "sign-up-button" %></div>
+  <div class="book-display">
+    <% @books.each do |book| %>
+      <img class="book-thumbnail" src="<%= book.cover_image_thumb_url %>"/>
+    <% end %>
+  </div>
+  <div class="books-link-container">
+    <%= link_to  "Browse All Books", books_path, class: "book-display-link" %>
+  </div>
 </div>
 <%= javascript_pack_tag 'email_window' %>

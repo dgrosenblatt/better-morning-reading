@@ -27,7 +27,7 @@ const EmailWindow = () => {
   let [activeEmailId, setActiveEmailId] = useState(2)
   return (
     <div className="email-window">
-      <div className="top-bar">Inbox (3)</div>
+      <div className="top-bar"></div>
       <div className="email-window-content">
         <div className="email-message-list">
           <EmailListItem
