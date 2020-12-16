@@ -55,7 +55,7 @@ const EmailWindow = () => {
             setActiveEmailId={setActiveEmailId}
           >
             <h4>Read your first book for free</h4>
-            <p>Afterwards continue to receive emails from our collection of public domain books for $12/year</p>
+            <p>Afterwards continue to receive emails from our collection of classic books for $12/year</p>
           </EmailListItem>
         </div>
         <div className="email-reading-pane">
