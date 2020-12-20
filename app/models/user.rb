@@ -9,9 +9,21 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_one :active_subscription
   has_one :stripe_customer_subscription
+  has_many :club_memberships
+  has_many :clubs, through: :club_memberships
+  has_one :active_club
 
   def active_subscription
     subscriptions.find_by(status: 'active')
+  end
+
+  def active_club
+# make sure index on club#status and subscription#status
+    clubs.find_by(status: 'active')
+  end
+
+  def enrolling_club
+    clubs.find_by(status: 'enrolling')
   end
 
   # helpers
