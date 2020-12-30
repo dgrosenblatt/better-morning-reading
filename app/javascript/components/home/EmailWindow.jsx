@@ -14,11 +14,16 @@ const EmailListItem = ({ id, activeEmailId, setActiveEmailId, children }) => {
   )
 }
 
+function htmlDecode(input) {
+  var doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
+
 const EmailReadingPane = ({ activeEmailId }) => {
   const content = {
-    1: <PrideAndPrejudice />,
-    2: <Odyssey />,
-    3: <HuckFinn />
+    1: <PrideAndPrejudice coverUrl={htmlDecode(window.prideCoverUrl)} />,
+    2: <Odyssey coverUrl={htmlDecode(window.odysseyCoverUrl)} />,
+    3: <HuckFinn coverUrl={htmlDecode(window.huckCoverUrl)} />
   }
   return content[activeEmailId]
 }

@@ -70,24 +70,24 @@
 }
 
 #pride-and-prejudice-cover {
-  background-image: image-url('pride-and-prejudice-cover.jpg');
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 231px;
   margin: 0 auto 8px;
   width: 165px;
 }
 
 #odyssey-cover {
-  background-image: image-url('odyssey-cover.jpg');
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 231px;
   margin: 0 auto 8px;
   width: 165px;
 }
 
 #huck-finn-cover {
-  background-image: image-url('huck-finn-cover.jpg');
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 231px;
   margin: 0 auto 8px;
   width: 216px;

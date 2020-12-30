@@ -13,4 +13,9 @@
     <%= link_to  "Browse All Books", books_path, class: "book-display-link" %>
   </div>
 </div>
+<script>
+  window.odysseyCoverUrl = "<%= StaticImages.odyssey_cover %>"
+  window.huckCoverUrl = "<%= StaticImages.huck_finn_cover %>"
+  window.prideCoverUrl = "<%= StaticImages.pride_and_prejudice_cover %>"
+</script>
 <%= javascript_pack_tag 'email_window' %>

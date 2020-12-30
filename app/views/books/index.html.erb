@@ -42,7 +42,7 @@
         <% if @able_to_start %>
           <%= link_to "Start", new_book_subscription_path(book.id), class: "subscribe-button" %>
         <% end %>
-        <%= link_to "Check out on Amazon", book.amazon_url, target: "_blank", class: "amazon-link" %>
+        <%= link_to "Learn more", book.amazon_url, target: "_blank", class: "amazon-link" %>
       </div>
     <% end %>
   </div>
