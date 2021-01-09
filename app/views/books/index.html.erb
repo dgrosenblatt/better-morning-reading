@@ -35,14 +35,17 @@
   <div class="books-container">
     <% @books.each do |book| %>
       <div class="book-card">
-        <div><%= image_tag book.cover_image_thumb_url %></div>
-        <h2 class="book-name"><%= book.name %></h2>
-        <div class="author"><%= book.author %></div>
-        <div class="card-detail">Sent in <%= book.chapters.count %> installments</div>
-        <% if @able_to_start %>
-          <%= link_to "Start", new_book_subscription_path(book.id), class: "subscribe-button" %>
-        <% end %>
-        <%= link_to "Learn more", book.amazon_url, target: "_blank", class: "amazon-link" %>
+        <div class="book-card-left"><%= image_tag book.cover_image_thumb_url, class: "book-image" %></div>
+        <div class="book-card-right">
+          <h2 class="book-name"><%= book.name %></h2>
+          <div class="author"><%= book.author %></div>
+          <div class="card-detail">Sent in <%= book.chapters.count %> installments</div>
+          <% if @able_to_start %>
+            <%= link_to "Read Now", new_book_subscription_path(book.id), class: "subscribe-button" %>
+            <%= link_to "Start Bookclub", new_book_subscription_path(book.id), class: "subscribe-button" %>
+          <% end %>
+          <%= link_to "View on Amazon", book.amazon_url, target: "_blank", class: "subscribe-button amazon" %>
+        </div>
       </div>
     <% end %>
   </div>
