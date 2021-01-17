@@ -1,0 +1,61 @@
+<div class="clubs-show">
+  <div class="book-details">
+    <h1 class="club-header">A Bookclub for <%= @book.name %> by <%= @book.author %></h1>
+    <div><%= image_tag  @club.book.cover_image_full_url, class: 'cover-image' %></div>
+    <p>Organized by <%= @organizer.name %> [<%= @organizer.email %>]</p>
+
+    <p><span class="passcode">Status:</span> <%= @club.status.capitalize %></p>
+    <% if @club.status == Club::STATUSES[:enrolling] %>
+      <p>Members may join with the passcode <span class="passcode"><%= @club.passcode %></span> until the organizer starts the club.</p>
+    <% elsif @club.status == Club::STATUSES[:active] %>
+      <p>Chapter emails will be sent to members until the book has finished.</p>
+    <% elsif @club.status == Club::STATUSES[:done] %>
+      <p>Thanks for reading!</p>
+    <% end %>
+  </div>
+
+    <details class="schedule-container" open>
+    <summary>
+      Members (<%= @users.length %>)
+    </summary>
+    <% @users.each do |user| %>
+      <p><%= user.name %> [<%= user.email %>]</p>
+    <% end %>
+  </details>
+
+  <details class="schedule-container" open>
+    <summary>
+      Weekly schedule
+    </summary>
+    <table class="schedule">
+      <tr>
+        <td>Sun</td>
+        <td>Mon</td>
+        <td>Tue</td>
+        <td>Wed</td>
+        <td>Thu</td>
+        <td>Fri</td>
+        <td>Sat</td>
+      </tr>
+      <tr>
+        <td><% if @club.sunday %>☀️<% end %></td>
+        <td><% if @club.monday %>☀️<% end %></td>
+        <td><% if @club.tuesday %>☀️<% end %></td>
+        <td><% if @club.wednesday %>☀️<% end %></td>
+        <td><% if @club.thursday %>☀️<% end %></td>
+        <td><% if @club.friday %>☀️<% end %></td>
+        <td><% if @club.saturday %>☀️<% end %></td>
+      </tr>
+    </table>
+  </details>
+
+
+  <details class="progress-container" open>
+    <summary>Progress</summary>
+    <div class="progress-box">
+      <% @scheduled_chapter_emails.each do |email| %>
+        <p class="chapter-box"><% if email.sent? %> ✅ <% end %><%= email.chapter.name %></p>
+      <% end %>
+    <div>
+  </details>
+</div>

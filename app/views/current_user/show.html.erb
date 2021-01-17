@@ -17,6 +17,8 @@
   <div class="subscription-pane">
     <% if @subscription.present? %>
       <%= render 'subscription_details' %>
+    <% elsif @club.present? %>
+      <%= render 'club_details' %>
     <% else %>
       <%= render 'empty_subscription' %>
     <% end %>

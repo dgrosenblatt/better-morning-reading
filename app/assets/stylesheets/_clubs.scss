@@ -1,0 +1,105 @@
+.clubs-show {
+  margin: 0 auto;
+  max-width: 1000px;
+
+  .subscription-pane {
+    background-color: $blue-20;
+    padding: 12px;
+    margin: 0 0 8px 8px;
+    border-radius: 3px;
+    width: 100%;
+
+    summary {
+      font-weight: 500;
+    }
+  }
+
+  .empty-subscription {
+    text-align: center;
+  }
+
+  .empty-book-icon {
+    bottom: 20px;
+    font-size: 174px;
+    height: 200px;
+    opacity: 0.15;
+    position: relative;
+  }
+
+  .progress-container {
+    margin-bottom: 24px;
+  }
+
+  .progress-box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .chapter-box {
+    border: 1px dashed $dark-gray;
+    margin-bottom: 0;
+    padding-left: 2px;
+    padding-top: 3px;
+    width: 130px;
+  }
+
+  .book-details {
+    margin-bottom: 24px;
+    text-align: center;
+
+    .cover-image {
+      max-width: 300px;
+      margin-bottom: 2em;
+    }
+
+    .club-header {
+      margin-top: 2em;
+    }
+
+    .passcode {
+      font-weight: 600;
+    }
+  }
+
+  .schedule {
+    text-align: center;
+  }
+
+  @media (max-device-width: 812px) {
+    flex-direction: column-reverse;
+    font-size: 2rem;
+    .profile-pane {
+      width: 100%;
+
+      h1 {
+        text-align: center;
+      }
+    }
+    a {
+      font-size: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    .chapter-box {
+      width: 30%;
+    }
+  }
+}
+
+.notice, .alert {
+  text-align: center;
+
+  &.dismissed {
+    display: none;
+  }
+}
+
+.notice {
+  background-color: $green-80;
+}
+
+.alert {
+  background-color: $red-80;
+  margin-top: -12px;
+}

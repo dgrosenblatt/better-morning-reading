@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   get '/manage', to: 'current_user#manage', as: 'manage'
 
   resources :books, only: :index do
+    resources :clubs, only: [:new, :create]
     resources :subscriptions, only: [:new, :create, :edit, :update]
   end
+  resources :clubs, only: :show
   resources :contact_messages, only: :create
   resources :stripe_customer_subscriptions, only: :create
   resources :stripe_webhooks, only: :create
