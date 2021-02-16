@@ -103,3 +103,50 @@
   background-color: $red-80;
   margin-top: -12px;
 }
+
+.clubs-index {
+  margin: 0 auto;
+  max-width: 1000px;
+
+  .search-results-notice {
+    margin-top: 8px;
+  }
+
+  .club-card {
+    border: 1px dashed $dark-gray;
+    border-radius: 3px;
+    display: flex;
+    padding: 12px 8px;
+
+    .book-image {
+      box-shadow: 8px 8px 15px 0px rgba(97, 97, 97, 0.82);
+      height: 200px;
+    }
+
+    .book-card-left {
+      margin-right: 24px;
+    }
+
+    .subscribe-button {
+      background: $slime-green-50;
+      color: $dark-gray;
+      display: block;
+      font-weight: var(--font-weight--medium);
+      margin: 12px 0 0;
+      text-decoration: none;
+      width: 140px;
+      text-align: center;
+      border-radius: 2px;
+      padding: 4px;
+
+      &:hover {
+        background: $slime-green-75;
+        color: $dark-gray;
+      }
+    }
+
+    .subscribe-button.amazon {
+      background: none;
+    }
+  }
+}

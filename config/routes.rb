@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/terms', to: 'home#terms', as: 'terms'
   get '/privacy', to: 'home#privacy', as: 'privacy'
   get '/contact', to: 'contact_messages#new', as: 'contact'
-
   get '/me', to: 'current_user#show'
   get '/manage', to: 'current_user#manage', as: 'manage'
 
@@ -15,7 +14,9 @@ Rails.application.routes.draw do
     resources :clubs, only: [:new, :create]
     resources :subscriptions, only: [:new, :create, :edit, :update]
   end
-  resources :clubs, only: :show
+  resources :clubs, only: [:show, :index] do
+    resources :club_memberships, only: :create, as: 'memberships'
+  end
   resources :contact_messages, only: :create
   resources :stripe_customer_subscriptions, only: :create
   resources :stripe_webhooks, only: :create

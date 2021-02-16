@@ -1,0 +1,59 @@
+<div class="books-index clubs-index">
+  <h1 class="title">Find a bookclub</h1>
+
+  <div class="search-bar-container">
+    <%= form_with url: clubs_path, method: :get, local: true, class: "book-query-form" do |f| %>
+      <%= f.text_field :q, placeholder: 'Enter passcode', class: "book-query-input", value: @q %>
+      <%= f.submit 'Search', class: "book-query-button" %>
+    <% end %>
+  </div>
+  <div class="results-notice">
+    <% if !user_signed_in? %>
+      <div class="account-notice">
+        <%= link_to 'Please sign up for a free account to get started. ➡️', new_user_registration_path %>
+      </div>
+      <% @able_to_start = false %>
+    <% elsif current_user.exhausted_free_account? %>
+      <div class="account-notice">
+        <%= link_to 'Please upgrade your membership to read another book.', '#', class: 'stripe-books-index', id: 'stripe-books-index' %>
+      </div>
+      <% @able_to_start = false %>
+    <% elsif !current_user.has_full_access && current_user.active_subscription.present? || current_user.active_club.present? || current_user.enrolling_club.present? %>
+      <div class="account-notice">
+        Please become a member to join a bookclub when your current book has finished.
+      </div>
+      <% @able_to_start = false %>
+    <% elsif current_user.has_full_access && current_user.active_subscription.present? || current_user.active_club.present? || current_user.enrolling_club.present? %>
+      <div class="account-notice">
+        You'll be able to join a bookclub when your current book has finished.
+      </div>
+      <% @able_to_start = false %>
+    <% else %>
+      <% @able_to_start = true %>
+    <% end %>
+  </div>
+
+  <% if @club %>
+    <div class="search-results-notice">
+      <p>Found a bookclub for passcode <%= @q %>!</p>
+      <p>Please note that your name and email will be visible to other club participants upon joining.</p>
+      <% if !current_user.has_full_access %>
+        <p>Free accounts may read their free book as part of a bookclub.</p>
+      <% end %>
+    </div>
+
+    <div class="club-card">
+      <div class="book-card-left">
+        <%= image_tag @club.book.cover_image_thumb_url, class: "book-image" %>
+      </div>
+      <div class="book-card-right">
+        <h2 class="book-name"><%= @club.book.name %>, by <%= @club.book.author %></h2>
+        <div class="card-detail">A bookclub organized by <%= @club.organizer.name %></div>
+        <div class="card-detail">Status: <%= @club.status.capitalize %></div>
+        <div class="card-detail">Sent in <%= @club.book.chapters.count %> installments</div>
+        <%= link_to "Join", club_memberships_path(@club, passcode: @q), class: "subscribe-button", method: :post %>
+        <%= link_to "View on Amazon", @club.book.amazon_url, target: "_blank", class: "subscribe-button amazon" %>
+      </div>
+    </div>
+  <% end %>
+</div>

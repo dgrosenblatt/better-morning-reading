@@ -44,9 +44,15 @@ class User < ApplicationRecord
   end
 
   def exhausted_free_account?
+    return false if has_full_access
     # Free account and all subscriptions are done
-    !has_full_access &&
+    (
       subscriptions.length > 0 &&
       subscriptions.pluck(:status).uniq == [Subscription::STATUSES[:done]]
+    ) ||
+    (
+      clubs.length > 0 &&
+      clubs.pluck(:status).uniq == [Club::STATUSES[:done]]
+    )
   end
 end

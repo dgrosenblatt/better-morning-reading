@@ -16,12 +16,18 @@ class ClubsController < AuthenticatedController
   end
 
   def show
+    # redirect home if not a member
     @club = Club.find(params[:id])
     @book = @club.book
     @scheduled_chapter_emails =
       @club.scheduled_club_emails.includes(:chapter).order(position: :asc)
     @organizer = @club.organizer
     @users = @club.users
+  end
+
+  def index
+    @q = params[:q]
+    @club = Club.find_by(passcode: @q)
   end
 
   private
