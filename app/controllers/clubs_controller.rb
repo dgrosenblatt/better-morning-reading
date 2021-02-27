@@ -27,7 +27,10 @@ class ClubsController < AuthenticatedController
 
   def index
     @q = params[:q]
-    @club = Club.find_by(passcode: @q)
+    @club = Club.find_by(
+      passcode: @q,
+      status: [Club::STATUSES[:enrolling], Club::STATUSES[:active]]
+    )
   end
 
   private

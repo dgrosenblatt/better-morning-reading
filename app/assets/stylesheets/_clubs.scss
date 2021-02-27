@@ -105,6 +105,10 @@
 }
 
 .clubs-index {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0 auto;
   max-width: 1000px;
 
@@ -116,7 +120,7 @@
     border: 1px dashed $dark-gray;
     border-radius: 3px;
     display: flex;
-    padding: 12px 8px;
+    padding: 12px 16px;
 
     .book-image {
       box-shadow: 8px 8px 15px 0px rgba(97, 97, 97, 0.82);
@@ -134,10 +138,10 @@
       font-weight: var(--font-weight--medium);
       margin: 12px 0 0;
       text-decoration: none;
-      width: 140px;
+      width: 160px;
       text-align: center;
       border-radius: 2px;
-      padding: 4px;
+      padding: 8px;
 
       &:hover {
         background: $slime-green-75;

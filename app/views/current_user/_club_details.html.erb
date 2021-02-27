@@ -1,8 +1,8 @@
 <div class="book-details">
-  <h1>Currently reading</h1>
-  <h2>(As part of a bookclub)</h2>
+  <h1>Current Bookclub</h1>
   <div><%= image_tag  @club.book.cover_image_full_url, class: 'cover-image' %></div>
   <h2><%= @club.book.name %> by <%= @club.book.author %></h2>
+  <%= link_to "View bookclub ➡️", @club %>
 </div>
 
 <details class="schedule-container" open>
