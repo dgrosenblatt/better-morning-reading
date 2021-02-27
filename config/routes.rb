@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :clubs, only: [:show, :index] do
     resources :club_memberships, only: :create, as: 'memberships'
   end
+  resources :start_clubs, only: [:update]
   resources :contact_messages, only: :create
   resources :stripe_customer_subscriptions, only: :create
   resources :stripe_webhooks, only: :create

@@ -35,14 +35,18 @@
 
   <% if @club %>
     <div class="search-results-notice">
-      <p>Found a bookclub for passcode <%= @q %>!</p>
       <p>Please note that your name and email will be visible to other club participants upon joining.</p>
       <% if !current_user.has_full_access %>
         <p>Free accounts may read their free book as part of a bookclub.</p>
       <% end %>
+
     </div>
 
+      <% if @club.status == Club::STATUSES[:active] %>
+        <p>This bookclub has already started, but you can join part-way through.</p>
+      <% end %>
     <div class="club-card">
+
       <div class="book-card-left">
         <%= image_tag @club.book.cover_image_thumb_url, class: "book-image" %>
       </div>
@@ -59,6 +63,7 @@
       <div class="search-results-notice">
       <p>No bookclub found for passcode <%= @q %>!</p>
       <p>Please contact the organizer to confirm the passcode.</p>
+      <p>Bookclubs will not appear here after they are finished.</p>
       </div>
   <% end %>
 </div>

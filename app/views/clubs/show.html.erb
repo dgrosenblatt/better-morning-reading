@@ -2,26 +2,27 @@
   <div class="book-details">
     <h1 class="club-header">A Bookclub for <%= @book.name %> by <%= @book.author %></h1>
     <div><%= image_tag  @club.book.cover_image_full_url, class: 'cover-image' %></div>
-    <p>Organized by <%= @organizer.name %> [<%= @organizer.email %>]</p>
-
     <p><span class="passcode">Status:</span> <%= @club.status.capitalize %></p>
+
+    <% if @club.organizer == current_user && @club.status == Club::STATUSES[:enrolling] %>
+      <div class="start-club-button">
+        <%= link_to "Start", start_club_path(@club), class: "subscribe-button", method: :patch %>
+      </div>
+    <% end %>
+
     <% if @club.status == Club::STATUSES[:enrolling] %>
-      <p>Members may join with the passcode <span class="passcode"><%= @club.passcode %></span> until the organizer starts the club.</p>
+      <p>Members may join with the passcode <span class="passcode"><%= @club.passcode %></span></p>
     <% elsif @club.status == Club::STATUSES[:active] %>
       <p>Chapter emails will be sent to members until the book has finished.</p>
+      <p>Members may still join with the passcode <span class="passcode"><%= @club.passcode %></span>.</p>
+
     <% elsif @club.status == Club::STATUSES[:done] %>
       <p>Thanks for reading!</p>
     <% end %>
-  </div>
 
-    <details class="schedule-container" open>
-    <summary>
-      Members (<%= @users.length %>)
-    </summary>
-    <% @users.each do |user| %>
-      <p><%= user.name %> [<%= user.email %>]</p>
-    <% end %>
-  </details>
+    <p>Organized by <%= @organizer.name %> [<%= @organizer.email %>]</p>
+
+  </div>
 
   <details class="schedule-container" open>
     <summary>
@@ -49,6 +50,29 @@
     </table>
   </details>
 
+  <details class="schedule-container club-show-details-container" open>
+    <summary>
+      Members (<%= @users.length %>)
+    </summary>
+    <% @users.each do |user| %>
+      <p><%= user.name %> [<%= user.email %>]</p>
+    <% end %>
+  </details>
+
+  <details class="club-show-details-container" closed>
+    <summary>Invites</summary>
+    <p>🗝 Clubs are private. This club can be found by clicking the 'If you received a passcode, find your bookclub' link from the Me page and entering the passcode <span class="passcode"><%= @club.passcode %> .</p>
+    <p>📖 Users who are already reading a book will need to finish before joining.  </p>
+    <p>🆓 Users with free accounts may use their one book to create or join a bookclub.</p>
+  </details>
+
+  <details class="club-show-details-container">
+    <summary closed>Bookclub emails</summary>
+    <p>📬 All members of Active bookclubs will receive a chapter in their email on each day selected until the book is finished.</p>
+    <p>🗓 Only the organizer can change the weekly email schedule.</p>
+    <p>💬 Emails are sent with all bookclub members on the recipient line to allow discussion with Reply All.</p>
+  </details>
+
 
   <details class="progress-container" open>
     <summary>Progress</summary>
@@ -58,4 +82,6 @@
       <% end %>
     <div>
   </details>
+
+
 </div>

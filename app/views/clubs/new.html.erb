@@ -3,7 +3,7 @@
     <div class="book-details">
       <h1><%= @book.name %>
       <p class="detail"><%= @book.author %></p>
-  </div>
+    </div>
     <% if @club.errors.any? %>
       <div class="errors-container">
         <%= f.error_notification %>
@@ -14,7 +14,7 @@
         <% end %>
       </div>
     <% end %>
-    <p class="detail">Select the weekly schedule for your new bookclub:</p>
+    <p class="detail">Select the weekly schedule for chapter emails to be sent:</p>
     <div class="new-subscription-inputs-container">
       <div class="book-image"><%= image_tag @book.cover_image_full_url %></div>
       <div class="form-inputs">
@@ -27,16 +27,8 @@
         <%= f.input :saturday %>
       </div>
     </div>
-
-    <p>Once started, club members receive a chapter in their email on each day selected until the book is finished. (You can always update your schedule later.)</p>
-
-    <p>As organizer, you will be issued an invite code and can start the club</p>
-
-    <p>Clubs are private. You'll receive a code after the bookclub is created to invite other members.</p>
-    <p>Users with free accounts may use their one book to create or join a bookclub.</p>
-    <p>Please note that your name and email will be visible to all other members who join the bookclub.</p>
-
-    <div><%= f.button :submit, "Create Bookclub", id: "new-subscription-submit" %></div>
+    <p>As organizer, you'll be able to invite other readers once the bookclub is created.</p>
+    <div><%= f.button :submit, "Create", id: "new-club-submit" %></div>
     <% if !current_user.has_full_access %>
       <small class="full-access-notice">
         (Until you become a member, this will be your only book. Enjoy!)

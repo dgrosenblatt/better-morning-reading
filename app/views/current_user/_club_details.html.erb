@@ -2,7 +2,7 @@
   <h1>Current Bookclub</h1>
   <div><%= image_tag  @club.book.cover_image_full_url, class: 'cover-image' %></div>
   <h2><%= @club.book.name %> by <%= @club.book.author %></h2>
-  <%= link_to "View bookclub ➡️", @club %>
+  <%= link_to "View bookclub", @club %>
 </div>
 
 <details class="schedule-container" open>
@@ -30,7 +30,6 @@
     </tr>
   </table>
 </details>
-
 
 <details class="progress-container" open>
   <summary>Progress</summary>
