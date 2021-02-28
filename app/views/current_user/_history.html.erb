@@ -1,11 +1,11 @@
 <details open>
   <summary>Reading history</summary>
-  <% if @past_subscriptions.empty? %>
+  <% if @history.empty? %>
     <p>You haven't finished any books yet.</p>
   <% else %>
-    <p>Total books read: <%= @past_subscriptions.length %><p>
-    <% @past_subscriptions.each do |subscription| %>
-      <p><%= subscription.book.name %> (<%= subscription.updated_at.strftime "%m/%d/%Y" %>)</p>
+    <p>Total books read: <%= @history.length %><p>
+    <% @history.each do |history| %>
+      <p><%= history[:name] %> (<%= history[:date] %>)</p>
     <% end %>
   <% end %>
 </details>

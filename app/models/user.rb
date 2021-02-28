@@ -55,4 +55,17 @@ class User < ApplicationRecord
       clubs.pluck(:status).uniq == [Club::STATUSES[:done]]
     )
   end
+
+  def history # => [{ name:, date: }]
+    past_subscriptions = subscriptions.where(status: 'done').includes(:book)
+    past_clubs = clubs.where(status: 'done').includes(:book)
+    all_books = past_subscriptions.to_a.concat(past_clubs.to_a)
+
+    all_books.map do |sub_or_club|
+        {
+          name: sub_or_club.book.name,
+          date: sub_or_club.updated_at.strftime("%m/%d/%Y")
+        }
+    end.sort { |a, b| b[:date] <=> a[:date] }
+  end
 end

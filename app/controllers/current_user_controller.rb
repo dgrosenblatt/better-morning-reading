@@ -15,10 +15,7 @@ class CurrentUserController < AuthenticatedController
         @club.scheduled_club_emails.includes(:chapter).order(position: :asc)
     end
 
-    @past_subscriptions =
-      current_user.subscriptions.where(status: 'done').includes(:book)
-    @past_clubs =
-      current_user.clubs.where(status: 'done').includes(:book)
+    @history = current_user.history
   end
 
   def manage

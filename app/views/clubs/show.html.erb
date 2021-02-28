@@ -14,7 +14,7 @@
       <p>Members may join with the passcode <span class="passcode"><%= @club.passcode %></span></p>
     <% elsif @club.status == Club::STATUSES[:active] %>
       <p>Chapter emails will be sent to members until the book has finished.</p>
-      <p>Members may still join with the passcode <span class="passcode"><%= @club.passcode %></span>.</p>
+      <p>Members may still join with the passcode <span class="passcode"><%= @club.passcode %></span></p>
 
     <% elsif @club.status == Club::STATUSES[:done] %>
       <p>Thanks for reading!</p>
@@ -64,7 +64,7 @@
 
   <details class="club-show-details-container" closed>
     <summary>Invites</summary>
-    <p>🗝 Clubs are private. This club can be found by clicking the 'If you received a passcode, find your bookclub' link from the Me page and entering the passcode <span class="passcode"><%= @club.passcode %> .</p>
+    <p>🗝 Clubs are private. This club can be found by clicking the 'If you received a passcode, find your bookclub' link from the Me page and entering the passcode <span class="passcode"><%= @club.passcode %> . New members will still be able to join after the bookclub starts.</p>
     <p>📖 Users who are already reading a book will need to finish before joining.  </p>
     <p>🆓 Users with free accounts may use their one book to create or join a bookclub.</p>
   </details>
