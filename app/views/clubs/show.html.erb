@@ -27,6 +27,9 @@
   <details class="schedule-container" open>
     <summary>
       Weekly schedule
+      <% if @club.organizer == current_user %>
+        (<%= link_to "Edit", edit_club_path(@club) %>)
+      <% end %>
     </summary>
     <table class="schedule">
       <tr>

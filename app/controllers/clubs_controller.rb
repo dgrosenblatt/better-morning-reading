@@ -15,9 +15,29 @@ class ClubsController < AuthenticatedController
     end
   end
 
-  def show
-    # redirect home if not a member
+  def edit
     @club = Club.find(params[:id])
+    @book = @club.book
+  end
+
+  def update
+    @club = Club.find(params[:id])
+
+    if @club.update(update_club_params)
+      redirect_to @club, notice: 'Bookclub updated.'
+    else
+      @book = @club.book
+      render :edit
+    end
+  end
+
+  def show
+    @club = Club.find(params[:id])
+
+    if !current_user.clubs.include?(@club)
+      redirect_to me_path
+    end
+
     @book = @club.book
     @scheduled_chapter_emails =
       @club.scheduled_club_emails.includes(:chapter).order(position: :asc)
@@ -40,5 +60,11 @@ class ClubsController < AuthenticatedController
       .require(:club)
       .permit(:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday)
       .merge(book_id: params[:book_id], organizer_id: current_user.id, status: 'enrolling')
+  end
+
+  def update_club_params
+    params
+      .require(:club)
+      .permit(:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday)
   end
 end

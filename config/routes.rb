@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :clubs, only: [:new, :create]
     resources :subscriptions, only: [:new, :create, :edit, :update]
   end
-  resources :clubs, only: [:show, :index] do
+  resources :clubs, only: [:show, :index, :edit, :update] do
     resources :club_memberships, only: :create, as: 'memberships'
   end
   resources :start_clubs, only: [:update]
