@@ -9,9 +9,21 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_one :active_subscription
   has_one :stripe_customer_subscription
+  has_many :club_memberships
+  has_many :clubs, through: :club_memberships
+  has_one :active_club
 
   def active_subscription
     subscriptions.find_by(status: 'active')
+  end
+
+  def active_club
+# make sure index on club#status and subscription#status
+    clubs.find_by(status: 'active')
+  end
+
+  def enrolling_club
+    clubs.find_by(status: 'enrolling')
   end
 
   # helpers
@@ -32,9 +44,28 @@ class User < ApplicationRecord
   end
 
   def exhausted_free_account?
+    return false if has_full_access
     # Free account and all subscriptions are done
-    !has_full_access &&
+    (
       subscriptions.length > 0 &&
       subscriptions.pluck(:status).uniq == [Subscription::STATUSES[:done]]
+    ) ||
+    (
+      clubs.length > 0 &&
+      clubs.pluck(:status).uniq == [Club::STATUSES[:done]]
+    )
+  end
+
+  def history # => [{ name:, date: }]
+    past_subscriptions = subscriptions.where(status: 'done').includes(:book)
+    past_clubs = clubs.where(status: 'done').includes(:book)
+    all_books = past_subscriptions.to_a.concat(past_clubs.to_a)
+
+    all_books.map do |sub_or_club|
+        {
+          name: sub_or_club.book.name,
+          date: sub_or_club.updated_at.strftime("%m/%d/%Y")
+        }
+    end.sort { |a, b| b[:date] <=> a[:date] }
   end
 end

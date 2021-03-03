@@ -1,0 +1,90 @@
+<div class="clubs-show">
+  <div class="book-details">
+    <h1 class="club-header">A Bookclub for <%= @book.name %> by <%= @book.author %></h1>
+    <div><%= image_tag  @club.book.cover_image_full_url, class: 'cover-image' %></div>
+    <p><span class="passcode">Status:</span> <%= @club.status.capitalize %></p>
+
+    <% if @club.organizer == current_user && @club.status == Club::STATUSES[:enrolling] %>
+      <div class="start-club-button">
+        <%= link_to "Start", start_club_path(@club), class: "subscribe-button", method: :patch %>
+      </div>
+    <% end %>
+
+    <% if @club.status == Club::STATUSES[:enrolling] %>
+      <p>Members may join with the passcode <span class="passcode"><%= @club.passcode %></span></p>
+    <% elsif @club.status == Club::STATUSES[:active] %>
+      <p>Chapter emails will be sent to members until the book has finished.</p>
+      <p>Members may still join with the passcode <span class="passcode"><%= @club.passcode %></span></p>
+
+    <% elsif @club.status == Club::STATUSES[:done] %>
+      <p>Thanks for reading!</p>
+    <% end %>
+
+    <p>Organized by <%= @organizer.name %> [<%= @organizer.email %>]</p>
+
+  </div>
+
+  <details class="schedule-container" open>
+    <summary>
+      Weekly schedule
+      <% if @club.organizer == current_user %>
+        (<%= link_to "Edit", edit_club_path(@club) %>)
+      <% end %>
+    </summary>
+    <table class="schedule">
+      <tr>
+        <td>Sun</td>
+        <td>Mon</td>
+        <td>Tue</td>
+        <td>Wed</td>
+        <td>Thu</td>
+        <td>Fri</td>
+        <td>Sat</td>
+      </tr>
+      <tr>
+        <td><% if @club.sunday %>☀️<% end %></td>
+        <td><% if @club.monday %>☀️<% end %></td>
+        <td><% if @club.tuesday %>☀️<% end %></td>
+        <td><% if @club.wednesday %>☀️<% end %></td>
+        <td><% if @club.thursday %>☀️<% end %></td>
+        <td><% if @club.friday %>☀️<% end %></td>
+        <td><% if @club.saturday %>☀️<% end %></td>
+      </tr>
+    </table>
+  </details>
+
+  <details class="schedule-container club-show-details-container" open>
+    <summary>
+      Members (<%= @users.length %>)
+    </summary>
+    <% @users.each do |user| %>
+      <p><%= user.name %> [<%= user.email %>]</p>
+    <% end %>
+  </details>
+
+  <details class="club-show-details-container" closed>
+    <summary>Invites</summary>
+    <p>🗝 Clubs are private. This club can be found by clicking the 'If you received a passcode, find your bookclub' link from the Me page and entering the passcode <span class="passcode"><%= @club.passcode %> . New members will still be able to join after the bookclub starts.</p>
+    <p>📖 Users who are already reading a book will need to finish before joining.  </p>
+    <p>🆓 Users with free accounts may use their one book to create or join a bookclub.</p>
+  </details>
+
+  <details class="club-show-details-container">
+    <summary closed>Bookclub emails</summary>
+    <p>📬 All members of Active bookclubs will receive a chapter in their email on each day selected until the book is finished.</p>
+    <p>🗓 Only the organizer can change the weekly email schedule.</p>
+    <p>💬 Emails are sent with all bookclub members on the recipient line to allow discussion with Reply All.</p>
+  </details>
+
+
+  <details class="progress-container" open>
+    <summary>Progress</summary>
+    <div class="progress-box">
+      <% @scheduled_chapter_emails.each do |email| %>
+        <p class="chapter-box"><% if email.sent? %> ✅ <% end %><%= email.chapter.name %></p>
+      <% end %>
+    <div>
+  </details>
+
+
+</div>

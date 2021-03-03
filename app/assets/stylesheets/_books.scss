@@ -52,18 +52,29 @@
   }
 
   .book-card {
-    background-color: $blue-80;
-    border: 3px solid $dark-gray;
+    align-items: center;
+    border: 1px dashed $dark-gray;
     border-radius: 3px;
-    min-height: 410px;
+    display: flex;
     margin: 10px;
     padding: 12px 8px;
     position: relative;
-    text-align: center;
-    width: 300px;
+    width: 400px;
 
-    &:hover {
-      background-color: $blue;
+    .book-card-left {
+      margin-right: 1em;
+      text-align: right;
+      width: 50%;
+    }
+
+    .book-card-right {
+      margin-left: 1em;
+      width: 50%;
+    }
+
+    .book-image {
+      box-shadow: 8px 8px 15px 0px rgba(97, 97, 97, 0.82);
+      height: 175px;
     }
 
     .book-name {
@@ -91,24 +102,25 @@
     }
 
     .subscribe-button {
-      border: 3px solid $dark-gray;
-      border-radius: 100%;
-      bottom: 30px;
+      background: $slime-green-50;
       color: $dark-gray;
       display: block;
       font-weight: var(--font-weight--medium);
-      height: 90px;
-      left: 105px;
-      margin: 0 auto;
-      padding-top: 30px;
+      margin: 0 0 8px;
       text-decoration: none;
-      width: 90px;
-      position: absolute;
+      width: 140px;
+      text-align: center;
+      border-radius: 2px;
+      padding: 4px;
 
       &:hover {
-        background: linear-gradient(0deg, $red -160%, $yellow 100%);
+        background: $slime-green-75;
         color: $dark-gray;
       }
+    }
+
+    .subscribe-button.amazon {
+      background: none;
     }
   }
 
@@ -131,10 +143,18 @@
     }
 
     .book-card {
+      flex-direction: column;
+      padding: 24px 8px;
       width: 100%;
 
-      img {
-        height: 300px
+      .book-card-left,
+      .book-card-right {
+        text-align: center;
+        width: 100%;
+      }
+
+      .book-image {
+        height: 350px
       }
 
       .author, .card-detail, .results-notice, .account-notice {
@@ -148,9 +168,11 @@
       .subscribe-button {
         height: 200px;
         margin: 24px auto;
-        padding-top: 57px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: static;
-        width: 200px;
+        width: 95%;
       }
 
       .amazon-link {

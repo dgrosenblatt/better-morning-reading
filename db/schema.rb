@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_131951) do
+ActiveRecord::Schema.define(version: 2020_12_20_023132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,35 @@ ActiveRecord::Schema.define(version: 2020_10_17_131951) do
     t.string "name", null: false
     t.text "text_s3_key", null: false
     t.index ["book_id"], name: "index_chapters_on_book_id"
+  end
+
+  create_table "club_memberships", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "club_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["club_id", "user_id"], name: "index_club_memberships_on_club_id_and_user_id", unique: true
+    t.index ["club_id"], name: "index_club_memberships_on_club_id"
+    t.index ["user_id"], name: "index_club_memberships_on_user_id"
+  end
+
+  create_table "clubs", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "book_id", null: false
+    t.bigint "organizer_id", null: false
+    t.string "status", null: false
+    t.string "passcode", null: false
+    t.boolean "sunday", default: false, null: false
+    t.boolean "monday", default: false, null: false
+    t.boolean "tuesday", default: false, null: false
+    t.boolean "wednesday", default: false, null: false
+    t.boolean "thursday", default: false, null: false
+    t.boolean "friday", default: false, null: false
+    t.boolean "saturday", default: false, null: false
+    t.index ["book_id"], name: "index_clubs_on_book_id"
+    t.index ["organizer_id"], name: "index_clubs_on_organizer_id"
+    t.index ["passcode"], name: "index_clubs_on_passcode"
   end
 
   create_table "contact_messages", force: :cascade do |t|
@@ -66,6 +95,17 @@ ActiveRecord::Schema.define(version: 2020_10_17_131951) do
     t.integer "position", null: false
     t.index ["chapter_id"], name: "index_scheduled_chapter_emails_on_chapter_id"
     t.index ["subscription_id"], name: "index_scheduled_chapter_emails_on_subscription_id"
+  end
+
+  create_table "scheduled_club_emails", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "club_id", null: false
+    t.bigint "chapter_id", null: false
+    t.datetime "sent_at"
+    t.integer "position", null: false
+    t.index ["chapter_id"], name: "index_scheduled_club_emails_on_chapter_id"
+    t.index ["club_id"], name: "index_scheduled_club_emails_on_club_id"
   end
 
   create_table "stripe_customer_subscriptions", force: :cascade do |t|
@@ -120,8 +160,14 @@ ActiveRecord::Schema.define(version: 2020_10_17_131951) do
   end
 
   add_foreign_key "chapters", "books"
+  add_foreign_key "club_memberships", "clubs"
+  add_foreign_key "club_memberships", "users"
+  add_foreign_key "clubs", "books"
+  add_foreign_key "clubs", "users", column: "organizer_id"
   add_foreign_key "scheduled_chapter_emails", "chapters"
   add_foreign_key "scheduled_chapter_emails", "subscriptions"
+  add_foreign_key "scheduled_club_emails", "chapters"
+  add_foreign_key "scheduled_club_emails", "clubs"
   add_foreign_key "stripe_customer_subscriptions", "users"
   add_foreign_key "subscriptions", "books"
   add_foreign_key "subscriptions", "users"

@@ -1,15 +1,21 @@
 class CurrentUserController < AuthenticatedController
   def show
     @user = current_user
+    @scheduled_chapter_emails = []
+
     @subscription = current_user.active_subscription
     if @subscription.present?
       @scheduled_chapter_emails =
         @subscription.scheduled_chapter_emails.includes(:chapter).order(position: :asc)
-    else
-      @scheduled_chapter_emails = []
     end
-    @past_subscriptions =
-      current_user.subscriptions.where(status: 'done').includes(:book)
+
+    @club = current_user.active_club || current_user.enrolling_club
+    if @club.present?
+      @scheduled_chapter_emails =
+        @club.scheduled_club_emails.includes(:chapter).order(position: :asc)
+    end
+
+    @history = current_user.history
   end
 
   def manage

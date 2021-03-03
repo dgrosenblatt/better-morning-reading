@@ -1,4 +1,29 @@
 FactoryBot.define do
+  factory :scheduled_club_email do
+    club
+    chapter
+    sent_at { 1.day.ago }
+  end
+
+  factory :club_membership do
+    user
+    club
+  end
+
+  factory :club do
+    organizer
+    book
+    sequence(:passcode) { |n| "#{n}=abcabc-123" }
+    status { 'active' }
+    sunday { false }
+    monday { true }
+    tuesday { false }
+    wednesday { false }
+    thursday { false }
+    friday { false }
+    saturday { false }
+  end
+
   factory :scheduled_chapter_email do
     chapter
     subscription
@@ -20,6 +45,9 @@ FactoryBot.define do
 
   factory :chapter do
     book
+    name { 'Chapter 1' }
+    text_s3_key { 'book/chapter1.html' }
+    position { 1 }
   end
 
   factory :book do
@@ -30,7 +58,7 @@ FactoryBot.define do
     amazon_link { 'http://example.com/pride-and-prejudice' }
   end
 
-  factory :user do
+  factory :user, aliases: [:organizer] do
     name { 'Danny' }
     sequence(:email) { |n| "#{n}em@i.l" }
     password { 'password' }

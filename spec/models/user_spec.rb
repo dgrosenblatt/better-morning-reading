@@ -10,6 +10,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
+    it { should have_many(:club_memberships) }
+    it { should have_many(:clubs).through(:club_memberships) }
     it { should have_many(:subscriptions) }
 
     describe 'active_subscription' do

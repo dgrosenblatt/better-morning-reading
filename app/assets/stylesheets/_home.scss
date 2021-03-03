@@ -16,7 +16,6 @@
   background-size: cover;
   margin-top: -12px;
   padding-top: 22px;
-  padding-bottom: 72px;
   width: 100%;
 }
 
@@ -48,15 +47,28 @@
   margin-top: 8px;
 }
 
+.book-display-container {
+  background: $blue-20;
+  border-top: 1px dashed $blue;
+  display: flex;
+  flex-direction: column;
+  margin-top: 52px;
+  max-width: 100%;
+}
+
 .book-display {
   max-width: 100%;
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  border-top: 1px dashed $blue;
   display: flex;
-  padding: 64px 0 40px;
+  padding: 40px 0 40px;
+}
+
+.book-display-title {
+  font-size: 1.75rem;
   margin-top: 52px;
+  text-align: center;
 }
 
 .book-thumbnail {
@@ -65,8 +77,10 @@
 }
 
 .books-link-container {
+  background: $blue-20;
   display: flex;
   justify-content: center;
+  padding-bottom: 72px;
 }
 
 .book-display-link {

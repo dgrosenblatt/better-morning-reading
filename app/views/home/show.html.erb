@@ -4,11 +4,16 @@
   <% end %>
   <div id="react-app-home-email-window"></div>
   <div class="sign-up-button-container"><%= link_to 'Sign Up', new_user_registration_path, class: "sign-up-button" %></div>
-  <div class="book-display">
-    <% @books.each do |book| %>
-      <img class="book-thumbnail" src="<%= book.cover_image_thumb_url %>"/>
-    <% end %>
+
+  <div class="book-display-container">
+    <h2 class="book-display-title">Some of the classic books we have available:</h2>
+    <div class="book-display">
+      <% @books.each do |book| %>
+        <img class="book-thumbnail" src="<%= book.cover_image_thumb_url %>"/>
+      <% end %>
+    </div>
   </div>
+
   <div class="books-link-container">
     <%= link_to  "Browse All Books", books_path, class: "book-display-link" %>
   </div>

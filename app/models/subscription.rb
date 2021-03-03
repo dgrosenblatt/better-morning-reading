@@ -25,6 +25,7 @@ class Subscription < ApplicationRecord
     end
   end
 
+  # instance methods
   def quick_start!
     scheduled_chapter_email = scheduled_chapter_emails.find_by(position: 1)
     chapter = scheduled_chapter_email.chapter
@@ -55,13 +56,18 @@ class Subscription < ApplicationRecord
   end
 
   def only_one_active_for_user
-    if user.active_subscription.present?
+    return if user.blank?
+
+    if user.active_subscription.present? || user.active_club.present? || user.enrolling_club.present?
       errors.add(:base, 'You are already reading a book')
     end
   end
 
   def only_one_for_free_account_user
-    if !user.has_full_access && user.subscriptions.any?
+    return if user.blank?
+    return if user.has_full_access
+
+    if user.clubs.any? || user.subscriptions.any?
       errors.add(:base, 'You must become a member to read another book')
     end
   end

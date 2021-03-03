@@ -1,0 +1,38 @@
+<div class="club-new">
+  <%= simple_form_for(@club, url: book_clubs_path) do |f| %>
+    <div class="book-details">
+      <h1><%= @book.name %>
+      <p class="detail"><%= @book.author %></p>
+    </div>
+    <% if @club.errors.any? %>
+      <div class="errors-container">
+        <%= f.error_notification %>
+        <% @club.errors.full_messages.each do |message| %>
+          <ul>
+            <li class="subscription-error">➡️ <%= message %></li>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+    <p class="detail">Select the weekly schedule for chapter emails to be sent:</p>
+    <div class="new-subscription-inputs-container">
+      <div class="book-image"><%= image_tag @book.cover_image_full_url %></div>
+      <div class="form-inputs">
+        <%= f.input :sunday %>
+        <%= f.input :monday %>
+        <%= f.input :tuesday %>
+        <%= f.input :wednesday %>
+        <%= f.input :thursday %>
+        <%= f.input :friday %>
+        <%= f.input :saturday %>
+      </div>
+    </div>
+    <p>As organizer, you'll be able to invite other readers once the bookclub is created.</p>
+    <div><%= f.button :submit, "Create", id: "new-club-submit" %></div>
+    <% if !current_user.has_full_access %>
+      <small class="full-access-notice">
+        (Until you become a member, this will be your only book. Enjoy!)
+      </small>
+    <% end %>
+  <% end %>
+</div>

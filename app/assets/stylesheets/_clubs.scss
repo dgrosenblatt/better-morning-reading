@@ -1,0 +1,332 @@
+.clubs-show {
+  margin: 0 auto;
+  max-width: 1000px;
+
+  .club-show-details-container {
+    border: 1px dashed black;
+    background-color: $blue-20;
+    margin-bottom: 1em;
+    padding: 1em;
+  }
+
+  .subscription-pane {
+    background-color: $blue-20;
+    padding: 12px;
+    margin: 0 0 8px 8px;
+    border-radius: 3px;
+    width: 100%;
+
+    summary {
+      font-weight: 500;
+    }
+  }
+
+  .empty-subscription {
+    text-align: center;
+  }
+
+  .empty-book-icon {
+    bottom: 20px;
+    font-size: 174px;
+    height: 200px;
+    opacity: 0.15;
+    position: relative;
+  }
+
+  .progress-container {
+    margin-bottom: 24px;
+  }
+
+  .progress-box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .chapter-box {
+    border: 1px dashed $dark-gray;
+    margin-bottom: 0;
+    padding-left: 2px;
+    padding-top: 3px;
+    width: 130px;
+  }
+
+  .book-details {
+    margin-bottom: 24px;
+    text-align: center;
+
+    .cover-image {
+      max-width: 300px;
+      margin-bottom: 1em;
+    }
+
+    .club-header {
+      margin-top: 2em;
+    }
+
+    .passcode {
+      font-weight: 600;
+    }
+  }
+
+  .schedule {
+    text-align: center;
+  }
+
+  .start-club-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .subscribe-button {
+    background: $slime-green-50;
+    color: $dark-gray;
+    display: block;
+    font-weight: var(--font-weight--medium);
+    margin-bottom: 1em;
+    text-decoration: none;
+    width: 160px;
+    text-align: center;
+    border-radius: 2px;
+    padding: 8px;
+
+    &:hover {
+      background: $slime-green-75;
+      color: $dark-gray;
+    }
+  }
+
+  @media (max-device-width: 812px) {
+    flex-direction: column-reverse;
+    font-size: 2rem;
+    .profile-pane {
+      width: 100%;
+
+      h1 {
+        text-align: center;
+      }
+    }
+    a {
+      font-size: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    .chapter-box {
+      width: 30%;
+    }
+  }
+}
+
+.notice, .alert {
+  text-align: center;
+
+  &.dismissed {
+    display: none;
+  }
+}
+
+.notice {
+  background-color: $green-80;
+}
+
+.alert {
+  background-color: $red-80;
+  margin-top: -12px;
+}
+
+.clubs-index {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1000px;
+
+  .search-results-notice {
+    background-color: $blue-80;
+    border-radius: 4px;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    padding: 1em;
+  }
+
+  .club-card {
+    border: 1px dashed $dark-gray;
+    border-radius: 3px;
+    display: flex;
+    padding: 12px 16px;
+
+    .book-image {
+      box-shadow: 8px 8px 15px 0px rgba(97, 97, 97, 0.82);
+      height: 200px;
+    }
+
+    .book-card-left {
+      margin-right: 24px;
+    }
+
+    .subscribe-button {
+      background: $slime-green-50;
+      color: $dark-gray;
+      display: block;
+      font-weight: var(--font-weight--medium);
+      margin: 12px 0 0;
+      text-decoration: none;
+      width: 160px;
+      text-align: center;
+      border-radius: 2px;
+      padding: 8px;
+
+      &:hover {
+        background: $slime-green-75;
+        color: $dark-gray;
+      }
+    }
+
+    .subscribe-button.amazon {
+      background: none;
+    }
+  }
+}
+
+.club-new {
+  background-color: rgba(238, 238, 238, 0.5) !important;
+  background-blend-mode: color;
+  background-size: cover;
+  margin-top: -12px;
+  padding: 24px 0;
+
+  .errors-container {
+    background-color: $red;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 8px;
+  }
+
+  #new_club, .edit_subscription {
+    background-color: $blue-80;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 24px;
+    position: relative;
+    width: 500px;
+  }
+
+  .new-subscription-inputs-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .book-image {
+      margin-right: 12px;
+      img {
+        max-height: 250px;
+      }
+    }
+
+    .form-inputs {
+      margin-left: 12px;
+    }
+  }
+
+  .book-details {
+    text-align: center;
+  }
+
+  .detail {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  #new-club-submit {
+    align-items: center;
+    background-color: transparent;
+    border: 3px solid $dark-gray;
+    border-radius: 100%;
+    bottom: 30px;
+    color: $dark-gray;
+    display: flex;
+    font-weight: var(--font-weight--medium);
+    justify-content: center;
+    height: 90px;
+    margin: 0 auto;
+    text-decoration: none;
+    width: 90px;
+
+    &:hover {
+      background: linear-gradient(0deg, $red -160%, $yellow 100%);
+      color: $dark-gray;
+    }
+  }
+
+  .now-label {
+    display: inline;
+  }
+
+  .subscription_now {
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .full-access-notice {
+    display: block;
+    position: relative;
+    text-align: center;
+    top: 20px;
+  }
+
+  @media (max-device-width: 812px) {
+    padding: 0;
+
+    h1 {
+      font-size: 4rem;
+    }
+
+    .detail, p {
+      font-size: 2rem;
+    }
+
+
+
+    input.boolean, input#now {
+      min-height: 2rem;
+      min-width: 2rem;
+    }
+
+    .new-subscription-inputs-container {
+      flex-direction: column;
+
+      .book-image > img {
+        max-height: 450px;
+      }
+    }
+
+    #new_subscription, .edit_subscription {
+      width: 100%;
+    }
+
+    #new-subscription-submit {
+      border: 5px solid $dark-gray;
+      font-size: 3rem;
+      height: 200px;
+      padding-left: 25px;
+      width: 200px;
+    }
+
+    .full-access-notice {
+      font-size: 2rem;
+    }
+  }
+}
+
+.clubs-edit {
+  .errors-container {
+    background-color: $red;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    width: 500px;
+  }
+}
