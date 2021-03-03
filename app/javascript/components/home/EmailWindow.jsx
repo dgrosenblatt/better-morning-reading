@@ -29,7 +29,7 @@ const EmailReadingPane = ({ activeEmailId }) => {
 }
 
 const EmailWindow = () => {
-  let [activeEmailId, setActiveEmailId] = useState(2)
+  let [activeEmailId, setActiveEmailId] = useState(1)
   return (
     <div className="email-window">
       <div className="top-bar"></div>
@@ -59,8 +59,8 @@ const EmailWindow = () => {
             activeEmailId={activeEmailId}
             setActiveEmailId={setActiveEmailId}
           >
-            <h4>Read your first book for free</h4>
-            <p>Afterwards continue to receive emails from our collection of classic books for $12/year</p>
+            <h4>Organize a club or read solo</h4>
+            <p>Choose from our collection of classics for your next book club </p>
           </EmailListItem>
         </div>
         <div className="email-reading-pane">
