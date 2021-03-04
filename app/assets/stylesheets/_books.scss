@@ -101,7 +101,7 @@
       margin: 0 3px 0 5px;
     }
 
-    .subscribe-button {
+    .card-action-button {
       background: $slime-green-50;
       color: $dark-gray;
       display: block;
@@ -119,7 +119,7 @@
       }
     }
 
-    .subscribe-button.amazon {
+    .card-action-button.amazon {
       background: none;
     }
   }
@@ -165,7 +165,7 @@
         margin-bottom: 2rem;
       }
 
-      .subscribe-button {
+      .card-action-button {
         height: 200px;
         margin: 24px auto;
         display: flex;

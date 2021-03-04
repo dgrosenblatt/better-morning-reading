@@ -6,7 +6,7 @@
 
     <% if @club.organizer == current_user && @club.status == Club::STATUSES[:enrolling] %>
       <div class="start-club-button">
-        <%= link_to "Start", start_club_path(@club), class: "subscribe-button", method: :patch %>
+        <%= link_to "Start", start_club_path(@club), class: "card-action-button", method: :patch %>
       </div>
     <% end %>
 

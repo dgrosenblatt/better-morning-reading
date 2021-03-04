@@ -55,8 +55,8 @@
         <div class="card-detail">A bookclub organized by <%= @club.organizer.name %></div>
         <div class="card-detail">Status: <%= @club.status.capitalize %></div>
         <div class="card-detail">Sent in <%= @club.book.chapters.count %> installments</div>
-        <%= link_to "Join", club_memberships_path(@club, passcode: @q), class: "subscribe-button", method: :post %>
-        <%= link_to "View on Amazon", @club.book.amazon_url, target: "_blank", class: "subscribe-button amazon" %>
+        <%= link_to "Join", club_memberships_path(@club, passcode: @q), class: "card-action-button", method: :post %>
+        <%= link_to "View on Amazon", @club.book.amazon_url, target: "_blank", class: "card-action-button amazon" %>
       </div>
     </div>
   <% elsif @q %>

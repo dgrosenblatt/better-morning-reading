@@ -41,10 +41,10 @@
           <div class="author"><%= book.author %></div>
           <div class="card-detail">Sent in <%= book.chapters.count %> installments</div>
           <% if @able_to_start %>
-            <%= link_to "Read Now", new_book_subscription_path(book.id), class: "subscribe-button" %>
-            <%= link_to "Start Bookclub", new_book_club_path(book.id), class: "subscribe-button" %>
+            <%= link_to "Read Now", new_book_subscription_path(book.id), class: "card-action-button" %>
+            <%= link_to "Start Bookclub", new_book_club_path(book.id), class: "card-action-button" %>
           <% end %>
-          <%= link_to "View on Amazon", book.amazon_url, target: "_blank", class: "subscribe-button amazon" %>
+          <%= link_to "View on Amazon", book.amazon_url, target: "_blank", class: "card-action-button amazon" %>
         </div>
       </div>
     <% end %>
