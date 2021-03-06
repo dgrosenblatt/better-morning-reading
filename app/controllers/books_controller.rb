@@ -10,7 +10,7 @@ class BooksController < ApplicationController
         .order(order)
         .limit(200)
     else
-      @books = Book.all.order(order).limit(200)
+      @books = Book.all.includes(:chapters).order(order).limit(200)
     end
   end
 

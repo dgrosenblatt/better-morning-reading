@@ -39,7 +39,7 @@
         <div class="book-card-right">
           <h2 class="book-name"><%= book.name %></h2>
           <div class="author"><%= book.author %></div>
-          <div class="card-detail">Sent in <%= book.chapters.count %> installments</div>
+          <div class="card-detail">Sent in <%= book.chapters.length %> installments</div>
           <% if @able_to_start %>
             <%= link_to "Read Now", new_book_subscription_path(book.id), class: "card-action-button" %>
             <%= link_to "Start Bookclub", new_book_club_path(book.id), class: "card-action-button" %>
