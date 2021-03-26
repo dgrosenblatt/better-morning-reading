@@ -1563,3 +1563,323 @@ end
 if the_trial_book.persisted?
   puts 'Seeded The Trial'
 end
+
+the_great_gatsby_book = Book.find_or_create_by(name: 'The Great Gatsby') do |book|
+  book.author = 'F. Scott Fitzgerald'
+  book.cover_image_full_s3_key = 'the-great-gatsby/the-great-gatsby-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-great-gatsby/the-great-gatsby-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1982149485?tag=bettermorning-20'
+end
+9.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_great_gatsby_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-great-gatsby/chapters/chapter#{n+1}.html"
+  end
+end
+if the_great_gatsby_book.persisted?
+  puts 'Seeded The Great Gatsby'
+end
+
+the_yellow_wallpaper_book = Book.find_or_create_by(name: 'The Yellow Wallpaper') do |book|
+  book.author = 'Charlotte Perkins Gilman'
+  book.cover_image_full_s3_key = 'the-yellow-wallpaper/the-yellow-wallpaper-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-yellow-wallpaper/the-yellow-wallpaper-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08XWN6BZ6?tag=bettermorning-20'
+end
+1.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_yellow_wallpaper_book.id) do |chapter|
+    chapter.name = "A Short Story"
+    chapter.text_s3_key = "the-yellow-wallpaper/chapters/chapter#{n+1}.html"
+  end
+end
+if the_yellow_wallpaper_book.persisted?
+  puts 'Seeded The Yellow Wallpaper'
+end
+
+the_strange_case_of_dr_jekyll_and_mr_hyde_book = Book.find_or_create_by(name: 'The Strange Case Of Dr. Jekyll And Mr. Hyde') do |book|
+  book.author = 'Robert Louis Stevenson'
+  book.cover_image_full_s3_key = 'the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0451532252?tag=bettermorning-20'
+end
+10.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_strange_case_of_dr_jekyll_and_mr_hyde_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-strange-case-of-dr-jekyll-and-mr-hyde/chapters/chapter#{n+1}.html"
+  end
+end
+if the_strange_case_of_dr_jekyll_and_mr_hyde_book.persisted?
+  puts 'Seeded The Strange Case Of Dr. Jekyll And Mr. Hyde'
+end
+
+the_painted_veil_book = Book.find_or_create_by(name: 'The Painted Veil') do |book|
+  book.author = 'W. Somerset Maugham'
+  book.cover_image_full_s3_key = 'the-painted-veil/the-painted-veil-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-painted-veil/the-painted-veil-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B011T77KP0?tag=bettermorning-20'
+end
+80.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_painted_veil_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-painted-veil/chapters/chapter#{n+1}.html"
+  end
+end
+if the_painted_veil_book.persisted?
+  puts 'Seeded The Painted Veil'
+end
+
+the_tenant_of_wildfell_hall_book = Book.find_or_create_by(name: 'The Tenant of Wildfell Hall') do |book|
+  book.author = 'Anne Bronte'
+  book.cover_image_full_s3_key = 'the-tenant-of-wildfell-hall/the-tenant-of-wildfell-hall-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-tenant-of-wildfell-hall/the-tenant-of-wildfell-hall-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B07HQYJYL8?tag=bettermorning-20'
+end
+53.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_tenant_of_wildfell_hall_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-tenant-of-wildfell-hall/chapters/chapter#{n+1}.html"
+  end
+end
+if the_tenant_of_wildfell_hall_book.persisted?
+  puts 'Seeded The Tenant of Wildfell Hall'
+end
+
+villette_book = Book.find_or_create_by(name: 'Villette') do |book|
+  book.author = 'Charlotte Bronte'
+  book.cover_image_full_s3_key = 'villette/villette-full.jpg'
+  book.cover_image_thumb_s3_key = 'villette/villette-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08Y76VZNT?tag=bettermorning-20'
+end
+42.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: villette_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "villette/chapters/chapter#{n+1}.html"
+  end
+end
+if villette_book.persisted?
+  puts 'Seeded Villette'
+end
+
+the_innocence_of_father_brown_book = Book.find_or_create_by(name: 'The Innocence of Father Brown') do |book|
+  book.author = 'G. K. Chesterton'
+  book.cover_image_full_s3_key = 'the-innocence-of-father-brown/the-innocence-of-father-brown-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-innocence-of-father-brown/the-innocence-of-father-brown-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1655527150?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_innocence_of_father_brown_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-innocence-of-father-brown/chapters/chapter#{n+1}.html"
+  end
+end
+if the_innocence_of_father_brown_book.persisted?
+  puts 'Seeded The Innocence of Father Brown'
+end
+
+botchan_book = Book.find_or_create_by(name: 'Botchan') do |book|
+  book.author = 'Natsume Soseki'
+  book.cover_image_full_s3_key = 'botchan/botchan-full.jpg'
+  book.cover_image_thumb_s3_key = 'botchan/botchan-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/4805312637?tag=bettermorning-20'
+end
+11.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: botchan_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "botchan/chapters/chapter#{n+1}.html"
+  end
+end
+if botchan_book.persisted?
+  puts 'Seeded Botchan'
+end
+
+behind_a_mask_book = Book.find_or_create_by(name: 'Behind a Mask') do |book|
+  book.author = 'Louisa May Alcott'
+  book.cover_image_full_s3_key = 'behind-a-mask/behind-a-mask-full.jpg'
+  book.cover_image_thumb_s3_key = 'behind-a-mask/behind-a-mask-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0688151329?tag=bettermorning-20'
+end
+9.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: behind_a_mask_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "behind-a-mask/chapters/chapter#{n+1}.html"
+  end
+end
+if behind_a_mask_book.persisted?
+  puts 'Seeded Behind a Mask'
+end
+
+come_out_of_the_kitchen_a_romance_book = Book.find_or_create_by(name: 'Come Out of the Kitchen! A Romance') do |book|
+  book.author = 'Alice Duer Miller'
+  book.cover_image_full_s3_key = 'come-out-of-the-kitchen-a-romance/come-out-of-the-kitchen-a-romance-full.jpg'
+  book.cover_image_thumb_s3_key = 'come-out-of-the-kitchen-a-romance/come-out-of-the-kitchen-a-romance-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B07KQMTW73?tag=bettermorning-20'
+end
+13.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: come_out_of_the_kitchen_a_romance_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "come-out-of-the-kitchen-a-romance/chapters/chapter#{n+1}.html"
+  end
+end
+if come_out_of_the_kitchen_a_romance_book.persisted?
+  puts 'Seeded Come Out of the Kitchen! A Romance'
+end
+
+evelina_book = Book.find_or_create_by(name: 'Evelina') do |book|
+  book.author = 'Fanny Burney'
+  book.cover_image_full_s3_key = 'evelina/evelina-full.jpg'
+  book.cover_image_thumb_s3_key = 'evelina/evelina-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B072BW658J?tag=bettermorning-20'
+end
+84.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: evelina_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "evelina/chapters/chapter#{n+1}.html"
+  end
+end
+if evelina_book.persisted?
+  puts 'Seeded Evelina'
+end
+
+north_and_south_book = Book.find_or_create_by(name: 'North and South') do |book|
+  book.author = 'Elizabeth Gaskell'
+  book.cover_image_full_s3_key = 'north-and-south/north-and-south-full.jpg'
+  book.cover_image_thumb_s3_key = 'north-and-south/north-and-south-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08XP9WHL3?tag=bettermorning-20'
+end
+52.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: north_and_south_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "north-and-south/chapters/chapter#{n+1}.html"
+  end
+end
+if north_and_south_book.persisted?
+  puts 'Seeded North and South'
+end
+
+the_interesting_narrative_of_the_life_of_olaudah_equiano_book = Book.find_or_create_by(name: 'The Interesting Narrative of the Life of Olaudah Equiano') do |book|
+  book.author = 'Olaudah Equiano'
+  book.cover_image_full_s3_key = 'the-interesting-narrative-of-the-life-of-olaudah-equiano/the-interesting-narrative-of-the-life-of-olaudah-equiano-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-interesting-narrative-of-the-life-of-olaudah-equiano/the-interesting-narrative-of-the-life-of-olaudah-equiano-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/0375761152?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_interesting_narrative_of_the_life_of_olaudah_equiano_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-interesting-narrative-of-the-life-of-olaudah-equiano/chapters/chapter#{n+1}.html"
+  end
+end
+if the_interesting_narrative_of_the_life_of_olaudah_equiano_book.persisted?
+  puts 'Seeded The Interesting Narrative of the Life of Olaudah Equiano'
+end
+
+herland_book = Book.find_or_create_by(name: 'Herland') do |book|
+  book.author = 'Charlotte Perkins Gilman'
+  book.cover_image_full_s3_key = 'herland/herland-full.jpg'
+  book.cover_image_thumb_s3_key = 'herland/herland-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B00A73FEWE?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: herland_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "herland/chapters/chapter#{n+1}.html"
+  end
+end
+if herland_book.persisted?
+  puts 'Seeded Herland'
+end
+
+the_home_and_the_world_book = Book.find_or_create_by(name: 'The Home and the World') do |book|
+  book.author = 'Rabindranath Tagore'
+  book.cover_image_full_s3_key = 'the-home-and-the-world/the-home-and-the-world-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-home-and-the-world/the-home-and-the-world-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1540875415?tag=bettermorning-20'
+end
+12.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_home_and_the_world_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-home-and-the-world/chapters/chapter#{n+1}.html"
+  end
+end
+if the_home_and_the_world_book.persisted?
+  puts 'Seeded The Home and the World'
+end
+
+around_the_world_in_80_days_book = Book.find_or_create_by(name: 'Around the World in 80 Days') do |book|
+  book.author = 'Jules Verne'
+  book.cover_image_full_s3_key = 'around-the-world-in-80-days/around-the-world-in-80-days-full.jpg'
+  book.cover_image_thumb_s3_key = 'around-the-world-in-80-days/around-the-world-in-80-days-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B08NXN29JB?tag=bettermorning-20'
+end
+37.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: around_the_world_in_80_days_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "around-the-world-in-80-days/chapters/chapter#{n+1}.html"
+  end
+end
+if around_the_world_in_80_days_book.persisted?
+  puts 'Seeded Around the World in 80 Days'
+end
+
+a_vindication_of_the_rights_of_woman_book = Book.find_or_create_by(name: 'A Vindication of the Rights of Woman') do |book|
+  book.author = 'Mary Wollstonecraft'
+  book.cover_image_full_s3_key = 'a-vindication-of-the-rights-of-woman/a-vindication-of-the-rights-of-woman-full.jpg'
+  book.cover_image_thumb_s3_key = 'a-vindication-of-the-rights-of-woman/a-vindication-of-the-rights-of-woman-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/B0915Z8PXL?tag=bettermorning-20'
+end
+13.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: a_vindication_of_the_rights_of_woman_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "a-vindication-of-the-rights-of-woman/chapters/chapter#{n+1}.html"
+  end
+end
+if a_vindication_of_the_rights_of_woman_book.persisted?
+  puts 'Seeded A Vindication of the Rights of Woman'
+end
+
+benhur_book = Book.find_or_create_by(name: 'Ben-Hur') do |book|
+  book.author = 'Lew Wallace'
+  book.cover_image_full_s3_key = 'ben-hur/ben-hur-full.jpg'
+  book.cover_image_thumb_s3_key = 'ben-hur/ben-hur-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1853262838?tag=bettermorning-20'
+end
+81.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: benhur_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "ben-hur/chapters/chapter#{n+1}.html"
+  end
+end
+if benhur_book.persisted?
+  puts 'Seeded Ben-Hur'
+end
+
+ivanhoe_book = Book.find_or_create_by(name: 'Ivanhoe') do |book|
+  book.author = 'Sir Walter Scott'
+  book.cover_image_full_s3_key = 'ivanhoe/ivanhoe-full.jpg'
+  book.cover_image_thumb_s3_key = 'ivanhoe/ivanhoe-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/107993006X?tag=bettermorning-20'
+end
+44.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: ivanhoe_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "ivanhoe/chapters/chapter#{n+1}.html"
+  end
+end
+if ivanhoe_book.persisted?
+  puts 'Seeded Ivanhoe'
+end
+
+candide_book = Book.find_or_create_by(name: 'Candide') do |book|
+  book.author = 'Voltaire'
+  book.cover_image_full_s3_key = 'candide/candide-full.jpg'
+  book.cover_image_thumb_s3_key = 'candide/candide-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/dp/1087113490?tag=bettermorning-20'
+end
+30.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: candide_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "candide/chapters/chapter#{n+1}.html"
+  end
+end
+if candide_book.persisted?
+  puts 'Seeded Candide'
+end
