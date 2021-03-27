@@ -5,6 +5,16 @@
       <%= f.text_field :query, placeholder: 'Search by Title or Author', class: "book-query-input", value: @query %>
       <%= f.submit 'Search', class: "book-query-button" %>
     <% end %>
+    <div class="quick-filters-container">
+      <div>Quick Filters:</div>
+
+      <%= link_to "Agatha Christie", books_path(query: 'Agatha Christie'), class: 'quick-filter-link'%>
+      <%= link_to "Shakespeare", books_path(query: 'Shakespeare'), class: 'quick-filter-link'%>
+      <%= link_to "Jane Austen", books_path(query: 'Jane Austen'), class: 'quick-filter-link'%>
+      <%= link_to "Sherlock Holmes", books_path(query: 'Arthur Conan Doyle'), class: 'quick-filter-link'%>
+      <%= link_to "The Bronte Sisters", books_path(query: 'Bronte'), class: 'quick-filter-link'%>
+      <%= link_to "All", books_path, class: 'quick-filter-link'%>
+    </div>
   </div>
   <div class="results-notice">
     <p>Showing <%= pluralize(@books.length, 'book') %></p>

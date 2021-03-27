@@ -13,6 +13,26 @@
     text-align: center;
   }
 
+  .quick-filters-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .quick-filter-link {
+    background-color: $yellow-90;
+    border-radius: 3px;
+    color: $dark-gray;
+    margin: 0 0 0.5rem 1rem;
+    padding: 6px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $yellow-80;
+    }
+  }
+
   .account-notice {
     background-color: $yellow-90;
     border-radius: 3px;

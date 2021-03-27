@@ -7,6 +7,7 @@ class BooksController < ApplicationController
     if search_term.present?
       @books = Book.where('LOWER(name) ilike ?', "%#{search_term}%")
         .or(Book.where('LOWER(author) ilike ?', "%#{search_term}%"))
+        .includes(:chapters)
         .order(order)
         .limit(200)
     else
