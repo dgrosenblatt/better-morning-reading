@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PrideAndPrejudice from './PrideAndPrejudice'
-import Odyssey from './Odyssey'
 import HuckFinn from './HuckFinn'
+import Gatsby from './Gatsby';
 
 const EmailListItem = ({ id, activeEmailId, setActiveEmailId, children }) => {
   const className = id === activeEmailId ? 'email-list-item active' : 'email-list-item'
@@ -22,7 +22,7 @@ function htmlDecode(input) {
 const EmailReadingPane = ({ activeEmailId }) => {
   const content = {
     1: <PrideAndPrejudice coverUrl={htmlDecode(window.prideCoverUrl)} />,
-    2: <Odyssey coverUrl={htmlDecode(window.odysseyCoverUrl)} />,
+    2: <Gatsby coverUrl={htmlDecode(window.gatsbyCoverUrl)} />,
     3: <HuckFinn coverUrl={htmlDecode(window.huckCoverUrl)} />
   }
   return content[activeEmailId]

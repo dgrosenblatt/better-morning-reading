@@ -18,6 +18,10 @@ class StaticImages
       s3_image('pride-and-prejudice-full.jpg')
     end
 
+    def gatsby_cover
+      s3_image('the-great-gatsby-full.jpg')
+    end
+
     private
 
     def s3_image(key)
