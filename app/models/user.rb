@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :club_memberships
   has_many :clubs, through: :club_memberships
   has_one :active_club
+  has_many :user_favorite_books
+  has_many :favorite_books, through: :user_favorite_books, source: :book
 
   def active_subscription
     subscriptions.find_by(status: 'active')

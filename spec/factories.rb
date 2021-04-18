@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :user_favorite_book do
+    user
+    book
+  end
+
   factory :scheduled_club_email do
     club
     chapter

@@ -10,10 +10,13 @@ Rails.application.routes.draw do
   get '/me', to: 'current_user#show'
   get '/manage', to: 'current_user#manage', as: 'manage'
 
+
   resources :books, only: :index do
     resources :clubs, only: [:new, :create]
     resources :subscriptions, only: [:new, :create, :edit, :update]
+    resources :add_user_favorite_books, only: :create
   end
+  resources :favorites, only: :index
   resources :clubs, only: [:show, :index, :edit, :update] do
     resources :club_memberships, only: :create, as: 'memberships'
   end

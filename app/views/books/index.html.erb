@@ -55,6 +55,16 @@
             <%= link_to "Start Bookclub", new_book_club_path(book.id), class: "card-action-button" %>
           <% end %>
           <%= link_to "View on Amazon", book.amazon_url, target: "_blank", class: "card-action-button amazon" %>
+          <% if current_user && !@favorite_books_by_id[book.id] %>
+            <%= link_to "⭐️",
+              book_add_user_favorite_books_path(book),
+              title: "Add to your bookshelf",
+              id: "favorite-#{book.id}",
+              class: "book-favorite-link",
+              remote: true,
+              method: :post
+            %>
+          <% end %>
         </div>
       </div>
     <% end %>
