@@ -21,13 +21,13 @@
           <% end %>
         </div>
       <% end %>
-
+      <% puts "email is #{@email}"%>
       <div class="form-inputs">
         <%= f.input :email,
                     required: true,
                     autofocus: true,
                     error: false,
-                    input_html: { autocomplete: "email" }%>
+                    input_html: { value: "#{@email}", autocomplete: "email" }%>
         <%= f.input :name,
                     required: true,
                     autofocus: true,

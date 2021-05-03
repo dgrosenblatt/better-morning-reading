@@ -26,6 +26,30 @@ class StaticImages
       s3_image('cool-background.png')
     end
 
+    def sun_background
+      s3_image('sun-background.png')
+    end
+
+    def ocean_background
+      s3_image('ocean-background.png')
+    end
+
+    def kale_background
+      s3_image('kale-background.png')
+    end
+
+    def gooey_background
+      s3_image('gooey-background.png')
+    end
+
+    def gooey_background_small
+      s3_image('gooey-background-small.png')
+    end
+
+    def fresh_background
+      s3_image('fresh-background.jpeg')
+    end
+
     private
 
     def s3_image(key)

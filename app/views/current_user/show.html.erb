@@ -1,5 +1,5 @@
 <div class="current-user-show">
-  <div class="profile-pane">
+  <div class="profile-pane" style="background: url(<%= @cool_background_url %>);background-size:cover;background-repeat:no-repeat">
     <h1>Me</h1>
     <p class="profile-wrap"><%= @user.email %></p>
     <p class="profile-wrap"><%= @user.name %></p>
@@ -14,7 +14,7 @@
       <%= link_to "Manage account", manage_path %>
     <% end %>
   </div>
-  <div class="subscription-pane">
+  <div class="subscription-pane" style="background: url(<%= @cool_background_url %>);background-size:cover;background-repeat:no-repeat">
     <% if @subscription.present? %>
       <%= render 'subscription_details' %>
     <% elsif @club.present? %>

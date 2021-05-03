@@ -31,6 +31,12 @@ class ApplicationController < ActionController::Base
 
   # Static from S3
   def set_static_images
-    @cool_background_url  = StaticImages.cool_background
+    @cool_background_url = StaticImages.cool_background
+    @sun_background_url = StaticImages.sun_background
+    @ocean_background_url = StaticImages.ocean_background
+    @kale_background_url = StaticImages.kale_background
+    @gooey_background_url = StaticImages.gooey_background
+    @gooey_background_small_url = StaticImages.gooey_background_small
+    @fresh_background_url = StaticImages.fresh_background
   end
 end

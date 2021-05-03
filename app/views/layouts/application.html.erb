@@ -8,9 +8,13 @@
     <%= favicon_link_tag asset_path('icon.svg') %>
   </head>
 
-  <body>
+  <% if action_name == 'show' && controller_name == 'home' %>
+    <body style="background: url(<%= @sun_background_url %>);background-repeat:no-repeat;background-size:cover;background-position-y: bottom;">
+  <% else %>
+    <body>
+  <% end %>
     <%= render 'shared/header' %>
-    <p class="notice"><%= notice %></p>
+    <p class="notice" style="background: url(<%= @cool_background_url %>);background-repeat:no-repeat;background-size:cover;background-position-y: bottom;"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <main><%= yield %></main>
     <%= render 'shared/footer' %>

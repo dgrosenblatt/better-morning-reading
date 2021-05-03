@@ -5,6 +5,7 @@
   font-weight: bold;
   font-size: 50px;
   line-height: 59px;
+  margin: 0;
   text-align: center;
 }
 
@@ -17,6 +18,25 @@
   margin-top: -12px;
   padding-top: 22px;
   width: 100%;
+}
+
+.get-started-form {
+  display: flex;
+  justify-content: center;
+}
+
+.get-started-button {
+  color: white;
+  text-shadow: 0.5px 0.5px $dark-text;
+  font-family: var(--font-family--heading);
+  height: 40px;
+  margin-left: 0.5rem;
+}
+
+.get-started-input {
+  text-align: center;
+  height: 40px;
+  width: 300px;
 }
 
 .sign-up-button {
@@ -48,7 +68,7 @@
 }
 
 .book-display-container {
-  background: $blue-20;
+  background: $blue-95;
   border-top: 1px dashed $blue;
   display: flex;
   flex-direction: column;
@@ -66,6 +86,7 @@
 }
 
 .book-display-title {
+  text-shadow: 0.25px 0.25px #bbb;
   font-size: 1.75rem;
   margin-top: 52px;
   text-align: center;
@@ -77,7 +98,6 @@
 }
 
 .books-link-container {
-  background: $blue-20;
   display: flex;
   justify-content: center;
   padding-bottom: 72px;
@@ -149,5 +169,23 @@
     height: 224px;
     padding-top: 96px;
     width: 224px;
+  }
+
+  .get-started-form {
+    flex-direction: column;
+  }
+
+  .get-started-input {
+    font-size: 54px;
+    height: inherit;
+    padding: 36px 0;
+    width: 100%;
+  }
+
+  .get-started-button {
+    font-size: 64px;
+    height: inherit;
+    margin: 0;
+    padding: 32px;
   }
 }
