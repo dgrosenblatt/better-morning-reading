@@ -1,0 +1,15 @@
+document.getElementById('favorite-<%= @user_favorite_book.book_id %>').outerHTML = `
+  <div
+    class="book-favorite-alert"
+    id="book-favorite-alert-<%= @user_favorite_book.book_id %>"
+  >
+    <div>Book Added!</div>
+    <a href="/reading_list">View Bookshelf</a>
+    <span
+      onclick="document.getElementById('book-favorite-alert-<%= @user_favorite_book.book_id %>').remove()"
+      class="close-favorite-alert"
+    >
+      x
+    </span>
+  </div>
+`;

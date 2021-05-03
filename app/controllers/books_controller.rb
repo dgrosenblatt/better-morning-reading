@@ -13,9 +13,23 @@ class BooksController < ApplicationController
     else
       @books = Book.all.includes(:chapters).order(order).limit(200)
     end
+
+    @favorite_books_by_id = favorite_books_by_id
   end
 
   private
+
+  def favorite_books_by_id
+    favorite_books = {}
+    if current_user
+      favorites = current_user.favorite_books
+      favorites.each do |book|
+        favorite_books[book.id] = true
+      end
+    end
+
+    favorite_books
+  end
 
   def order
     { name: :asc }

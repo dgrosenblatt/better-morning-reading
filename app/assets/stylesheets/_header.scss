@@ -62,6 +62,30 @@ header {
   padding-left: 2.5px;
 }
 
+.header-link-flex {
+  align-items: center;
+  border: 3px solid $dark-gray;
+  border-radius: 100%;
+  bottom: 19px;
+  color: $dark-gray;
+  display: flex;
+  font-weight: var(--font-weight--medium);
+  height: 76px;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 76px;
+  font-size: 14px;
+  line-height: 18px;
+  padding-top: 4px;
+
+  &:hover {
+    background: linear-gradient(0deg, $red -160%, $yellow 100%);
+    color: $dark-gray;
+  }
+}
+
 
 .bmr-icon-link {
   bottom: 10px;
@@ -79,11 +103,17 @@ header {
     height: 142px;
   }
 
-  .header-link {
+  .header-link, .header-link-flex {
     height: 135px;
     font-size: 32px;
     padding-top: 38px;
     width: 135px;
+  }
+
+  .header-link-flex {
+    font-size: 28px;
+    line-height: 32px;
+    padding-top: 0;
   }
 
   .header-link.sign-in {

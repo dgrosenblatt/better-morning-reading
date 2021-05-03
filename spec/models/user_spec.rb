@@ -13,6 +13,8 @@ RSpec.describe User, type: :model do
     it { should have_many(:club_memberships) }
     it { should have_many(:clubs).through(:club_memberships) }
     it { should have_many(:subscriptions) }
+    it { should have_many(:user_favorite_books) }
+    it { should have_many(:favorite_books).class_name('Book') }
 
     describe 'active_subscription' do
       it 'returns a users subscription with active status when present' do
@@ -29,6 +31,24 @@ RSpec.describe User, type: :model do
         create(:subscription, user: user, status: 'done')
 
         expect(user.active_subscription).to eq nil
+      end
+    end
+
+    describe 'favorite_books' do
+      it 'returns books that have been added as favorites' do
+        book_1 = create(:book)
+        book_2 = create(:book)
+        book_3 = create(:book)
+        user = create(:user)
+
+        create(:user_favorite_book, user: user, book: book_1)
+        create(:user_favorite_book, user: user, book: book_2)
+
+        expect(user.favorite_books.length).to eq 2
+        expect(user.favorite_books).to include book_1
+        expect(user.favorite_books).to include book_2
+        expect(user.favorite_books).not_to include book_3
+
       end
     end
   end
