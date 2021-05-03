@@ -22,6 +22,10 @@ class StaticImages
       s3_image('the-great-gatsby-full.jpg')
     end
 
+    def cool_background
+      s3_image('cool-background.png')
+    end
+
     private
 
     def s3_image(key)

@@ -1,4 +1,4 @@
-class AddUserFavoriteBooksController < AuthenticatedController
+class AddUserFavoriteBooksController < FullAccessController
   def create
     @user_favorite_book = UserFavoriteBook.new(
       user_id: current_user.id,

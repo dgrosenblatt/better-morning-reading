@@ -1,23 +1,7 @@
-<div class="books-index">
-  <h1 class="title">Browse All Books</h1>
-  <div class="search-bar-container">
-    <%= form_with url: books_path, method: :get, local: true, class: "book-query-form" do |f| %>
-      <%= f.text_field :query, placeholder: 'Search by Title or Author', class: "book-query-input", value: @query %>
-      <%= f.submit 'Search', class: "book-query-button" %>
-    <% end %>
-    <div class="quick-filters-container">
-      <div>Quick Filters:</div>
-
-      <%= link_to "Agatha Christie", books_path(query: 'Agatha Christie'), class: 'quick-filter-link'%>
-      <%= link_to "Shakespeare", books_path(query: 'Shakespeare'), class: 'quick-filter-link'%>
-      <%= link_to "Jane Austen", books_path(query: 'Jane Austen'), class: 'quick-filter-link'%>
-      <%= link_to "Sherlock Holmes", books_path(query: 'Arthur Conan Doyle'), class: 'quick-filter-link'%>
-      <%= link_to "The Bronte Sisters", books_path(query: 'Bronte'), class: 'quick-filter-link'%>
-      <%= link_to "All", books_path, class: 'quick-filter-link'%>
-    </div>
-  </div>
+<div class="reading-list-show">
+  <h1 class="title">Your Reading List</h1>
   <div class="results-notice">
-    <p>Showing <%= pluralize(@books.length, 'book') %></p>
+    <p><%= pluralize(@books.length, 'book') %></p>
     <% if !user_signed_in? %>
       <div class="account-notice">
         <%= link_to 'Please sign up for a free account to get started. ➡️', new_user_registration_path %>
@@ -43,6 +27,9 @@
     <% end %>
   </div>
   <div class="books-container">
+    <% if @books.length == 0 %>
+      <%= render 'empty' %>
+    <% end %>
     <% @books.each do |book| %>
       <div class="book-card">
         <div class="book-card-left"><%= image_tag book.cover_image_thumb_url, class: "book-image" %></div>
@@ -55,17 +42,14 @@
             <%= link_to "Start Bookclub", new_book_club_path(book.id), class: "card-action-button" %>
           <% end %>
           <%= link_to "View on Amazon", book.amazon_url, target: "_blank", class: "card-action-button amazon" %>
-          <% if current_user && current_user.has_full_access && !@favorite_books_by_id[book.id] %>
-            <%= link_to "⭐️",
-              book_add_user_favorite_books_path(book),
-              title: "Add to your reading list",
-              id: "favorite-#{book.id}",
-              class: "book-favorite-link",
-              remote: true,
-              method: :post
-            %>
-          <% end %>
         </div>
+        <%= link_to "Remove",
+          remove_user_favorite_book_path(book),
+          title: "Remove from reading list",
+          id: "favorite-#{book.id}",
+          class: "book-remove-link",
+          method: :delete
+        %>
       </div>
     <% end %>
   </div>

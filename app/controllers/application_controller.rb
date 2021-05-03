@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_stripe_params
+  before_action :set_static_images
 
   protected
 
@@ -26,5 +27,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(_resource)
     me_path
+  end
+
+  # Static from S3
+  def set_static_images
+    @cool_background_url  = StaticImages.cool_background
   end
 end
