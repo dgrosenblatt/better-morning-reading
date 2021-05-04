@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:new, :create, :edit, :update]
     resources :add_user_favorite_books, only: :create
   end
+  resources :on_demand_send_subscriptions, only: :update
   resources :remove_user_favorite_books, only: :destroy
   resource :reading_list, only: :show
   resources :clubs, only: [:show, :index, :edit, :update] do

@@ -63,6 +63,14 @@
     .cover-image {
       max-width: 300px;
     }
+
+    .subscription-on-demand-send {
+      color: $dark-gray;
+      padding: 8px;
+      text-decoration: none;
+      background-color: $yellow;
+      border-radius: 4px;
+    }
   }
 
   .schedule {

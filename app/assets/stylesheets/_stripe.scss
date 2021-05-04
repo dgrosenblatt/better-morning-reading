@@ -18,6 +18,10 @@
   display: none;
 }
 
+.stripe-features-list {
+  text-align: left;
+}
+
 .stripe-form-container {
   background-color: #ffffff;
   border-radius: 3px;
@@ -90,6 +94,11 @@ button.disabled, button.disabled:hover {
 }
 
 @media (max-device-width: 812px) {
+  .stripe-features-list {
+    font-size: 30px;
+    line-height: 72px;
+  }
+
   #stripe-open {
     display: block;
     font-size: 2rem;

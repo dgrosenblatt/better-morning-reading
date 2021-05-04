@@ -44,6 +44,32 @@ class Subscription < ApplicationRecord
     # assume for now that no books have only one chapter
   end
 
+  def send_on_demand!
+    scheduled_chapter_email = scheduled_chapter_emails
+      .where(sent_at: nil)
+      .order(position: :asc)
+      .limit(1)
+      .first
+    chapter = scheduled_chapter_email.chapter
+
+    message = {
+      recipient: user.email,
+      is_free_account: !user.has_full_access,
+      book_name: book.name,
+      chapter_name: chapter.name,
+      chapter_s3_key: chapter.text_s3_key,
+    }
+    puts message
+    sqs = Aws::SQS::Queue.new(url: AWS_SQS_QUEUE_URL)
+    sqs.send_message(message_body: message.to_json)
+
+    scheduled_chapter_email.update(sent_at: Time.current)
+
+    if scheduled_chapter_emails.reload.pluck(:sent_at).all?(&:present?)
+      update(status: 'done')
+    end
+  end
+
   # custom validations
   def one_or_more_days
     any_days = [sunday, monday, tuesday, wednesday, thursday, friday, saturday].any? do |day|

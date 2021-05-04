@@ -2,6 +2,13 @@
   <h1>Currently reading</h1>
   <div><%= image_tag  @subscription.book.cover_image_full_url, class: 'cover-image' %></div>
   <h2><%= @subscription.book.name %> by <%= @subscription.book.author %></h2>
+  <% if current_user.has_full_access %>
+    <%= link_to "Send Next Chapter Now",
+      on_demand_send_subscription_path(@subscription),
+      class: "subscription-on-demand-send",
+      method: :patch
+    %>
+  <% end %>
 </div>
 
 <details class="schedule-container" open>
