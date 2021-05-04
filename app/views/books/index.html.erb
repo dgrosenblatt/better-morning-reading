@@ -28,12 +28,12 @@
         <%= link_to 'Please upgrade your membership to read another book.', '#', class: 'stripe-books-index', id: 'stripe-books-index' %>
       </div>
       <% @able_to_start = false %>
-    <% elsif !current_user.has_full_access && current_user.active_subscription.present? || current_user.active_club.present? || current_user.enrolling_club.present? %>
+    <% elsif !current_user.has_full_access && (current_user.active_subscription.present? || current_user.active_club.present? || current_user.enrolling_club.present?) %>
       <div class="account-notice">
         Please become a member to continue reading when your current book has finished.
       </div>
       <% @able_to_start = false %>
-    <% elsif current_user.has_full_access && current_user.active_subscription.present? || current_user.active_club.present? || current_user.enrolling_club.present? %>
+    <% elsif current_user.has_full_access && (current_user.active_subscription.present? || current_user.active_club.present? || current_user.enrolling_club.present?) %>
       <div class="account-notice">
         You'll be able to start another book when your current book has finished.
       </div>
