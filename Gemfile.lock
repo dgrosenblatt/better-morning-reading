@@ -67,6 +67,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    analytics-ruby (2.0.13)
     autoprefixer-rails (9.8.4)
       execjs
     awesome_print (1.8.0)
@@ -1265,6 +1266,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  analytics-ruby (~> 2.0.0)
   autoprefixer-rails
   awesome_print
   aws-sdk (~> 3)

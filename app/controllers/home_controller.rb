@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :send_data_to_segment, only: :show
+
   def show
     @books = Book.sample
 
@@ -14,5 +16,22 @@ class HomeController < ApplicationController
   end
 
   def privacy
+  end
+
+  private
+
+  def send_data_to_segment
+    if RAILS_ENV != 'development'
+      Analytics.track(
+        user_id: 'guest',
+        event: "Home page visit at #{APPLICATION_HOST}",
+        properties: {
+          referrer: request.referrer,
+        }
+      )
+    else
+      puts 'Home page visit'
+      puts request.referrer
+    end
   end
 end

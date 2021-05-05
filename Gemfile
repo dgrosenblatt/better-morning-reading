@@ -7,7 +7,7 @@ end
 
 ruby "2.6.6"
 
-
+gem 'analytics-ruby', '~> 2.0.0', :require => 'segment/analytics'
 gem "autoprefixer-rails"
 gem "aws-sdk", "~> 3"
 gem "bootsnap", require: false
