@@ -45,7 +45,7 @@
   <div class="books-container">
     <% @books.each do |book| %>
       <div class="book-card">
-        <div class="book-card-left"><%= image_tag book.cover_image_thumb_url, class: "book-image" %></div>
+        <div class="book-card-left"><%= image_tag book.cover_image_thumb_url, class: "book-image", loading: "lazy" %></div>
         <div class="book-card-right">
           <h2 class="book-name"><%= book.name %></h2>
           <div class="author"><%= book.author %></div>

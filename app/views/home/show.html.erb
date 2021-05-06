@@ -16,7 +16,7 @@
     <h2 class="book-display-title">More than 100 classics available and counting</h2>
     <div class="book-display">
       <% @books.each do |book| %>
-        <img class="book-thumbnail" src="<%= book.cover_image_thumb_url %>"/>
+        <img loading="lazy" class="book-thumbnail" src="<%= book.cover_image_thumb_url %>"/>
       <% end %>
     </div>
     <div class="books-link-container">
