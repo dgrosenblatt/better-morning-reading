@@ -5,7 +5,7 @@ class DailyEmailSender
 
   def perform
     subscriptions = Subscription
-      .where(@day => true, status: 'active')
+      .where(@day => true, status: Subscription::STATUSES[:active])
       .includes(:user, :book, { scheduled_chapter_emails: :chapter })
 
     subscriptions.each do |subscription|

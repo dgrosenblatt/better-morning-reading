@@ -4,6 +4,8 @@ RSpec.describe Subscription, type: :model do
   describe 'validations' do
     let!(:subscription) { create(:subscription) }
 
+    it { should validate_presence_of(:status) }
+
     describe 'custom validations' do
       describe 'one or more days' do
         it 'is valid when at least one day is selected' do
@@ -85,6 +87,14 @@ RSpec.describe Subscription, type: :model do
           expect(subscription).not_to be_valid
         end
 
+        it 'is invalid when member already has a paused subscription' do
+          member = create(:user, :with_full_access)
+          create(:subscription, user: member, status: 'paused')
+          subscription = build(:subscription, user: member, status: 'active')
+
+          expect(subscription).not_to be_valid
+        end
+
         it 'is invalid when member already has an active club' do
           member = create(:user, :with_full_access)
           create(:club, organizer: member, status: 'active')
@@ -99,6 +109,46 @@ RSpec.describe Subscription, type: :model do
           subscription = build(:subscription, user: member, status: 'active')
 
           expect(subscription).not_to be_valid
+        end
+      end
+
+      describe 'pause' do
+        it 'can pause when status is active' do
+          subscription = create(:subscription, status: Subscription::STATUSES[:active])
+
+          subscription.update(status: Subscription::STATUSES[:paused])
+
+          expect(subscription.errors).to be_empty
+          expect(subscription.reload.status).to eq Subscription::STATUSES[:paused]
+        end
+
+        it 'can resume when status is paused (pause->active)' do
+          subscription = create(:subscription, status: Subscription::STATUSES[:paused])
+
+          subscription.update(status: Subscription::STATUSES[:active])
+
+          expect(subscription.errors).to be_empty
+          expect(subscription.reload.status).to eq Subscription::STATUSES[:active]
+        end
+
+        it 'cannot pause when status is done' do
+          subscription = create(:subscription, status: Subscription::STATUSES[:done])
+
+          subscription.update(status: Subscription::STATUSES[:paused])
+
+          expect(subscription.errors).not_to be_empty
+          expect(subscription.errors.full_messages).to include 'Status cannot be changed after being done'
+          expect(subscription.reload.status).to eq Subscription::STATUSES[:done]
+        end
+
+        it 'cannot resume when status is done (done->active)' do
+          subscription = create(:subscription, status: Subscription::STATUSES[:done])
+
+          subscription.update(status: Subscription::STATUSES[:active])
+
+          expect(subscription.errors).not_to be_empty
+          expect(subscription.errors.full_messages).to include 'Status cannot be changed after being done'
+          expect(subscription.reload.status).to eq Subscription::STATUSES[:done]
         end
       end
     end

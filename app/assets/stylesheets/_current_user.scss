@@ -16,7 +16,6 @@
   }
 
   .subscription-pane {
-    background-color: $blue-20;
     padding: 12px;
     margin: 0 0 8px 8px;
     border-radius: 3px;
@@ -70,6 +69,28 @@
       text-decoration: none;
       background-color: $yellow;
       border-radius: 4px;
+    }
+
+    .start-club-button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1em;
+    }
+
+    .card-action-button {
+      background: $slime-green-50;
+      color: $dark-gray;
+      display: block;
+      margin: 0 0.5em;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 2px;
+      padding: 4px 12px;
+
+      &:hover {
+        background: $slime-green-75;
+        color: $dark-gray;
+      }
     }
   }
 
