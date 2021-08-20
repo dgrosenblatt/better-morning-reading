@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :favorite_books, through: :user_favorite_books, source: :book
 
   def active_subscription
-    subscriptions.find_by(status: 'active')
+    subscriptions.find_by(status: ['active', 'paused'])
   end
 
   def active_club

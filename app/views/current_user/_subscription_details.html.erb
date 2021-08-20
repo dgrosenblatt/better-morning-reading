@@ -2,13 +2,31 @@
   <h1>Currently reading</h1>
   <div><%= image_tag  @subscription.book.cover_image_full_url, class: 'cover-image' %></div>
   <h2><%= @subscription.book.name %> by <%= @subscription.book.author %></h2>
-  <% if current_user.has_full_access %>
-    <%= link_to "Send Next Chapter Now",
-      on_demand_send_subscription_path(@subscription),
-      class: "subscription-on-demand-send",
-      method: :patch
-    %>
-  <% end %>
+  <p>Status: <%= @subscription.status.capitalize %></p>
+
+  <div class="start-club-button">
+    <% if @subscription.status == Subscription::STATUSES[:active] %>
+        <%= link_to "Pause Chapter Emails",
+          pause_subscription_path(@subscription),
+          class: "card-action-button",
+          method: :patch
+        %>
+    <% elsif @subscription.status == Subscription::STATUSES[:paused] %>
+        <%= link_to "Resume Schedule",
+          resume_subscription_path(@subscription),
+          class: "card-action-button",
+          method: :patch
+        %>
+    <% end %>
+
+    <% if current_user.has_full_access %>
+      <%= link_to "Send Next Chapter Now",
+        on_demand_send_subscription_path(@subscription),
+        class: "card-action-button",
+        method: :patch
+      %>
+    <% end %>
+  </div>
 </div>
 
 <details class="schedule-container" open>

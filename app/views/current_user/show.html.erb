@@ -14,7 +14,7 @@
       <%= link_to "Manage account", manage_path %>
     <% end %>
   </div>
-  <div class="subscription-pane" style="background: url(<%= @cool_background_url %>);background-size:cover;background-repeat:no-repeat">
+  <div class="subscription-pane">
     <% if @subscription.present? %>
       <%= render 'subscription_details' %>
     <% elsif @club.present? %>

@@ -1,11 +1,13 @@
 class Subscription < ApplicationRecord
-  STATUSES = { active: 'active', done: 'done' }
+  STATUSES = { active: 'active', done: 'done', paused: 'paused' }
   after_commit :populate_scheduled_chapter_emails, on: :create
 
   validates :book_id, uniqueness: { scope: :user_id, message: 'is already being read' }
+  validates :status, presence: true
   validate :one_or_more_days
   validate :only_one_active_for_user, on: :create
   validate :only_one_for_free_account_user, on: :create
+  validate :pause_update, if: -> { persisted? }
 
   belongs_to :book
   belongs_to :user
@@ -95,6 +97,12 @@ class Subscription < ApplicationRecord
 
     if user.clubs.any? || user.subscriptions.any?
       errors.add(:base, 'You must become a member to read another book')
+    end
+  end
+
+  def pause_update
+    if status_changed?(from: Subscription::STATUSES[:done])
+      errors.add(:status, 'cannot be changed after being done')
     end
   end
 end
