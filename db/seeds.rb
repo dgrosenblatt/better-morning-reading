@@ -1883,3 +1883,19 @@ end
 if candide_book.persisted?
   puts 'Seeded Candide'
 end
+
+the_light_of_western_stars_book = Book.find_or_create_by(name: 'The Light of Western Stars') do |book|
+  book.author = 'Zane Grey'
+  book.cover_image_full_s3_key = 'the-light-of-western-stars/the-light-of-western-stars-full.jpg'
+  book.cover_image_thumb_s3_key = 'the-light-of-western-stars/the-light-of-western-stars-thumb.jpg'
+  book.amazon_link = 'https://www.amazon.com/Light-Western-Stars-Historical-Literature/dp/B098CW7HNK/ref=sr_1_4?dchild=1&keywords=The+Light+of+Western+Stars+Zane+Grey&qid=1629921332&sr=8-4'
+end
+25.times do |n|
+  Chapter.find_or_create_by(position: n+1, book_id: the_light_of_western_stars_book.id) do |chapter|
+    chapter.name = "Chapter #{n+1}"
+    chapter.text_s3_key = "the-light-of-western-stars/chapters/chapter#{n+1}.html"
+  end
+end
+if the_light_of_western_stars_book.persisted?
+  puts 'Seeded The Light of Western Stars'
+end
