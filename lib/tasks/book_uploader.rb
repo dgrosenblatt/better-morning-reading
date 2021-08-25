@@ -1,15 +1,22 @@
 include Magick
 
 class BookUploader
-  attr_reader :author, :book, :separator, :title
+  attr_accessor :author, :separator, :title
 
-  def initialize(author:, title:, separator:)
+  def initialize(
+    author:,
+    title:,
+    separator:,
+    temp_subdirectory: 'upload',
+    seed_file_path: Rails.root.join('db', 'seeds.rb')
+  )
     @author = author
     @title = title
     @separator = separator
-    @base_path = Rails.root.join('tmp', 'upload')
+    @base_path = Rails.root.join('tmp', temp_subdirectory)
     FileUtils.mkdir_p("#{@base_path}/chapters")
     @book = File.new(Rails.root.join('tmp', 'book.html'))
+    @seed_file = File.new(seed_file_path, "a")
   end
 
   def perform
@@ -24,18 +31,21 @@ class BookUploader
   private
 
   def divide_into_chapters
-    ch_number = 1
-    chapter_file = File.new("#{@base_path}/chapters/chapter#{ch_number}.html", "w+")
+    chapter_number = 1
+    chapter_file = File.new("#{@base_path}/chapters/chapter#{chapter_number}.html", "w+")
+    line = @book.readline
+    chapter_file.write line
 
     loop do
       begin
-        line = book.readline
+        line = @book.readline
       rescue EOFError
-        puts "Extracted #{ch_number} chapters. Proceed? (y/n)"
-        # and open tmp/upload/chapters dir
+        puts "Extracted #{chapter_number} chapters. Proceed? (y/n)"
+        system("open #{@base_path}")
+
         response = STDIN.gets.chomp
         if response.downcase == 'y'
-          @total_chapter_count = ch_number
+          @total_chapter_count = chapter_number
           return
         else
           remove_temp_files
@@ -44,10 +54,10 @@ class BookUploader
         end
       end
 
-      if line.start_with?(separator)
+      if line.start_with?(@separator)
         chapter_file.close
-        ch_number += 1
-        chapter_file = File.new("#{@base_path}/chapters/chapter#{ch_number}.html", "w+")
+        chapter_number += 1
+        chapter_file = File.new("#{@base_path}/chapters/chapter#{chapter_number}.html", "w+")
         chapter_file.write line
       else
         chapter_file.write line
@@ -56,16 +66,9 @@ class BookUploader
   end
 
   def select_book_from_amazon
-    puts "Searching amazon for #{title} by #{author}"
+    puts "Searching amazon for #{@title} by #{@author}"
     results = Rainforest.search_books("#{@title} #{@author}")
-
-    puts "Showing first ten results:"
-    results[0..9].each_with_index do |result, index|
-      puts "Option #{index}:"
-      puts result['title']
-      system("imgcat #{result['image']} --width 240px")
-      puts "*     *     *     *     *\n\n"
-    end
+    display_book_images(results)
 
     loop do
       break if @selected_book
@@ -89,7 +92,6 @@ class BookUploader
 
   def process_cover_images
     puts 'Processing cover images'
-
     begin
       product = Rainforest.product(@selected_book['asin'])
       @image_full_url = product['main_image']['link']
@@ -98,7 +100,7 @@ class BookUploader
       @image_full_url = STDIN.gets.chomp
     end
 
-    image_path = "#{@base_path}/#{title.parameterize}"
+    image_path = "#{@base_path}/#{@title.parameterize}"
 
     puts 'Saving full size image'
     @full_image_path = "#{image_path}-full.jpg"
@@ -114,7 +116,7 @@ class BookUploader
   def upload_assets_to_s3
     bucket = AWS_S3_BUCKET_NAME
 
-    @thumb_s3_key = "#{title.parameterize}/#{title.parameterize}-thumb.jpg"
+    @thumb_s3_key = "#{@title.parameterize}/#{@title.parameterize}-thumb.jpg"
     puts "Uploading thumbnail to s3 (#{@thumb_s3_key})"
     s3.put_object({
       body: File.new(@thumb_image_path),
@@ -122,7 +124,7 @@ class BookUploader
       key: @thumb_s3_key
     })
 
-    @full_s3_key = "#{title.parameterize}/#{title.parameterize}-full.jpg"
+    @full_s3_key = "#{@title.parameterize}/#{@title.parameterize}-full.jpg"
     puts "Uploading thumbnail to s3 (#{@full_s3_key})"
     s3.put_object({
       body: File.new(@full_image_path),
@@ -130,7 +132,7 @@ class BookUploader
       key: @full_s3_key,
     })
 
-    @chapter_s3_base_key = "#{title.parameterize}/chapters/chapter"
+    @chapter_s3_base_key = "#{@title.parameterize}/chapters/chapter"
     puts "Uploading #{@total_chapter_count} chapters to s3 (#{@chapter_s3_base_key}*)"
     @total_chapter_count.times do |n|
       s3.put_object({
@@ -143,11 +145,11 @@ class BookUploader
 
   def append_seed_code
     puts 'Adding to seeds.rb'
-    book_var = "#{title} book".parameterize(separator: '_')
+    book_var = "#{@title} book".parameterize(separator: '_')
     seed_ruby = <<~HEREDOC
 
-      #{book_var} = Book.find_or_create_by(name: '#{title}') do |book|
-        book.author = '#{author}'
+      #{book_var} = Book.find_or_create_by(name: '#{@title}') do |book|
+        book.author = '#{@author}'
         book.cover_image_full_s3_key = '#{@full_s3_key}'
         book.cover_image_thumb_s3_key = '#{@thumb_s3_key}'
         book.amazon_link = '#{@selected_book['link']}'
@@ -159,12 +161,26 @@ class BookUploader
         end
       end
       if #{book_var}.persisted?
-        puts 'Seeded #{title}'
+        puts 'Seeded #{@title}'
       end
     HEREDOC
 
-    seeds = File.new(Rails.root.join('db', 'seeds.rb'), "a")
-    seeds.write(seed_ruby)
+    @seed_file.write(seed_ruby)
+    @seed_file.close
+  end
+
+  def create_chapter_file(chapter_number)
+    File.new("#{@base_path}/chapters/chapter#{chapter_number}.html", "w+")
+  end
+
+  def display_book_images(rainforest_book_data)
+    puts "Showing first ten results:"
+    rainforest_book_data[0..9].each_with_index do |book, index|
+      puts "Option #{index}:"
+      puts book['title']
+      system("imgcat #{book['image']} --width 240px")
+      puts "*     *     *     *     *\n\n"
+    end
   end
 
   def remove_temp_files
