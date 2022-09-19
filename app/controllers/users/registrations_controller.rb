@@ -6,19 +6,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    @email = params[:email]
     super
+    # redirect_to :about_path
+    # @email = params[:email]
   end
 
   # POST /resource
   def create
-    super
+    redirect_to :about_path
 
-    if @user.persisted?
-      customer = Stripe::Customer.create(email: @user.email)
-      @user.stripe_customer_id = customer.id
-      @user.save!
-    end
+    # super
+
+    # if @user.persisted?
+    #   customer = Stripe::Customer.create(email: @user.email)
+    #   @user.stripe_customer_id = customer.id
+    #   @user.save!
+    # end
   end
 
   # GET /resource/edit

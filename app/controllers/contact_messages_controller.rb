@@ -4,13 +4,13 @@ class ContactMessagesController < ApplicationController
   end
 
   def create
-    @contact_message = ContactMessage.new(contact_message_params)
+    # @contact_message = ContactMessage.new(contact_message_params)
 
-    if @contact_message.save
-      redirect_to root_path, notice: 'Your message has been sent. Thank you for contacting us.'
-    else
-      render :new
-    end
+    # if @contact_message.save
+    redirect_to root_path, notice: 'Your message has been sent. Thank you for contacting us.'
+    # else
+    #   render :new
+    # end
   end
 
   private

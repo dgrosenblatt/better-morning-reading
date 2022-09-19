@@ -2,7 +2,7 @@
   <div class="left-panel"></div>
   <div class="right-panel">
     <h2 class="sign-in-title">Welcome!</h2>
-    <p>Joining Better Morning Reading is free. With a free account:</p>
+    <p>Registration is closed at this time. Please try again later.</p>
     <ul class="details-list">
       <li> 📚 Read from our collection of public domain books</li>
       <li> 🕵️‍♀️ Select a book and choose your weekly schedule</li>
@@ -10,7 +10,9 @@
       <li> ❤️ After, you can support the site and continue reading for $12/year</li>
     </ul>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%
+=begin%>
+ <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <% if resource.errors.any? %>
         <div class="errors-container">
           <%= f.error_notification %>
@@ -47,6 +49,8 @@
         <%= f.button :submit, "Sign Up", class: "new-session-submit" %>
       </div>
     <% end %>
+<%
+=end%>
 
   </div>
 </div>
